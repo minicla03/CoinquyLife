@@ -6,14 +6,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity
 {
+    private String screenRotation;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);  // Collega il layout di questa activity
+
+        if (savedInstanceState != null)
+        {
+            screenRotation = savedInstanceState.getString("chiave", "");
+        }
 
         EditText usernameET=findViewById(R.id.editTextText);
         EditText passwordET=findViewById(R.id.editTextTextPassword);
@@ -56,5 +64,12 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putString("chiave", screenRotation); // Salva un valore prima della rotazione
     }
 }

@@ -3,10 +3,14 @@ package minicla03.coinquylife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity
 {
+    private String screenRotation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -15,9 +19,8 @@ public class SplashActivity extends AppCompatActivity
 
         if (savedInstanceState != null)
         {
-            String valore = savedInstanceState.getString("chiave"); // Recupera il valore dopo la rotazione
+            screenRotation = savedInstanceState.getString("chiave", "");
         }
-
         // Usa un Handler per lanciare una nuova activity dopo un breve periodo (3 secondi)
         new Handler().postDelayed(new Runnable()
         {
@@ -31,10 +34,10 @@ public class SplashActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState)
+    protected void onSaveInstanceState(@NonNull Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        outState.putString("chiave", valore); // Salva un valore prima della rotazione
+        outState.putString("chiave", screenRotation); // Salva un valore prima della rotazione
     }
 
 }
