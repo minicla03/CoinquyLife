@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CoinquyLife</string>
+    <string name="loginButton">Login</string>
+    <string name="signinButton">Sign in</string>
+    <string name="insert">username</string>
+    <string name="enter_your_password">Enter your password</string>
 </resources>
