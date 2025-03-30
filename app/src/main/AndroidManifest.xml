@@ -22,7 +22,6 @@
         </activity>
 
         <activity
-            android:theme="@style/AppTheme"
             android:name="LoginActivity"
             android:exported="true">
             <intent-filter>
