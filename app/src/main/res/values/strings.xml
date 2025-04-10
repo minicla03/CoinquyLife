@@ -4,4 +4,12 @@
     <string name="signinButton">Sign in</string>
     <string name="insert">username</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="registrati">Registration</string>
+    <string name="register">Registration</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="accedi">Accedi</string>
 </resources>
