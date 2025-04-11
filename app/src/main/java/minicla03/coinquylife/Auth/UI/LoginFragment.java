@@ -1,5 +1,4 @@
-package minicla03.coinquylife.Auth;
-import android.content.Intent;
+package minicla03.coinquylife.Auth.UI;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import minicla03.coinquylife.Auth.Data.LoginViewModel;
 import minicla03.coinquylife.R;
 
 public class LoginFragment extends Fragment

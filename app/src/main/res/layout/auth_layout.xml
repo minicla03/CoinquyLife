@@ -1,74 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/auth_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".Auth.AuthActivity">
+             android:layout_height="match_parent">
 
-    <!-- Background slider -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/backgroundSlider"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" />
 
-    <!-- Overlay per leggere meglio i contenuti -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#77000000" />
-
-    <!-- Logo dell'app -->
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ico_app_background"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="60dp"
-        android:contentDescription="@string/app_name" />
-
-    <!-- Pulsanti Login/Registrati -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toggleButtonsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginTop="180dp"
-        android:padding="16dp">
+        android:id="@+id/linearLayout"
+        android:layout_width="413dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="167dp"
+        android:layout_marginBottom="431dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnLogin"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="156dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/login"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnRegister"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.5" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnRegister"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/register"
+            android:layout_width="156dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="48dp"
+            android:text="@string/registrati"
+            app:layout_constraintEnd_toStartOf="@+id/btnLogin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.5" />
-
+            tools:ignore="DuplicateSpeakableTextCheck,TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Container per fragment Login e Registrazione -->
-    <FrameLayout
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="85dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ico_app_round" />
+
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/auth_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:name="minicla03.coinquylife.Auth.UI.RegisterFragment"
+        android:layout_width="340dp"
+        android:layout_height="325dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

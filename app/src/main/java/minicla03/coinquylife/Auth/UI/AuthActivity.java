@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth;
+package minicla03.coinquylife.Auth.UI;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

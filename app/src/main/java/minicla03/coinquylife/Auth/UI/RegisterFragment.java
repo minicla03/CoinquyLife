@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth;
+package minicla03.coinquylife.Auth.UI;
 
 import androidx.fragment.app.Fragment;
 
