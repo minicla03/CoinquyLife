@@ -26,27 +26,27 @@ import java.util.UUID;
  * <p>
  */
 @Entity(tableName="CoinquyHouse")
-public class CoinquyHouse {
+public class CoinquyHouse
+{
     @PrimaryKey(autoGenerate = true)
     @NotNull String id_house;
     @NotNull String nome_casa;
-    String addres;
+    String address;
     Date creation_date;
     List<Rule> rules;
 
     /**
      * Constructs a new CoinquyHouse object with the specified details.
      *
-     * @param id_house      The unique identifier for the house.
      * @param nome_casa     The name of the house.
      * @param addres        The physical address of the house.
      * @param creation_date The date when the house was created.
      * @param rules         A list of rules associated with the house.
      */
-    public CoinquyHouse(@NotNull String id_house, @NotNull String nome_casa, String addres, Date creation_date, List<Rule> rules) {
+    public CoinquyHouse(@NotNull String nome_casa, String addres, Date creation_date, List<Rule> rules) {
         this.id_house = UUID.randomUUID().toString();
         this.nome_casa = nome_casa;
-        this.addres = addres;
+        this.address = addres;
         this.creation_date = creation_date;
         this.rules = rules;
     }
@@ -66,8 +66,8 @@ public class CoinquyHouse {
      *
      * @return The address of the house.
      */
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
     /**
@@ -110,10 +110,10 @@ public class CoinquyHouse {
     /**
      * Sets the physical address of the house.
      *
-     * @param addres The new address of the house.
+     * @param address The new address of the house.
      */
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**

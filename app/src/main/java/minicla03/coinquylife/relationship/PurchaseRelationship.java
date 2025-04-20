@@ -1,4 +1,4 @@
-package minicla03.coinquylife.DAO;
+package minicla03.coinquylife.relationship;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
@@ -7,8 +7,7 @@ import minicla03.coinquylife.entity.CoinquyHouse;
 import minicla03.coinquylife.entity.Purchase;
 import minicla03.coinquylife.entity.User;
 
-public class PurchaseRelationship
-{
+public class PurchaseRelationship {
     @Embedded
     public Purchase purchase;
 

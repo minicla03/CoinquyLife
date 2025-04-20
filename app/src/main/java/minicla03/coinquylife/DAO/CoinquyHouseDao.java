@@ -1,14 +1,26 @@
 package minicla03.coinquylife.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
+import androidx.room.Update;
 
-import minicla03.coinquylife.DAO.CoinquyHouseWithUser;
+import java.util.List;
+
+import minicla03.coinquylife.entity.CoinquyHouse;
+
 
 @Dao
-public interface CoinquyHouseDao {
-    @Transaction
-    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseUser")
-    CoinquyHouseWithUser getHouseWithUsers(String houseId);
+public interface CoinquyHouseDao
+{
+    @Insert void insertCoinquyHouse(CoinquyHouse coinquyHouse);
+
+    @Update void updateCoinquyHouse(CoinquyHouse coinquyHouse);
+
+    @Delete void deleteCoinquyHouse(CoinquyHouse coinquyHouse);
+
+    @Query("SELECT * FROM CoinquyHouse") List<CoinquyHouse> getAllCoinquyHouses();
+
+    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseId") CoinquyHouse getCoinquyHouseById(String houseId);
 }

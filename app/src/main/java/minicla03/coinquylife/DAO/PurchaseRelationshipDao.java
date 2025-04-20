@@ -9,7 +9,8 @@ import java.util.List;
 import minicla03.coinquylife.relationship.PurchaseRelationship;
 
 @Dao
-public interface PurchaseDao {
+public interface PurchaseRelationshipDao {
+
     @Transaction
     @Query("SELECT * FROM Purchase WHERE id_purchase = :purchaseId")
     PurchaseRelationship getPurchaseWithDetails(String purchaseId);

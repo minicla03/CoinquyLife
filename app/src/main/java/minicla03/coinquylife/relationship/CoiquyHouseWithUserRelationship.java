@@ -1,4 +1,4 @@
-package minicla03.coinquylife.DAO;
+package minicla03.coinquylife.relationship;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
@@ -8,7 +8,8 @@ import java.util.List;
 import minicla03.coinquylife.entity.CoinquyHouse;
 import minicla03.coinquylife.entity.User;
 
-public class CoiquyHouseWithUser{
+public class CoiquyHouseWithUserRelationship
+{
     @Embedded
     public CoinquyHouse house;
 
