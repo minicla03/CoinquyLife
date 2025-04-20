@@ -6,6 +6,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Entity(
@@ -22,7 +23,7 @@ public class Survey extends Note
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id_survey") private String id_survey;
     @ColumnInfo(name="expired_date") private String expired_date;
 
-    public Survey(String boardId, String author, String publish_date, String description, String expired_date)
+    public Survey(String boardId, String author, Date publish_date, String description, String expired_date)
     {
         super(boardId, author, publish_date, description);
         this.expired_date = expired_date;
