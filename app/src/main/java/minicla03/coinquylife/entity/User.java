@@ -47,8 +47,8 @@ import java.util.UUID;
 
 public class User {
     @PrimaryKey(autoGenerate = true)
-    @NotNull
-    private String id;
+    @NotNull @ColumnInfo(name = "id_user")
+    private String id_user;
     @ColumnInfo(name = "username")
     @NotNull
     private String username;
@@ -86,7 +86,7 @@ public class User {
      * @param profileImage  The profile image of the user as a byte array.
      */
     public User(@NonNull String username, String name, @NonNull String password, String surname, String email, int level, int total_points, String Lingua, byte[] profileImage) {
-        this.id = UUID.randomUUID().toString();
+        this.id_user = UUID.randomUUID().toString();
         this.username = username;
         this.name = name;
         this.password = password;
@@ -105,8 +105,8 @@ public class User {
      * @return The user's unique ID.
      */
     @NonNull
-    public String getId() {
-        return id;
+    public String getId_user() {
+        return id_user;
     }
 
     /**
@@ -297,7 +297,7 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username);
+        return Objects.equals(id_user, user.id_user) && Objects.equals(username, user.username);
     }
 
     /**
@@ -307,7 +307,7 @@ public class User {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, username);
+        return Objects.hash(id_user, username);
     }
 }
 

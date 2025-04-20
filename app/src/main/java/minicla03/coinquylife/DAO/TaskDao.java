@@ -25,9 +25,9 @@ public interface TaskDao {
     @Query("SELECT * FROM Task")
     List<Task> getAllTasks();
 
-    @Query("SELECT * FROM Task WHERE tenant = :tenantId")
+    @Query("SELECT * FROM Task WHERE id_user = :tenantId")
     List<Task> getTasksByTenant(String tenantId);
 
-    @Query("SELECT * FROM Task WHERE houseId = :houseId")
+    @Query("SELECT * FROM Task WHERE id_house = :houseId")
     List<Task> getTasksByHouse(String houseId);
 }
