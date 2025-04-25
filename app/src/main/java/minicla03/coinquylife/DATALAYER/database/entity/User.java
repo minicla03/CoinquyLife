@@ -80,6 +80,28 @@ public class User {
      * @param password      The password of the user.
      * @param surname       The surname of the user.
      * @param email         The email address of the user.
+     * @param profileImage  The profile image of the user as a byte array.
+     */
+    public User(@NonNull String username, String name, @NonNull String password, String surname, String email, byte[] profileImage)
+    {
+        this.id_user = UUID.randomUUID().toString();
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.surname = surname;
+        this.email = email;
+        this.profileImage = profileImage;
+        this.houseUser=null;
+    }
+
+    /**
+     * Constructs a new User object with the specified details.
+     *
+     * @param username      The unique username of the user.
+     * @param name          The name of the user.
+     * @param password      The password of the user.
+     * @param surname       The surname of the user.
+     * @param email         The email address of the user.
      * @param level       The experience level of the user.
      * @param total_points  The total points accumulated by the user.
      * @param Lingua        The preferred language of the user.
