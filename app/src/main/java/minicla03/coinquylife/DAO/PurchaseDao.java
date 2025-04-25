@@ -1,5 +1,6 @@
 package minicla03.coinquylife.DAO;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 import androidx.room.Transaction;
@@ -16,5 +17,5 @@ public interface PurchaseDao {
 
     @Transaction
     @Query("SELECT * FROM Purchase")
-    List<PurchaseRelationship> getAllPurchasesWithDetails();
+    LiveData<List<PurchaseRelationship>> getAllPurchasesWithDetails();
 }

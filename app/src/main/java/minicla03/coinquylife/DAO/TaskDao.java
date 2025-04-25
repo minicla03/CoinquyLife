@@ -1,5 +1,6 @@
 package minicla03.coinquylife.DAO;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -26,8 +27,8 @@ public interface TaskDao {
     List<Task> getAllTasks();
 
     @Query("SELECT * FROM Task WHERE id_user = :tenantId")
-    List<Task> getTasksByTenant(String tenantId);
+    LiveData<List<Task>>getTasksByTenant(String tenantId);
 
     @Query("SELECT * FROM Task WHERE id_house = :houseId")
-    List<Task> getTasksByHouse(String houseId);
+    LiveData<List<Task>> getTasksByHouse(String houseId);
 }

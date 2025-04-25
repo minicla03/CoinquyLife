@@ -13,8 +13,8 @@ public class UserWithTasksRelationship {
     public User user;
 
     @Relation(
-        parentColumn = "id_utente",
-        entityColumn = "coinquilino"
+        parentColumn = "id_user",
+        entityColumn = "id_user"
     )
     public List<Task> tasks;
 }

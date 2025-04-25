@@ -1,5 +1,6 @@
 package minicla03.coinquylife.DAO;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -26,5 +27,5 @@ public interface TaskExchangeDao {
     TaskExchange getTaskExchangeById(String idExchange);
 
     @Query("SELECT * FROM TaskExchange")
-    List<TaskExchange> getAllTaskExchanges();
+    LiveData<List<TaskExchange>> getAllTaskExchanges();
 }

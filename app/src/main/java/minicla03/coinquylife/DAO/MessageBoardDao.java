@@ -1,5 +1,6 @@
 package minicla03.coinquylife.DAO;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -24,8 +25,8 @@ public interface MessageBoardDao {
     void deleteBoard(MessageBoard board);
 
     @Query("SELECT * FROM MessageBoard WHERE id_board = :idBoard")
-    MessageBoard getBoardById(String idBoard);
+    LiveData<MessageBoard> getBoardById(String idBoard);
 
     @Query("SELECT * FROM MessageBoard")
-    List<MessageBoard> getAllBoards();
+    LiveData<List<MessageBoard>> getAllBoards();
 }
