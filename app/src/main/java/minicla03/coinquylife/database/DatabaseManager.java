@@ -1,7 +1,6 @@
 package minicla03.coinquylife.database;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -29,7 +28,6 @@ import minicla03.coinquylife.DAO.UserWithTaskExchangesDao;
 import minicla03.coinquylife.DAO.UserWithTasksDao;
 import minicla03.coinquylife.entity.Choice;
 import minicla03.coinquylife.entity.CoinquyHouse;
-import minicla03.coinquylife.entity.Converters;
 import minicla03.coinquylife.entity.HouseWork;
 import minicla03.coinquylife.entity.MessageBoard;
 import minicla03.coinquylife.entity.Note;

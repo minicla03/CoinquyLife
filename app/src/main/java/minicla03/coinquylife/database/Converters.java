@@ -1,4 +1,4 @@
-package minicla03.coinquylife.entity;
+package minicla03.coinquylife.database;
 
 import androidx.room.TypeConverter;
 import java.util.Date;
