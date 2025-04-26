@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import minicla03.coinquylife.DAO.ChoiceDao;
@@ -28,6 +29,7 @@ import minicla03.coinquylife.DAO.UserWithTaskExchangesDao;
 import minicla03.coinquylife.DAO.UserWithTasksDao;
 import minicla03.coinquylife.entity.Choice;
 import minicla03.coinquylife.entity.CoinquyHouse;
+import minicla03.coinquylife.entity.Converters;
 import minicla03.coinquylife.entity.HouseWork;
 import minicla03.coinquylife.entity.MessageBoard;
 import minicla03.coinquylife.entity.Note;
@@ -41,6 +43,7 @@ import minicla03.coinquylife.entity.User;
                         CoinquyHouse.class, HouseWork.class, MessageBoard.class, Note.class, Survey.class},
         version = 1,
         exportSchema = false)
+@TypeConverters(Converters.class)
 public abstract class DatabaseManager extends RoomDatabase
 {
     private static volatile DatabaseManager INSTANCE;

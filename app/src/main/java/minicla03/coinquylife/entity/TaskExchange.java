@@ -1,9 +1,14 @@
 package minicla03.coinquylife.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
@@ -28,17 +33,25 @@ import java.util.Date;
                         childColumns = "original_task_id",
                         onDelete = ForeignKey.CASCADE
                 )
+        },
+        indices = {
+                @Index(value = "requester"),
+                @Index(value = "receiver"),
+                @Index(value = "original_task_id")
         }
 )
 public class TaskExchange {
 
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id_exchange") private String idExchange;
+    @PrimaryKey @ColumnInfo(name = "id_exchange") @NotNull private String idExchange;
     @ColumnInfo(name = "requester") private String requester;
     @ColumnInfo(name = "receiver") private String receiver;
     @ColumnInfo(name = "original_task_id") private String originalTaskId;
     @ColumnInfo(name = "request_date") private Date requestDate;
     @ColumnInfo(name = "approved") private boolean approved;
 
+    public TaskExchange(){}
+
+    @Ignore
     public TaskExchange(String requester, String receiver, String originalTaskId, Date requestDate, boolean approved) {
         this.requester = requester;
         this.receiver = receiver;
@@ -47,8 +60,13 @@ public class TaskExchange {
         this.approved = approved;
     }
 
+    @NonNull
     public String getIdExchange() {
         return idExchange;
+    }
+
+    public void setIdExchange(@NonNull String idExchange) {
+        this.idExchange = idExchange;
     }
 
     public String getRequester() {

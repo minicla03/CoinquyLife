@@ -14,13 +14,13 @@ public class UserWithTaskExchangesRelationship {
 
     @Relation(
         parentColumn = "id_user",
-        entityColumn = "requesterId" // Campo per chi richiede lo scambio
+        entityColumn = "requester" // Campo per chi richiede lo scambio
     )
     public List<TaskExchange> requestedExchanges;
 
     @Relation(
         parentColumn = "id_user",
-        entityColumn = "receiverId" // Campo per chi riceve lo scambio
+        entityColumn = "receiver" // Campo per chi riceve lo scambio
     )
     public List<TaskExchange> receivedExchanges;
 }

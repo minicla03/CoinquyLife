@@ -6,13 +6,14 @@ import androidx.room.Relation;
 import minicla03.coinquylife.entity.Task;
 import minicla03.coinquylife.entity.TaskExchange;
 
-public class TaskExchangeWithTaskRelationship {
+public class TaskExchangeWithTaskRelationship
+{
     @Embedded
     public TaskExchange taskExchange;
 
     @Relation(
-        parentColumn = "originalTaskId",
-        entityColumn = "id_task" // Campo per il compito originale
+        parentColumn = "original_task_id",
+        entityColumn = "id_task"
     )
     public Task originalTask;
 }

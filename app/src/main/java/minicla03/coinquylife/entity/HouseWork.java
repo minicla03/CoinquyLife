@@ -3,7 +3,11 @@ package minicla03.coinquylife.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 import java.util.Objects;
@@ -24,22 +28,29 @@ import java.util.UUID;
                         childColumns = "id_house",
                         onDelete = ForeignKey.CASCADE
                 )
+        },
+        indices = {
+                @Index(value = "coinquy"),
+                @Index(value = "id_house")
         }
 )
-public class HouseWork {
-
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id_housework") private String idHouseWork;
-    @ColumnInfo(name = "coiquy") private String coiquy;
+public class HouseWork
+{
+    @PrimaryKey @ColumnInfo(name = "id_housework") @NotNull private String idHouseWork;
+    @ColumnInfo(name = "coinquy") private String coinquy;
     @ColumnInfo(name = "id_house") private String idHouse;
     @ColumnInfo(name = "description") private String description;
     @ColumnInfo(name = "date_involvement") private Date dateInvolvement;
     @ColumnInfo(name = "earned_point") private int earned_point;
-    @ColumnInfo(name = "penality")  private int penality;
+    @ColumnInfo(name = "penalty")  private int penality;
     @ColumnInfo(name = "done_hw") private boolean done_hw;
 
-    public HouseWork(String coiquy, String idHouse, String description, Date dateInvolvement, int earned_point, int penality, boolean done_hw) {
+    public HouseWork(){ }
+
+    @Ignore
+    public HouseWork(String coinquy, String idHouse, String description, Date dateInvolvement, int earned_point, int penality, boolean done_hw) {
         this.idHouseWork = UUID.randomUUID().toString();
-        this.coiquy = coiquy;
+        this.coinquy = coinquy;
         this.idHouse = idHouse;
         this.description = description;
         this.dateInvolvement = dateInvolvement;
@@ -52,12 +63,16 @@ public class HouseWork {
         return idHouseWork;
     }
 
-    public String getCoiquy() {
-        return coiquy;
+    public void setIdHouseWork(String idHouseWork) {
+        this.idHouseWork = idHouseWork;
     }
 
-    public void setCoiquy(String coiquy) {
-        this.coiquy = coiquy;
+    public String getCoinquy() {
+        return coinquy;
+    }
+
+    public void setCoinquy(String coinquy) {
+        this.coinquy = coinquy;
     }
 
     public String getIdHouse() {
@@ -80,8 +95,8 @@ public class HouseWork {
         return dateInvolvement;
     }
 
-    public void setDataSvolgimento(Date dataSvolgimento) {
-        this.dateInvolvement = dataSvolgimento;
+    public void setDateInvolvement(Date dateInvolvement) {
+        this.dateInvolvement = dateInvolvement;
     }
 
     public int getEarned_point() {
@@ -112,11 +127,26 @@ public class HouseWork {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         HouseWork houseWork = (HouseWork) o;
-        return Objects.equals(idHouseWork, houseWork.idHouseWork) && Objects.equals(description, houseWork.description);
+        return Objects.equals(idHouseWork, houseWork.idHouseWork) && Objects.equals(coinquy, houseWork.coinquy) && Objects.equals(idHouse, houseWork.idHouse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idHouseWork, description);
+        return Objects.hash(idHouseWork, coinquy, idHouse);
     }
+
+    @Override
+    public String toString() {
+        return "HouseWork{" +
+                "idHouseWork='" + idHouseWork + '\'' +
+                ", coinquy='" + coinquy + '\'' +
+                ", idHouse='" + idHouse + '\'' +
+                ", description='" + description + '\'' +
+                ", dateInvolvement=" + dateInvolvement +
+                ", earned_point=" + earned_point +
+                ", penality=" + penality +
+                ", done_hw=" + done_hw +
+                '}';
+    }
+
 }

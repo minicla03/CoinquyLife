@@ -12,7 +12,7 @@ import minicla03.coinquylife.relationship.HouseWithTasksRelationship;
 public interface HouseWithTasksRelationshipDao {
 
     @Transaction
-    @Query("SELECT * FROM CoinquyHouse WHERE id_casa = :houseId")
+    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseId")
     HouseWithTasksRelationship getHouseWithTasks(String houseId);
 
     @Transaction

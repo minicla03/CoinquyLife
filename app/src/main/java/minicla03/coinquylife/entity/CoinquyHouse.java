@@ -1,6 +1,8 @@
 package minicla03.coinquylife.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +22,6 @@ import java.util.UUID;
  *   <li><b>Name:</b> The name given to the house (e.g., "The Cozy Corner," "Sunshine Manor").</li>
  *   <li><b>Address:</b> The physical address of the house.</li>
  *   <li><b>Creation Date:</b> The date when the house was created or registered.</li>
- *   <li><b>Rules:</b> A list of {@link Rule} objects defining the house rules.</li>
  *   <li><b>Coinquys:</b> A list of {@link User} objects representing the residents of the house.</li>
  * </ul>
  * <p>
@@ -28,132 +29,70 @@ import java.util.UUID;
 @Entity(tableName="CoinquyHouse")
 public class CoinquyHouse
 {
-    @PrimaryKey(autoGenerate = true)
-    @NotNull String id_house;
-    @NotNull String nome_casa;
-    String address;
-    Date creation_date;
-    List<Rule> rules;
+    @PrimaryKey @NotNull @ColumnInfo(name = "id_house") private String id_house;
+    @NotNull @ColumnInfo(name = "house_name") private String house_name;
+    @ColumnInfo(name = "address") private String address;
+    @ColumnInfo(name = "creation_date") private Date creation_date= new Date();
+    //List<Rule> rules;
+
+    public CoinquyHouse() { }
 
     /**
      * Constructs a new CoinquyHouse object with the specified details.
      *
      * @param nome_casa     The name of the house.
-     * @param addres        The physical address of the house.
+     * @param address       The physical address of the house.
      * @param creation_date The date when the house was created.
-     * @param rules         A list of rules associated with the house.
      */
-    public CoinquyHouse(@NotNull String nome_casa, String addres, Date creation_date, List<Rule> rules) {
+    @Ignore
+    public CoinquyHouse(@NotNull String nome_casa, String address, Date creation_date) {
         this.id_house = UUID.randomUUID().toString();
-        this.nome_casa = nome_casa;
-        this.address = addres;
+        this.house_name = nome_casa;
+        this.address = address;
         this.creation_date = creation_date;
-        this.rules = rules;
     }
 
-    /**
-     * Gets the unique identifier of the house.
-     *
-     * @return The unique ID of the house.
-     */
-    @NotNull
-    public String getId_house() {
+    public @NotNull String getId_house() {
         return id_house;
     }
 
-    /**
-     * Gets the physical address of the house.
-     *
-     * @return The address of the house.
-     */
+    public void setId_house(@NotNull String id_house) {
+        this.id_house = id_house;
+    }
+
+    public @NotNull String getHouse_name() {
+        return house_name;
+    }
+
+    public void setHouse_name(@NotNull String house_name) {
+        this.house_name = house_name;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    /**
-     * Gets the name of the house.
-     *
-     * @return The name of the house.
-     */
-    @NotNull
-    public String getNome_casa() {
-        return nome_casa;
-    }
-
-    /**
-     * Gets the creation date of the house.
-     *
-     * @return The date when the house was created.
-     */
-    public Date getCreation_date() {
-        return creation_date;
-    }
-
-    /**
-     * Gets the list of rules associated with the house.
-     *
-     * @return A list of {@link Rule} objects representing the house rules.
-     */
-    public List<Rule> getRules() {
-        return rules;
-    }
-
-    /**
-     * Sets the name of the house.
-     *
-     * @param nome_casa The new name of the house.
-     */
-    public void setNome_casa(@NotNull String nome_casa) {
-        this.nome_casa = nome_casa;
-    }
-
-    /**
-     * Sets the physical address of the house.
-     *
-     * @param address The new address of the house.
-     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /**
-     * Sets the creation date of the house.
-     *
-     * @param creation_date The new creation date of the house.
-     */
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
     public void setCreation_date(Date creation_date) {
         this.creation_date = creation_date;
     }
 
-    /**
-     * Sets the list of rules associated with the house.
-     *
-     * @param rules A list of {@link Rule} objects representing the new house rules.
-     */
-    public void setRules(List<Rule> rules) {
-        this.rules = rules;
-    }
-
-    /**
-     * Checks if the specified object is equal to this CoinquyHouse.
-     *
-     * @param o The object to compare with this CoinquyHouse.
-     * @return {@code true} if the specified object is equal to this CoinquyHouse, {@code false} otherwise.
-     */
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         CoinquyHouse that = (CoinquyHouse) o;
-        return Objects.equals(id_house, that.id_house);
+        return Objects.equals(id_house, that.id_house) && Objects.equals(house_name, that.house_name);
     }
 
-    /**
-     * Calculates the hash code for this CoinquyHouse.
-     *
-     * @return The hash code based on the house's ID.
-     */
     @Override
     public int hashCode() {
-        return Objects.hashCode(id_house);
+        return Objects.hash(id_house, house_name);
     }
 }

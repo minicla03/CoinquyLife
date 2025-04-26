@@ -13,8 +13,8 @@ public class HouseWithTasksRelationship {
     public CoinquyHouse house;
 
     @Relation(
-        parentColumn = "id_casa",
-        entityColumn = "id_casa"
+        parentColumn = "id_house", //CoinquyHouse
+        entityColumn = "id_house" //Task
     )
     public List<Task> tasks;
 }

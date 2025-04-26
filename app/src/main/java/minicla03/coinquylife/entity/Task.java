@@ -2,8 +2,11 @@ package minicla03.coinquylife.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ForeignKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 import java.util.UUID;
@@ -14,20 +17,20 @@ import java.util.UUID;
         @ForeignKey(
             entity = User.class,
             parentColumns = "id_user",
-            childColumns = "tenant",
+            childColumns = "id_user",
             onDelete = ForeignKey.CASCADE
         ),
         @ForeignKey(
             entity = CoinquyHouse.class,
             parentColumns = "id_house",
-            childColumns = "houseId",
+            childColumns = "id_house",
             onDelete = ForeignKey.CASCADE
         )
     }
 )
 public class Task
 {
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id_task") public String taskId;
+    @PrimaryKey @ColumnInfo(name = "id_task") @NotNull public String taskId;
     @ColumnInfo(name = "id_user") public String tenant;
     @ColumnInfo(name = "id_house") public String houseId;
     @ColumnInfo(name = "description") public String description;
@@ -36,6 +39,9 @@ public class Task
     @ColumnInfo(name = "penalty") public int penalty;
     @ColumnInfo(name = "completed") public boolean completed;
 
+    public Task(){ }
+
+    @Ignore
     public Task(String tenant, String houseId, String description, Date executionDate, int earnedPoints, int penalty, boolean completed)
     {
         this.taskId = UUID.randomUUID().toString();
