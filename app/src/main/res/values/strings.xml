@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CoinquyLife</string>
+    <string name="app_name" translatable="false">CoinquyLife</string>
     <string name="loginButton">Login</string>
     <string name="signinButton">Sign in</string>
     <string name="insert">username</string>
@@ -12,4 +12,13 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="accedi">Accedi</string>
+    <string name="new_coinquy_house">New Coinquy House</string>
+    <string name="join_to_coinquy_house">Join to Coinquy House</string>
+    <string name="coinquyhouse_id">CoinquyHouse id</string>
+    <string name="id">ID</string>
+    <string name="inserisci_id_della_casa">Insert iD CoinquyHouse</string>
+    <string name="id_house">House Id</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Next">Next</string>
+    <string name="username" />
 </resources>

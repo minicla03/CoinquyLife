@@ -37,6 +37,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.lifecycle.viewmodel.android)
     implementation(libs.ext.junit)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

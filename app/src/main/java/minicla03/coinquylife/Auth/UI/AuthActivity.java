@@ -16,9 +16,9 @@ import minicla03.coinquylife.R;
 public class AuthActivity extends AppCompatActivity
 {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState)
+    protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState, persistentState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_layout);
 
         // Impostiamo la modalità schermo intero

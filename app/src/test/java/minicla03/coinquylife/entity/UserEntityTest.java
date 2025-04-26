@@ -17,8 +17,9 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import minicla03.coinquylife.DAO.UserDao;
-import minicla03.coinquylife.database.DatabaseManager;
+import minicla03.coinquylife.PERSISTANCE.database.DAO.UserDao;
+import minicla03.coinquylife.PERSISTANCE.database.DatabaseManager;
+import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 @RunWith(AndroidJUnit4.class)
 public class UserEntityTest

@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.Data.LoginViewModel;
+import minicla03.coinquylife.Auth.ViewModel.LoginViewModel;
 import minicla03.coinquylife.R;
 
 public class LoginFragment extends Fragment

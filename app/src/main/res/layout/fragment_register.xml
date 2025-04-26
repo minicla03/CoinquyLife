@@ -23,8 +23,19 @@
             android:id="@+id/etCognome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="Surname"
             android:hint="@string/cognome"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:inputType="text" />
+
+        <!-- Campo Username -->
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/username" />
 
         <!-- Campo Email -->
         <EditText
