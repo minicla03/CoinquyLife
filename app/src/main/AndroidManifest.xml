@@ -13,18 +13,23 @@
         android:theme="@style/Theme.CoinquyLife"
         tools:targetApi="31" >
 
-        <activity
-            android:name=".Auth.UI.AuthActivity"
+        <activity android:name=".Auth.SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".Auth.UI.CoinquyHouseSelectionActivity"
-            android:exported="true" >
+            android:name=".Auth.UI.AuthActivity"
+            android:exported="true">
         </activity>
+
+        <activity
+            android:name=".Auth.UI.CoinquyHouseSelectionActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 </manifest>

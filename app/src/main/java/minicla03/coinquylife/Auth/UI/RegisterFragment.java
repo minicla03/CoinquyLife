@@ -50,7 +50,7 @@ public class RegisterFragment extends Fragment
     private void setupObservers()
     {
 
-        authViewModel.getRegistrationResult().observe(getViewLifecycleOwner(), registrationSuccessful -> {
+        authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), registrationSuccessful -> {
             if (registrationSuccessful)
             {
                 Toast.makeText(getContext(), "Registrazione riuscita", Toast.LENGTH_SHORT).show();
@@ -77,7 +77,7 @@ public class RegisterFragment extends Fragment
         String surname = surnameEditText.getText().toString().trim();
         String username = usernameEditText.getText().toString().trim();
 
-        authViewModel.registerUser(email, password, name);
+        authViewModel.register(null);
     }
 
     @Override

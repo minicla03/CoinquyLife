@@ -8,12 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="77dp"
+        android:layout_width="389dp"
+        android:layout_height="72dp"
         android:layout_marginTop="167dp"
         android:layout_marginBottom="431dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -22,8 +23,8 @@
             android:id="@+id/btnLogin"
             android:layout_width="156dp"
             android:layout_height="64dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
             android:text="@string/login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -33,7 +34,7 @@
             android:layout_width="156dp"
             android:layout_height="64dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="48dp"
+            android:layout_marginEnd="36dp"
             android:text="@string/registrati"
             app:layout_constraintEnd_toStartOf="@+id/btnLogin"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,23 +49,24 @@
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.744"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ico_app_round" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/auth_fragment_container"
+        android:id="@+id/fragmentContainerView2"
         android:name="minicla03.coinquylife.Auth.UI.RegisterFragment"
-        tools:layout="@layout/fragment_register"
-        android:layout_width="340dp"
-        android:layout_height="325dp"
-        android:layout_marginTop="44dp"
+        android:layout="@layout/fragment_register"
+        android:layout_width="301dp"
+        android:layout_height="294dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.491" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
