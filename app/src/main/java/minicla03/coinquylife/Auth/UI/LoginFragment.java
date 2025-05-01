@@ -1,4 +1,5 @@
 package minicla03.coinquylife.Auth.UI;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -9,14 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.ViewModel.LoginViewModel;
+import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
+import minicla03.coinquylife.Auth.UI.CoinquyHouseSelectionActivity;
 
 public class LoginFragment extends Fragment
 {
     public LoginFragment()
     {
-        super(R.layout.fragment_login); // layout XML del login
+        super(R.layout.fragment_login);
     }
     
     @Override
@@ -27,23 +29,23 @@ public class LoginFragment extends Fragment
         TextView etPassword = view.findViewById(R.id.etPassword);
         View btnLogin = view.findViewById(R.id.btnLogin);
 
-        LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        AuthViewModel authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString();
 
-            loginViewModel.login(email, password);
+            authViewModel.login(email, password);
         });
 
-        loginViewModel.getLoginResult().observe(getViewLifecycleOwner(), result -> {
-            if (result != null && result.isSuccess()) 
+        authViewModel.getLoginResult().observe(getViewLifecycleOwner(), result ->
+        {
+            if (result!=null)
             {
                 Toast.makeText(getContext(), "Login riuscito!", Toast.LENGTH_SHORT).show();
-                // Passa alla schermata principale
-                //Intent intent = new Intent(getContext(), MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                //startActivity(intent);
+                Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             } 
             else 
             {

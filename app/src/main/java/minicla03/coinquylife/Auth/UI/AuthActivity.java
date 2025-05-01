@@ -1,11 +1,10 @@
 package minicla03.coinquylife.Auth.UI;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -21,7 +20,7 @@ public class AuthActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_layout);
 
-        // Impostiamo la modalità schermo intero
+        //la modalità schermo intero
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide(); // Nascondiamo l'ActionBar
 

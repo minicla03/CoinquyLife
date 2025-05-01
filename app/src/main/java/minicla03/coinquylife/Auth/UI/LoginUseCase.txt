@@ -1,0 +1,18 @@
+Use Case: Login dell'utente
+Inserimento delle credenziali:
+L'utente apre la schermata di login e inserisce il proprio username e password nei campi di input.
+
+Invio della richiesta di login:
+L'utente preme il pulsante "Login" per inviare le proprie credenziali.
+
+Risultato del login:
+
+Login riuscito: Se le credenziali sono corrette, l'utente viene reindirizzato alla schermata di selezione della casa.
+
+Login fallito: Se le credenziali sono errate, viene mostrato un messaggio di errore (ad esempio, un Toast con il messaggio "Login Fallito").
+
+Navigazione:
+
+Se il login è riuscito, l'utente viene portato alla schermata successiva per selezionare la sua CoinquyHouse.
+
+Se il login è fallito, l'utente rimane sulla schermata di login con un messaggio di errore.

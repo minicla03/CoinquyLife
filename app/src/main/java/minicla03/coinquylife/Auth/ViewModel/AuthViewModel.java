@@ -1,31 +1,45 @@
 package minicla03.coinquylife.Auth.ViewModel;
+
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import minicla03.coinquylife.Auth.Repository.LoginUserUseCase;
+import minicla03.coinquylife.Auth.Repository.RegisterUserUseCase;
 import minicla03.coinquylife.Auth.Repository.UserRepository;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
-public class AuthViewModel extends AndroidViewModel {
+public class AuthViewModel extends AndroidViewModel
+{
+    private final LoginUserUseCase loginUseCase;
+    private final RegisterUserUseCase registerUseCase;
 
-    private UserRepository userRepository;
-    private MutableLiveData<Boolean> registrationResult;
+    private final MutableLiveData<User> loginResult = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> registerResult = new MutableLiveData<>();
 
-    public AuthViewModel(Application application) {
+    public AuthViewModel(@NonNull Application application) {
         super(application);
-        userRepository = new UserRepository(application.getApplicationContext());
-        registrationResult = new MutableLiveData<>();
+        UserRepository repo = new UserRepository(application);
+        loginUseCase = new LoginUserUseCase(repo);
+        registerUseCase = new RegisterUserUseCase(repo);
     }
 
-    public LiveData<Boolean> getRegistrationResult() {
-        return registrationResult;
+    public LiveData<User> getLoginResult() {
+        return loginResult;
     }
 
-    public void registerUser(String email, String password, String name) {
-        User user = new User(email, password, name);
-        userRepository.insertUser(user);
-        registrationResult.postValue(true);
+    public LiveData<Boolean> getRegisterResult() {
+        return registerResult;
+    }
+
+    public void login(String email, String password) {
+        loginUseCase.execute(email, password, loginResult::postValue);
+    }
+
+    public void register(User user) {
+        registerUseCase.execute(user, registerResult::postValue);
     }
 }
