@@ -3,30 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".Auth.UI.RegisterFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="24dp">
 
         <!-- Campo Nome -->
         <EditText
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nome" />
+            android:hint="@string/nome"
+            android:inputType="textPersonName"
+            android:importantForAutofill="yes" />
 
         <!-- Campo Cognome -->
         <EditText
             android:id="@+id/etCognome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="Surname"
             android:hint="@string/cognome"
-            android:layout_marginTop="8dp"
-            android:inputType="text" />
+            android:inputType="textPersonName"
+            android:layout_marginTop="12dp"
+            android:importantForAutofill="yes" />
 
         <!-- Campo Username -->
         <EditText
@@ -34,8 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/username" />
+            android:inputType="text"
+            android:layout_marginTop="12dp"
+            android:importantForAutofill="yes" />
 
         <!-- Campo Email -->
         <EditText
@@ -44,7 +48,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="12dp"
+            android:importantForAutofill="yes" />
 
         <!-- Campo Password -->
         <EditText
@@ -53,7 +58,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="12dp"
+            android:importantForAutofill="yes" />
 
         <!-- Pulsante Registrati -->
         <Button
@@ -61,8 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/registrati"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="24dp" />
 
     </LinearLayout>
-
 </ScrollView>

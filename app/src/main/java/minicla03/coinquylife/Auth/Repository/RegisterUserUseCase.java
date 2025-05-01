@@ -12,7 +12,8 @@ public class RegisterUserUseCase
         this.repository = repository;
     }
 
-    public void execute(User user, Consumer<Boolean> callback) {
+    public void execute(User user, Consumer<Boolean> callback)
+    {
         repository.register(user, callback);
     }
 }

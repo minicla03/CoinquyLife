@@ -1,5 +1,6 @@
 package minicla03.coinquylife.Auth.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
+import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
 
 public class RegisterFragment extends Fragment
@@ -25,7 +27,6 @@ public class RegisterFragment extends Fragment
     private EditText surnameEditText;
     private EditText usernameEditText;
     private Button registerButton;
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -49,12 +50,13 @@ public class RegisterFragment extends Fragment
 
     private void setupObservers()
     {
-
         authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), registrationSuccessful -> {
             if (registrationSuccessful)
             {
                 Toast.makeText(getContext(), "Registrazione riuscita", Toast.LENGTH_SHORT).show();
-                // Navigate to the next Activity or Fragment
+                Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
             else
             {
@@ -77,7 +79,7 @@ public class RegisterFragment extends Fragment
         String surname = surnameEditText.getText().toString().trim();
         String username = usernameEditText.getText().toString().trim();
 
-        authViewModel.register(null);
+        authViewModel.register(email, password, name, surname, username);
     }
 
     @Override
