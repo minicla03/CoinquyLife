@@ -27,7 +27,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.fragmentContainerView, new NewCoinquyHouseIDFragment())
+                .replace(R.id.new_coinquy_house_fragment_container, new NewCoinquyHouseIDFragment())
                 .commit();
 
         btnCreateGroup.setOnClickListener(v -> navigateToFragment(new NewCoinquyHouseIDFragment()));
