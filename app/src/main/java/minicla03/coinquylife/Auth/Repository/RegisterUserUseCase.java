@@ -2,6 +2,7 @@ package minicla03.coinquylife.Auth.Repository;
 
 import java.util.function.Consumer;
 
+import minicla03.coinquylife.Auth.Utility.AuthResult;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 public class RegisterUserUseCase

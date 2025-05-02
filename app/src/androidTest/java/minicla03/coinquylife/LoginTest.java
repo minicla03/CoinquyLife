@@ -38,7 +38,7 @@ public class LoginTest {
         onView(withId(R.id.etUsername)).perform(typeText("utenteDemo"), closeSoftKeyboard());
         onView(withId(R.id.etPassword)).perform(typeText("password123"), closeSoftKeyboard());
         onView(withId(R.id.btnLogin)).perform(click());
-        intended(hasComponent("minicla03.coinquylife.Auth.UI.CoinquyHouseSelectionActivity"));
+        intended(hasComponent("minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity"));
     }
 
     @Test

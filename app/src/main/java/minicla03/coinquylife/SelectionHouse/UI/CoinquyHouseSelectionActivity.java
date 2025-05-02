@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth.UI;
+package minicla03.coinquylife.SelectionHouse.UI;
 
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +38,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.auth_fragment_container, fragment)
+                .replace(R.id.new_coinquy_house_fragment_container, fragment)
                 .commit();
     }
 }

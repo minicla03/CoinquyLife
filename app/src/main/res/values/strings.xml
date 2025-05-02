@@ -7,6 +7,8 @@
     <string name="surname">Surname</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="username">Username</string>
+
     <string name="new_coinquy_house">New Coinquy House</string>
     <string name="join_to_coinquy_house">Join to Coinquy House</string>
     <string name="coinquyhouse_id">CoinquyHouse id</string>
@@ -15,5 +17,5 @@
     <string name="id_house">House Id</string>
     <string name="Confirm">Confirm</string>
     <string name="Next">Next</string>
-    <string name="username" />
+    <string name="house_name">House name</string>
 </resources>

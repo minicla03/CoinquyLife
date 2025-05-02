@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import minicla03.coinquylife.Auth.Repository.AuthResult;
+import minicla03.coinquylife.Auth.Utility.AuthResult;
 import minicla03.coinquylife.Auth.Repository.LoginUserUseCase;
 import minicla03.coinquylife.Auth.Repository.RegisterUserUseCase;
 import minicla03.coinquylife.Auth.Repository.AuthRepository;

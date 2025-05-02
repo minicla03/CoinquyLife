@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth.Repository;
+package minicla03.coinquylife.Auth.Utility;
 
 public enum AuthStatus {
     SUCCESS,

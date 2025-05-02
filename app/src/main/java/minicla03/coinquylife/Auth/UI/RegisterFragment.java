@@ -14,10 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.Repository.AuthStatus;
+import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
+import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
 
 public class RegisterFragment extends Fragment
 {

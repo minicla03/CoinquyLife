@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".Auth.UI.CoinquyHouseSelectionActivity"
+            android:name=".SelectionHouse.UI.CoinquyHouseSelectionActivity"
             android:exported="true">
         </activity>
 

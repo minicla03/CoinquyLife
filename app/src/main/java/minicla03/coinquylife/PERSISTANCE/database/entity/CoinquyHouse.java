@@ -1,5 +1,9 @@
 package minicla03.coinquylife.PERSISTANCE.database.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -26,7 +30,7 @@ import java.util.UUID;
  * <p>
  */
 @Entity(tableName="CoinquyHouse")
-public class CoinquyHouse
+public class CoinquyHouse implements Parcelable
 {
     @PrimaryKey @NotNull @ColumnInfo(name = "id_house") private String id_house;
     @NotNull @ColumnInfo(name = "house_name") private String house_name;
@@ -40,16 +44,48 @@ public class CoinquyHouse
      * Constructs a new CoinquyHouse object with the specified details.
      *
      * @param nome_casa     The name of the house.
-     * @param address       The physical address of the house.
-     * @param creation_date The date when the house was created.
      */
     @Ignore
-    public CoinquyHouse(@NotNull String nome_casa, String address, Date creation_date) {
-        this.id_house = UUID.randomUUID().toString();
+    public CoinquyHouse(@NotNull String id_house, @NotNull String nome_casa) {
+        this.id_house =id_house;
         this.house_name = nome_casa;
-        this.address = address;
-        this.creation_date = creation_date;
+        this.address = "";
+        this.creation_date = new Date();
     }
+
+    protected CoinquyHouse(Parcel in)
+    {
+        id_house = Objects.requireNonNull(in.readString());
+        house_name = Objects.requireNonNull(in.readString());
+        address = in.readString();
+        long dateMillis = in.readLong();
+        creation_date = new Date(dateMillis);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(id_house);
+        dest.writeString(house_name);
+        dest.writeString(address);
+        dest.writeLong(creation_date != null ? creation_date.getTime() : 0);
+    }
+
+    public static final Creator<CoinquyHouse> CREATOR = new Creator<CoinquyHouse>() {
+        @Override
+        public CoinquyHouse createFromParcel(Parcel in) {
+            return new CoinquyHouse(in);
+        }
+
+        @Override
+        public CoinquyHouse[] newArray(int size) {
+            return new CoinquyHouse[size];
+        }
+    };
 
     public @NotNull String getId_house() {
         return id_house;
@@ -83,15 +119,5 @@ public class CoinquyHouse
         this.creation_date = creation_date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        CoinquyHouse that = (CoinquyHouse) o;
-        return Objects.equals(id_house, that.id_house) && Objects.equals(house_name, that.house_name);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_house, house_name);
-    }
 }

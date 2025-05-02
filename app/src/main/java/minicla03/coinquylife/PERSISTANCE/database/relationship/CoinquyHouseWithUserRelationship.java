@@ -8,7 +8,7 @@ import java.util.List;
 import minicla03.coinquylife.PERSISTANCE.database.entity.CoinquyHouse;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
-public class CoiquyHouseWithUserRelationship
+public class CoinquyHouseWithUserRelationship
 {
     @Embedded
     public CoinquyHouse house;

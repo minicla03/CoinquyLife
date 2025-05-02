@@ -6,6 +6,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
+import minicla03.coinquylife.Auth.Utility.AuthResult;
+import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.CoiquyHouseWithUserRelationshipDao;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.UserDao;
 import minicla03.coinquylife.PERSISTANCE.database.DatabaseManager;

@@ -25,7 +25,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="minicla03.coinquylife.Auth.UI.NewCoinquyHouseIDFragment"
+        android:name="minicla03.coinquylife.SelectionHouse.UI.NewCoinquyHouseIDFragment"
         tools:layout="@layout/fragment_new_coinquy_house"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

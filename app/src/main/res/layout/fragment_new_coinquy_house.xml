@@ -35,11 +35,26 @@
         android:id="@+id/btnProceed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="@string/Next"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/textViewID"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etHouseName" />
+
+    <EditText
+        android:id="@+id/etHouseName"
+        android:layout_width="375dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="housename"
+        android:ems="10"
+        android:hint="@string/house_name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewID" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

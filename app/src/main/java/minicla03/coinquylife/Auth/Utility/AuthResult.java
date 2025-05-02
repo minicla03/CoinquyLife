@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth.Repository;
+package minicla03.coinquylife.Auth.Utility;
 
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 

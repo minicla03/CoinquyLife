@@ -2,6 +2,8 @@ package minicla03.coinquylife.Auth.Repository;
 
 import java.util.function.Consumer;
 
+import minicla03.coinquylife.Auth.Utility.AuthResult;
+
 public class LoginUserUseCase
 {
     private final AuthRepository repository;

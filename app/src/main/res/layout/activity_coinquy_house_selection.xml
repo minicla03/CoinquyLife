@@ -23,8 +23,8 @@
         android:textSize="18sp" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="minicla03.coinquylife.Auth.UI.NewCoinquyHouseIDFragment"
+        android:id="@+id/new_coinquy_house_fragment_container"
+        android:name="minicla03.coinquylife.SelectionHouse.UI.NewCoinquyHouseIDFragment"
         tools:layout="@layout/fragment_new_coinquy_house"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
