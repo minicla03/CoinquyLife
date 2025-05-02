@@ -68,10 +68,9 @@ public class User
      * @param password      The password of the user.
      * @param surname       The surname of the user.
      * @param email         The email address of the user.
-     * @param profileImage  The profile image of the user as a byte array.
      */
     @Ignore
-    public User(@NonNull String username, @NonNull String name, @NonNull String password, String surname, String email, byte[] profileImage) {
+    public User(@NonNull String username, @NonNull String name, @NonNull String password, String surname, String email) {
         this.id_user = UUID.randomUUID().toString();
         this.username = username;
         this.name = name;
@@ -80,7 +79,7 @@ public class User
         this.email = email;
         this.level = 0;
         this.total_points = 0;
-        this.profileImage = profileImage;
+        this.profileImage = null;
         this.houseUser=null;
     }
 
@@ -170,40 +169,6 @@ public class User
 
     public void setHouseUser(String houseUser) {
         this.houseUser = houseUser;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id_user, user.id_user) && Objects.equals(username, user.username);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_user, username);
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "User{" +
-                "id_user='" + id_user + '\'' +
-                ", username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", level=" + level +
-                ", total_points=" + total_points +
-                ", language='" + language + '\'' +
-                ", profileImage=" + Arrays.toString(profileImage) +
-                ", houseUser='" + houseUser + '\'' +
-                '}';
-    }
-
-    public int compareTo(User other) {
-        return this.username.compareTo(other.username);
     }
 }
 

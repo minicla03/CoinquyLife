@@ -39,7 +39,7 @@ public class AuthViewModel extends AndroidViewModel
         loginUseCase.execute(email, password, loginResult::postValue);
     }
 
-    public void register(String email, String password, String name, String surname, String username)
+    public void register(User user)
     {
         registerUseCase.execute(user, registerResult::postValue);
     }

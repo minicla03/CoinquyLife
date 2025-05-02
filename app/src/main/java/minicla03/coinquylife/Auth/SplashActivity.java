@@ -8,7 +8,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import minicla03.coinquylife.Auth.UI.AuthActivity;
-import minicla03.coinquylife.UI.DashboardActivity;
+import minicla03.coinquylife.Auth.UI.DashboardActivity;
 
 public class SplashActivity extends AppCompatActivity
 {

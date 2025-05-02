@@ -4,22 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.auth.AuthActivity">
+    android:layout_height="match_parent">
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="@string/app_name"
-        app:srcCompat="@mipmap/ico_app_round"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_margin="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:srcCompat="@mipmap/ico_app_round" />
 
-    <!-- Fragment container -->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="minicla03.coinquylife.Auth.UI.RegisterFragment"

@@ -15,12 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
-import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
+import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 public class RegisterFragment extends Fragment
 {
     private AuthViewModel authViewModel;
+
     private EditText emailEditText;
     private EditText passwordEditText;
     private EditText nameEditText;
@@ -53,7 +54,7 @@ public class RegisterFragment extends Fragment
         authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), registrationSuccessful -> {
             if (registrationSuccessful)
             {
-                Toast.makeText(getContext(), "Registrazione riuscita", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Errore nella registrazione", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -61,7 +62,6 @@ public class RegisterFragment extends Fragment
             else
             {
                 Toast.makeText(getContext(), "Errore nella registrazione", Toast.LENGTH_SHORT).show();
-                // consider displaying the specific error here in the future
             }
         });
     }
@@ -79,7 +79,8 @@ public class RegisterFragment extends Fragment
         String surname = surnameEditText.getText().toString().trim();
         String username = usernameEditText.getText().toString().trim();
 
-        authViewModel.register(email, password, name, surname, username);
+        User user = new User(username, name, password, surname, email);
+        authViewModel.register(user);
     }
 
     @Override
