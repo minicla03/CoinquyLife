@@ -4,4 +4,14 @@
     <string name="signinButton">Sign in</string>
     <string name="insert">username</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="turni">🕒 Shifts</string>
+    <string name="Exspese">💸 Exspese</string>
+    <string name="home">🏠 Home</string>
+    <string name="rank">🏆 Rank</string>
+    <string name="board">📌 Board\n</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="coinquylife">CoinquyLife</string>
+    <string name="profile_picture">profile picture\n</string>
 </resources>

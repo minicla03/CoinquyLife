@@ -35,12 +35,23 @@ public class DashboardActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        User user= requireActivity().getIntent().getParcelableExtra("user");
+        CoiquyHouse = requireActivity().getIntent().getParcelableExtra("coiquyHouse");
 
-        // Inizializza i componenti del layout
         topAppBar = findViewById(R.id.topAppBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         rvBacheca = findViewById(R.id.rvBacheca);
         calendarView = findViewById(R.id.calendarView);
+
+        topAppBar.setTitle(coiquyHouse.getName());
+        if(user.getProfilePicture() != null)
+        {
+            topAppBar.setNavigationIcon(user.getProfilePicture());
+        }
+        else
+        {
+            topAppBar.setNavigationIcon(R.drawable.ic_profile);
+        }
 
         // Configura la barra superiore
         topAppBar.setNavigationOnClickListener(v -> {
