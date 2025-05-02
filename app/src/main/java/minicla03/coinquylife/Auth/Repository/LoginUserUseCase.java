@@ -1,17 +1,16 @@
 package minicla03.coinquylife.Auth.Repository;
 
-import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import java.util.function.Consumer;
 
 public class LoginUserUseCase
 {
-    private final UserRepository repository;
+    private final AuthRepository repository;
 
-    public LoginUserUseCase(UserRepository repository) {
+    public LoginUserUseCase(AuthRepository repository) {
         this.repository = repository;
     }
 
-    public void execute(String email, String password, Consumer<User> callback)
+    public void execute(String email, String password, Consumer<AuthResult> callback)
     {
         repository.login(email, password, callback);
     }

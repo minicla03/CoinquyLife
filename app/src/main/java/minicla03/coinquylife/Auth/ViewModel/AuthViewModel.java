@@ -7,9 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import minicla03.coinquylife.Auth.Repository.AuthResult;
 import minicla03.coinquylife.Auth.Repository.LoginUserUseCase;
 import minicla03.coinquylife.Auth.Repository.RegisterUserUseCase;
-import minicla03.coinquylife.Auth.Repository.UserRepository;
+import minicla03.coinquylife.Auth.Repository.AuthRepository;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 public class AuthViewModel extends AndroidViewModel
@@ -17,25 +18,29 @@ public class AuthViewModel extends AndroidViewModel
     private final LoginUserUseCase loginUseCase;
     private final RegisterUserUseCase registerUseCase;
 
-    private final MutableLiveData<User> loginResult = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> registerResult = new MutableLiveData<>();
+    private final MutableLiveData<AuthResult> loginResult = new MutableLiveData<>();
+    private final MutableLiveData<AuthResult> registerResult = new MutableLiveData<>();
 
-    public AuthViewModel(@NonNull Application application) {
+    public AuthViewModel(@NonNull Application application)
+    {
         super(application);
-        UserRepository repo = new UserRepository(application);
+        AuthRepository repo = new AuthRepository(application);
         loginUseCase = new LoginUserUseCase(repo);
         registerUseCase = new RegisterUserUseCase(repo);
     }
 
-    public LiveData<User> getLoginResult() {
+    public LiveData<AuthResult> getLoginResult()
+    {
         return loginResult;
     }
 
-    public LiveData<Boolean> getRegisterResult() {
+    public LiveData<AuthResult> getRegisterResult()
+    {
         return registerResult;
     }
 
-    public void login(String email, String password) {
+    public void login(String email, String password)
+    {
         loginUseCase.execute(email, password, loginResult::postValue);
     }
 

@@ -20,14 +20,13 @@ public class AuthActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_layout);
 
-        //la modalità schermo intero
+        //modalità schermo intero
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide(); // Nascondiamo l'ActionBar
+        Objects.requireNonNull(getSupportActionBar()).hide(); // Nasconde l'ActionBar
 
         View btnLogin = findViewById(R.id.btnLogin);
         View btnRegister = findViewById(R.id.btnRegister);
 
-        // Mostra il fragment di Login inizialmente
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)

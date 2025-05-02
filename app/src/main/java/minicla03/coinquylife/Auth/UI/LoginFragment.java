@@ -10,7 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import minicla03.coinquylife.Auth.Repository.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
+import minicla03.coinquylife.PERSISTANCE.database.entity.CoinquyHouse;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.Auth.UI.CoinquyHouseSelectionActivity;
 
@@ -40,14 +42,29 @@ public class LoginFragment extends Fragment
 
         authViewModel.getLoginResult().observe(getViewLifecycleOwner(), result ->
         {
-            if (result!=null)
+            if (result.user!=null && result.status== AuthStatus.NO_COINQUYHOUSE)
             {
-                Toast.makeText(getContext(), "Login riuscito!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("user", result.user);
+                startActivity(intent);
+            }
+            else if(result.user!=null && result.status== AuthStatus.HAS_COINQUYHOUSE)
+            {
                 Intent intent = new Intent(getContext(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("user", result.user);
                 startActivity(intent);
-            } 
-            else 
+            }
+            else if(result.user!=null && result.status== AuthStatus.WRONG_PASSWORD)
+            {
+                Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();
+            }
+            else if(result.user!=null && result.status== AuthStatus.USER_NOT_FOUND)
+            {
+                Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
+            }
+            else
             {
                 Toast.makeText(getContext(), "Login fallito!", Toast.LENGTH_SHORT).show();
             }

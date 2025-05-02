@@ -1,5 +1,9 @@
 package minicla03.coinquylife.PERSISTANCE.database.entity;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -44,7 +48,7 @@ import java.util.UUID;
                     onUpdate= ForeignKey.CASCADE
                 )
         )
-public class User
+public class User implements Parcelable
 {
     @PrimaryKey @NotNull @ColumnInfo(name = "id_user") private String id_user;
     @ColumnInfo(name = "username") @NotNull private String username;
@@ -81,6 +85,59 @@ public class User
         this.total_points = 0;
         this.profileImage = null;
         this.houseUser=null;
+    }
+
+    protected User(Parcel in)
+    {
+        id_user = Objects.requireNonNull(in.readString());
+        username = Objects.requireNonNull(in.readString());
+        name = Objects.requireNonNull(in.readString());
+        password = Objects.requireNonNull(in.readString());
+        surname = in.readString();
+        email = in.readString();
+        level = in.readInt();
+        total_points = in.readInt();
+        language = in.readString();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+        {
+            profileImage = in.readBlob();
+        }
+        houseUser = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>()
+    {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(id_user);
+        dest.writeString(username);
+        dest.writeString(name);
+        dest.writeString(password);
+        dest.writeString(surname);
+        dest.writeString(email);
+        dest.writeInt(level);
+        dest.writeInt(total_points);
+        dest.writeString(language);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            dest.writeBlob(profileImage);
+        }
+        dest.writeString(houseUser);
     }
 
     public @NotNull String getId_user() {

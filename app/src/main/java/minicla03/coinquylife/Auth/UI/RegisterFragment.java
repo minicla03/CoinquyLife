@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import minicla03.coinquylife.Auth.Repository.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
@@ -51,17 +52,21 @@ public class RegisterFragment extends Fragment
 
     private void setupObservers()
     {
-        authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), registrationSuccessful -> {
-            if (registrationSuccessful)
+        authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), result -> {
+            if (result.status== AuthStatus.SUCCESS)
             {
-                Toast.makeText(getContext(), "Errore nella registrazione", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("user", result.user);
                 startActivity(intent);
             }
-            else
+            else if(result.status == AuthStatus.AlREADY_REGISTERED)
             {
-                Toast.makeText(getContext(), "Errore nella registrazione", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "User already exist", Toast.LENGTH_SHORT).show();
+            }
+            else if(result.status == AuthStatus.ERROR)
+            {
+                Toast.makeText(getContext(), "Registration failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
