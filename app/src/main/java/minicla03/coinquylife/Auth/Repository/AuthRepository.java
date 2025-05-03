@@ -1,6 +1,7 @@
 package minicla03.coinquylife.Auth.Repository;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -19,12 +20,14 @@ public class AuthRepository
     private final Executor executor = Executors.newSingleThreadExecutor();
     private static AuthRepository instance;
     private final CoiquyHouseWithUserRelationshipDao coiquyHouseWithUserRelationshipDao;
+    private SharedPreferences prefs;
 
     public AuthRepository(Context context)
     {
         DatabaseManager db = DatabaseManager.getInstance(context);
         userDao = db.userDao();
         coiquyHouseWithUserRelationshipDao=db.coiquyHouseWithUserRelationshipDao();
+        prefs = context.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
     }
 
     public static synchronized AuthRepository getInstance(Context context)
@@ -41,27 +44,27 @@ public class AuthRepository
         executor.execute(() ->
         {
             User user = userDao.getUserByEmail(email);
-            if (user != null)
+            SharedPreferences.Editor editor= prefs.edit();
+            if (user.getPassword().equals(password))
             {
-                if(user.getPassword().equals(password))
+                if (coiquyHouseWithUserRelationshipDao.getHouseWithUsers(user.getId_user()) == null)
                 {
-                    if (coiquyHouseWithUserRelationshipDao.getHouseWithUsers(user.getId_user()) == null)
-                    {
-                        callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user));
-                    }
-                    else
-                    {
-                        callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user));
-                    }
+                    editor.putBoolean("is_logged_in", true);
+                    editor.putString(user.getId_user(),user.getHouseUser());
+                    editor.apply();
+                    callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user));
                 }
                 else
                 {
-                    callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, user));
+                    editor.putBoolean("is_logged_with_house", true);
+                    editor.putString(user.getId_user(),user.getHouseUser());
+                    editor.apply();
+                    callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user));
                 }
             }
             else
             {
-                callback.accept(new AuthResult(AuthStatus.USER_NOT_FOUND, null));
+                callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, user));
             }
         });
     }
