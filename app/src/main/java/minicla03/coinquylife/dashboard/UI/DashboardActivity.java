@@ -15,7 +15,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
+import minicla03.coinquylife.PERSISTANCE.database.entity.CoinquyHouse;
+import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
+import minicla03.coinquylife.setting.ProfileActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -32,8 +35,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        User user= requireActivity().getIntent().getParcelableExtra("user");
-        CoiquyHouse coiquyHouse= requireActivity().getIntent().getParcelableExtra("coiquyHouse");
+        handleIntent(getIntent());
 
         topAppBar = findViewById(R.id.topAppBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -53,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
         topAppBar.findViewById(R.id.imgProfile).setOnClickListener(view -> {
             Intent intent = new Intent(this, ProfileActivity.class);
             intent.putExtra("user", user);
-            intent.putExtra("coiquyHouse", coiquyHouse);
+            intent.putExtra("coinquyHouse", coinquyHouse);
             startActivity(intent);
         });
 
@@ -80,5 +82,45 @@ public class DashboardActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             // Azione per la selezione di una data
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        setIntent(intent); // Aggiorna l'Intent corrente
+        handleIntent(intent); // Gestisci il nuovo Intent
+    }
+
+    private void handleIntent(Intent intent)
+    {
+        private void handleIntent(Intent intent)
+        {
+        if (intent.hasExtra("user"))
+        {
+            User user = intent.getParcelableExtra("user");
+        }
+
+        if (intent.hasExtra("coinquyHouse")) {
+            CoinquyHouse coinquyHouse = intent.getParcelableExtra("coinquyHouse");
+        }
+
+        // Aggiungi altre verifiche per gestire intent specifici
+        if (intent.getAction() != null)
+        {
+            switch (intent.getAction())
+            {
+                case "ACTION_FROM_LOGIN":
+                    // Azione specifica per LoginActivity
+                    break;
+                case "ACTION_FROM_SELECTION":
+                    // Azione specifica per JoinCoinquyHouseFragment
+                    break;
+                default:
+                    // Azione di default
+                    break;
+            }
+        }
+    }
     }
 }

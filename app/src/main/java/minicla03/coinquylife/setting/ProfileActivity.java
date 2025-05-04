@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
+import minicla03.coinquylife.PERSISTANCE.database.entity.CoinquyHouse;
+import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
 
 public class ProfileActivity extends AppCompatActivity
 {
     private User user;
-    private CoiquyHouse coiquyHouse;
+    private CoinquyHouse coiquyHouse;
     private ImageView imgProfile;
     private TextView tvName, tvRole, tvBio;
     private MaterialButton btnSettings;
