@@ -46,7 +46,7 @@
 
     <!-- Main Content -->
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
+        android:id="@+id/fragmetDashboard"
         android:name="minicla03.coinquylife.dashboard.UI.HomeDashboardFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"

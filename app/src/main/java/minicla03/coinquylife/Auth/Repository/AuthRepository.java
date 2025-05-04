@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 
 import minicla03.coinquylife.Auth.Utility.AuthResult;
 import minicla03.coinquylife.Auth.Utility.AuthStatus;
+import minicla03.coinquylife.PERSISTANCE.database.DAO.CoinquyHouseDao;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.CoiquyHouseWithUserRelationshipDao;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.UserDao;
 import minicla03.coinquylife.PERSISTANCE.database.DatabaseManager;
@@ -52,17 +53,17 @@ public class AuthRepository
                 if (coiquyHouseWithUserRelationshipDao.getHouseWithUsers(user.getId_user()) == null)
                 {
                     modifyPreference("is_logged_in", true, user);
-                    callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user));
+                    callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user, null));
                 }
                 else
                 {
                     modifyPreference("is_logged_with_house", true, user);
-                    callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user));
+                    callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user, coiquyHouseWithUserRelationshipDao.getCoinquyHouseById(user.getId_user())));
                 }
             }
             else
             {
-                callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, user));
+                callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, user, null));
             }
         });
     }
@@ -74,15 +75,15 @@ public class AuthRepository
             if (userDao.getUserByEmail(user.getEmail()) == null)
             {
                 userDao.insertUser(user);
-                callback.accept(new AuthResult(AuthStatus.SUCCESS, user));
+                callback.accept(new AuthResult(AuthStatus.SUCCESS, user, null));
             }
             else if (userDao.getUserByEmail(user.getEmail()) != null)
             {
-                callback.accept(new AuthResult(AuthStatus.AlREADY_REGISTERED, null));
+                callback.accept(new AuthResult(AuthStatus.AlREADY_REGISTERED, null, null));
             }
             else
             {
-                callback.accept(new AuthResult(AuthStatus.ERROR, null));
+                callback.accept(new AuthResult(AuthStatus.ERROR, null, null));
             }
         });
     }

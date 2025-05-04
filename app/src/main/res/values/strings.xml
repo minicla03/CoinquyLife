@@ -18,4 +18,18 @@
     <string name="Confirm">Confirm</string>
     <string name="Next">Next</string>
     <string name="house_name">House name</string>
+
+    <string name="turni">🗓️ Turni</string>
+    <string name="Exspese">💸 Spese</string>
+    <string name="home">⚙️ Impostazioni</string>
+    <string name="rank">🏆 Classifica</string>
+    <string name="board">📋 Bacheca</string>
+
+    <string name="setting">setting\n</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="expenseRV">espenseRV</string>
+    <string name="profile_picture">profile imagine</string>
+    <string name="option_on">option on</string>
+    <string name="option_off">option off</string>
+    <string name="summary_default">summary</string>
 </resources>

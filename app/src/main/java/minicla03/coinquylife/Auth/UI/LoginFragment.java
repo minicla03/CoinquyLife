@@ -14,6 +14,7 @@ import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
+import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class LoginFragment extends Fragment
 {

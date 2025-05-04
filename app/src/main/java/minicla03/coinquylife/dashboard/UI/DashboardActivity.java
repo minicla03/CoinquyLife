@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
@@ -26,6 +27,8 @@ public class DashboardActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private RecyclerView rvBacheca;
     private CalendarView calendarView;
+    private User user;
+    private CoinquyHouse coinquyHouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,17 +38,16 @@ public class DashboardActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        handleIntent(getIntent());
+        user = getIntent().getParcelableExtra("user");
+        coinquyHouse =getIntent().getParcelableExtra("coinquyHouse");
 
         topAppBar = findViewById(R.id.topAppBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        rvBacheca = findViewById(R.id.rvBacheca);
-        calendarView = findViewById(R.id.calendarView);
 
-        topAppBar.findViewById(R.id.tvHouseName).setText(CoiquyHouse.getName());
-        if(user.getProfilePicture() != null)
+        ((TextView) topAppBar.findViewById(R.id.tvHouseName)).setText(coinquyHouse.getHouse_name());
+        if(user.getProfileImage() != null)
         {
-            topAppBar.setNavigationIcon(user.getProfilePicture());
+            //topAppBar.setNavigationIcon(user.getProfileImage());
         }
         else
         {
@@ -62,13 +64,22 @@ public class DashboardActivity extends AppCompatActivity {
         topAppBar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_profile)
             {
-                // Azione per il menu "Profilo"
+                Intent intent = new Intent(this, ProfileActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("coinquyHouse", coinquyHouse);
+                startActivity(intent);
                 return true;
             }
             return false;
         });
 
-        // Collega NavController
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .replace(R.id.fragmetDashboard, new DashboardRecapFragment())
+                .commit();
+    }
+        /*// Collega NavController
         NavHostFragment navHostFragment = (NavHostFragment)
                 getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_dashboard);
         navController = navHostFragment.getNavController();
@@ -81,46 +92,5 @@ public class DashboardActivity extends AppCompatActivity {
         // Configura il calendario
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             // Azione per la selezione di una data
-        });
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent)
-    {
-        super.onNewIntent(intent);
-        setIntent(intent); // Aggiorna l'Intent corrente
-        handleIntent(intent); // Gestisci il nuovo Intent
-    }
-
-    private void handleIntent(Intent intent)
-    {
-        private void handleIntent(Intent intent)
-        {
-        if (intent.hasExtra("user"))
-        {
-            User user = intent.getParcelableExtra("user");
-        }
-
-        if (intent.hasExtra("coinquyHouse")) {
-            CoinquyHouse coinquyHouse = intent.getParcelableExtra("coinquyHouse");
-        }
-
-        // Aggiungi altre verifiche per gestire intent specifici
-        if (intent.getAction() != null)
-        {
-            switch (intent.getAction())
-            {
-                case "ACTION_FROM_LOGIN":
-                    // Azione specifica per LoginActivity
-                    break;
-                case "ACTION_FROM_SELECTION":
-                    // Azione specifica per JoinCoinquyHouseFragment
-                    break;
-                default:
-                    // Azione di default
-                    break;
-            }
-        }
-    }
-    }
+        });*/
 }

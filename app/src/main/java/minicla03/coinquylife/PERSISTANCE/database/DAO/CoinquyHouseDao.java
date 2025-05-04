@@ -22,5 +22,6 @@ public interface CoinquyHouseDao
 
     @Query("SELECT * FROM CoinquyHouse") List<CoinquyHouse> getAllCoinquyHouses();
 
-    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseId") CoinquyHouse getCoinquyHouseById(String houseId);
+    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseId")
+    CoinquyHouse getCoinquyHouseById(String houseId);
 }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
+import minicla03.coinquylife.PERSISTANCE.database.Converters;
 import minicla03.coinquylife.PERSISTANCE.database.entity.CoinquyHouse;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
@@ -23,7 +24,8 @@ public class ProfileActivity extends AppCompatActivity
     private MaterialButton btnSettings;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
 
@@ -55,9 +57,9 @@ public class ProfileActivity extends AppCompatActivity
             tvName.setText(user.getName());
             //tvBio.setText(user.getBio());
 
-            if (user.getProfilePicture() != null)
+            if (user.getProfileImage() != null)
             {
-                imgProfile.setImageDrawable(user.getProfilePicture());
+                //imgProfile.setImageDrawable(Converters.toDrawable(user.getProfileImage()));
             }
 
             // Costruisci il testo del ruolo
@@ -92,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity
         });
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
@@ -111,5 +113,5 @@ public class ProfileActivity extends AppCompatActivity
                 }
             }
         }
-    }
+    }*/
 }

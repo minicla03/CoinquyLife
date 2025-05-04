@@ -15,11 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.UI.DashboardActivity;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
 import minicla03.coinquylife.SelectionHouse.ViewModel.SelectHouseViewModel;
+import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class NewCoinquyHouseIDFragment extends Fragment {
 

@@ -23,7 +23,7 @@ import java.util.UUID;
 )
 public class Choice {
 
-    @PrimaryKey @ColumnInfo(name = "id_choice") @NotNull private UUID id_choice;
+    @PrimaryKey @ColumnInfo(name = "id_choice") @NotNull private String id_choice;
     @ColumnInfo(name = "id_survey") private String id_survey;
     @ColumnInfo(name = "choice_description") private String choice_description;
 
@@ -32,28 +32,32 @@ public class Choice {
     @Ignore
     public Choice(String id_survey, String choice_description)
     {
-        this.id_choice= UUID.randomUUID();
+        this.id_choice= UUID.randomUUID().toString();
         this.id_survey = id_survey;
         this.choice_description = choice_description;
     }
 
-    public UUID getIdChoice() {
-        return this.id_choice;
+    public @NotNull String getId_choice() {
+        return id_choice;
     }
 
-    public String getIdSurvey() {
-        return this.id_survey;
+    public void setId_choice(@NotNull String id_choice) {
+        this.id_choice = id_choice;
     }
 
-    public void setIdSurvey(String id_survey) {
-        this.id_survey = id_survey;
+    public String getChoice_description() {
+        return choice_description;
     }
 
-    public String getChoiceDescription() {
-        return this.choice_description;
-    }
-
-    public void setChoiceDescription(String choice_description) {
+    public void setChoice_description(String choice_description) {
         this.choice_description = choice_description;
+    }
+
+    public String getId_survey() {
+        return id_survey;
+    }
+
+    public void setId_survey(String id_survey) {
+        this.id_survey = id_survey;
     }
 }

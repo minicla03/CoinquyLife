@@ -19,10 +19,10 @@ public class SettingActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        setContentView(R.layout.settings_layout);
+        setContentView(R.layout.setting_layout);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.settings_container, new SettingOptionFragment())
+                .replace(R.id.settingFragmentContainer, new SettingOptionFragment())
                 .commit();
 
     }

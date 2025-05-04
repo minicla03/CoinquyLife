@@ -1,6 +1,15 @@
 package minicla03.coinquylife.PERSISTANCE.database;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Base64;
+
 import androidx.room.TypeConverter;
+
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,5 +37,25 @@ public class Converters
     @TypeConverter
     public static UUID fromString(String value) {
         return value == null ? null : UUID.fromString(value);  // Converte String in UUID
+    }
+
+    @TypeConverter
+    public static String fromDrawable(Drawable drawable) {
+        if (drawable == null) return null;
+
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        byte[] byteArray = outputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    }
+
+    @TypeConverter
+    public static Drawable toDrawable(String encodedString) {
+        if (encodedString == null) return null;
+
+        byte[] byteArray = Base64.decode(encodedString, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        return new BitmapDrawable(Resources.getSystem(), bitmap);
     }
 }

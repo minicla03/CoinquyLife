@@ -3,14 +3,13 @@ package minicla03.coinquylife.Auth;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import minicla03.coinquylife.Auth.UI.AuthActivity;
-import minicla03.coinquylife.Auth.UI.DashboardActivity;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
+import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class SplashActivity extends AppCompatActivity
 {
