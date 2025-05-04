@@ -7,7 +7,7 @@
     <!-- HUB: Dashboard -->
     <fragment
         android:id="@+id/homeDashboardFragment"
-        android:name="dashboard.HomeDashboardFragment"
+        android:name="dashboard.UI.HomeDashboardFragment"
         android:label="Dashboard">
 
         <!-- Spokes (azioni verso schermate secondarie) -->
@@ -28,22 +28,22 @@
     <!-- SPOKES -->
     <fragment
         android:id="@+id/shiftsFragment"
-        android:name="dashboard.ShiftsFragment"
+        android:name="dashboard.UI.ShiftsFragment"
         android:label="Turni" />
 
     <fragment
         android:id="@+id/expensesFragment"
-        android:name="dashboard.ExpensesFragment"
+        android:name="dashboard.UI.ExpensesFragment"
         android:label="Spese" />
 
     <fragment
         android:id="@+id/rankFragment"
-        android:name="dashboard.RankFragment"
+        android:name="dashboard.UI.RankFragment"
         android:label="Classifica" />
 
     <fragment
         android:id="@+id/boardFragment"
-        android:name="dashboard.BoardFragment"
+        android:name="dashboard.UI.BoardFragment"
         android:label="Bacheca" />
 
 </navigation>

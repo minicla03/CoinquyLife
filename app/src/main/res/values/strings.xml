@@ -14,4 +14,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="coinquylife">CoinquyLife</string>
     <string name="profile_picture">profile picture\n</string>
+    <string name="setting">Setting</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="profile">profile</string>
 </resources>

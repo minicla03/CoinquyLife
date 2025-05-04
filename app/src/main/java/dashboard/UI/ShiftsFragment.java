@@ -1,4 +1,4 @@
-package dashboard;
+package dashboard.UI;
 
 import androidx.fragment.app.Fragment;
 

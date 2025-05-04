@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <LinearLayout
@@ -9,17 +10,24 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Immagine profilo -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSettings"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@string/setting"
+            app:icon="@drawable/ic_setting"
+            app:iconGravity="textStart" />
+
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_profile_placeholder"
+            android:src="@drawable/ic_profile"
             android:scaleType="centerCrop"
-            android:background="@drawable/circle_background"
             android:layout_marginTop="16dp" />
 
-        <!-- Nome e ruolo -->
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
@@ -37,7 +45,6 @@
             android:textSize="14sp"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Statistiche -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,11 +60,15 @@
                 android:gravity="center">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="3"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="Coinquilini"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Classifica"
                     android:textSize="14sp"/>
             </LinearLayout>
 
@@ -69,38 +80,19 @@
                 android:gravity="center">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="1200"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Punti"
                     android:textSize="14sp"/>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Sezioni -->
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/rbProfilo"
-                android:text="Profilo"
-                android:checked="true"/>
-
-            <RadioButton
-                android:id="@+id/rbBacheca"
-                android:text="Bacheca" />
-
-            <RadioButton
-                android:id="@+id/rbTurni"
-                android:text="Turni" />
-        </RadioGroup>
-
-        <!-- Descrizione o Bio -->
         <TextView
             android:id="@+id/tvBio"
             android:layout_width="match_parent"
@@ -109,7 +101,6 @@
             android:layout_marginTop="12dp"
             android:textSize="14sp"/>
 
-        <!-- Azioni rapide -->
         <Button
             android:id="@+id/btnCalendarioTurni"
             android:layout_width="match_parent"
@@ -130,6 +121,5 @@
             android:layout_height="wrap_content"
             android:text="💰 Gestione spese condivise"
             android:layout_marginTop="8dp"/>
-
     </LinearLayout>
 </ScrollView>

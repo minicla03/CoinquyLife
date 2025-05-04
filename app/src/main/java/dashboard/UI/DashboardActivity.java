@@ -1,14 +1,11 @@
-package dashboard;
+package dashboard.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.CalendarView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,14 +33,14 @@ public class DashboardActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
         User user= requireActivity().getIntent().getParcelableExtra("user");
-        CoiquyHouse = requireActivity().getIntent().getParcelableExtra("coiquyHouse");
+        CoiquyHouse coiquyHouse= requireActivity().getIntent().getParcelableExtra("coiquyHouse");
 
         topAppBar = findViewById(R.id.topAppBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         rvBacheca = findViewById(R.id.rvBacheca);
         calendarView = findViewById(R.id.calendarView);
 
-        topAppBar.setTitle(coiquyHouse.getName());
+        topAppBar.findViewById(R.id.tvHouseName).setText(CoiquyHouse.getName());
         if(user.getProfilePicture() != null)
         {
             topAppBar.setNavigationIcon(user.getProfilePicture());
@@ -53,9 +50,11 @@ public class DashboardActivity extends AppCompatActivity {
             topAppBar.setNavigationIcon(R.drawable.ic_profile);
         }
 
-        // Configura la barra superiore
-        topAppBar.setNavigationOnClickListener(v -> {
-            // Azione per l'icona di navigazione (es. aprire il profilo)
+        topAppBar.findViewById(R.id.imgProfile).setOnClickListener(view -> {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra("user", user);
+            intent.putExtra("coiquyHouse", coiquyHouse);
+            startActivity(intent);
         });
 
         topAppBar.setOnMenuItemClickListener(item -> {
