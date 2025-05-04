@@ -1,7 +1,9 @@
 package minicla03.coinquylife.Auth.UI;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,20 +20,26 @@ import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class LoginFragment extends Fragment
 {
-    public LoginFragment()
-    {
-        super(R.layout.fragment_login);
-    }
-    
+    private AuthViewModel authViewModel;
+    private TextView etEmail;
+    private TextView etPassword;
+    private View btnLogin;
+
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        etEmail= view.findViewById(R.id.etEmail);
+        etPassword=view.findViewById(R.id.etPassword);
+        btnLogin= view.findViewById(R.id.btnLogin);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
         super.onViewCreated(view, savedInstanceState);
-
-        TextView etEmail = view.findViewById(R.id.etEmail);
-        TextView etPassword = view.findViewById(R.id.etPassword);
-        View btnLogin = view.findViewById(R.id.btnLogin);
-
-        AuthViewModel authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText().toString().trim();
@@ -42,30 +50,21 @@ public class LoginFragment extends Fragment
 
         authViewModel.getLoginResult().observe(getViewLifecycleOwner(), result ->
         {
-            if (result.user!=null && result.status== AuthStatus.NO_COINQUYHOUSE)
-            {
+            if (result.user != null && result.status == AuthStatus.NO_COINQUYHOUSE) {
                 Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user);
                 startActivity(intent);
-            }
-            else if(result.user!=null && result.status== AuthStatus.HAS_COINQUYHOUSE)
-            {
+            } else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE) {
                 Intent intent = new Intent(getContext(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user);
                 startActivity(intent);
-            }
-            else if(result.user!=null && result.status== AuthStatus.WRONG_PASSWORD)
-            {
+            } else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD) {
                 Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();
-            }
-            else if(result.user!=null && result.status== AuthStatus.USER_NOT_FOUND)
-            {
+            } else if (result.user != null && result.status == AuthStatus.USER_NOT_FOUND) {
                 Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
+            } else {
                 Toast.makeText(getContext(), "Login fallito!", Toast.LENGTH_SHORT).show();
             }
         });

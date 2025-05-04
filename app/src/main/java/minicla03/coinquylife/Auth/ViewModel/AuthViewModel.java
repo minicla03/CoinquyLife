@@ -20,6 +20,7 @@ public class AuthViewModel extends AndroidViewModel
 
     private final MutableLiveData<AuthResult> loginResult = new MutableLiveData<>();
     private final MutableLiveData<AuthResult> registerResult = new MutableLiveData<>();
+    private final MutableLiveData<String> currentFragment = new MutableLiveData<>();
 
     public AuthViewModel(@NonNull Application application)
     {
@@ -37,6 +38,14 @@ public class AuthViewModel extends AndroidViewModel
     public LiveData<AuthResult> getRegisterResult()
     {
         return registerResult;
+    }
+
+    public LiveData<String> getCurrentFragment() {
+        return currentFragment;
+    }
+
+    public void setCurrentFragment(String fragmentTag) {
+        currentFragment.setValue(fragmentTag);
     }
 
     public void login(String email, String password)
