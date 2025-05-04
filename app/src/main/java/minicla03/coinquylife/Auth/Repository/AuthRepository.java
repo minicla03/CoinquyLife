@@ -21,6 +21,7 @@ public class AuthRepository
     private static AuthRepository instance;
     private final CoiquyHouseWithUserRelationshipDao coiquyHouseWithUserRelationshipDao;
     private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
 
     public AuthRepository(Context context)
     {
@@ -28,6 +29,7 @@ public class AuthRepository
         userDao = db.userDao();
         coiquyHouseWithUserRelationshipDao=db.coiquyHouseWithUserRelationshipDao();
         prefs = context.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        editor = prefs.edit();
     }
 
     public static synchronized AuthRepository getInstance(Context context)
@@ -44,21 +46,17 @@ public class AuthRepository
         executor.execute(() ->
         {
             User user = userDao.getUserByEmail(email);
-            SharedPreferences.Editor editor= prefs.edit();
+
             if (user.getPassword().equals(password))
             {
                 if (coiquyHouseWithUserRelationshipDao.getHouseWithUsers(user.getId_user()) == null)
                 {
-                    editor.putBoolean("is_logged_in", true);
-                    editor.putString(user.getId_user(),user.getHouseUser());
-                    editor.apply();
+                    modifyPreference("is_logged_in", true, user);
                     callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user));
                 }
                 else
                 {
-                    editor.putBoolean("is_logged_with_house", true);
-                    editor.putString(user.getId_user(),user.getHouseUser());
-                    editor.apply();
+                    modifyPreference("is_logged_with_house", true, user);
                     callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user));
                 }
             }
@@ -87,5 +85,12 @@ public class AuthRepository
                 callback.accept(new AuthResult(AuthStatus.ERROR, null));
             }
         });
+    }
+
+    private void modifyPreference(String key, boolean value, User user)
+    {
+        editor.putBoolean(key, value);
+        editor.putString(user.getId_user(),user.getHouseUser());
+        editor.apply();
     }
 }

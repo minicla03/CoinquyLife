@@ -14,8 +14,6 @@ import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
 
 public class SplashActivity extends AppCompatActivity
 {
-    private static final int SPLASH_DURATION = 1500; // in ms
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,7 +25,8 @@ public class SplashActivity extends AppCompatActivity
             boolean isLoggedIn = prefs.getBoolean("is_logged_in", false);
             boolean isLoggedWithHouse = prefs.getBoolean("is_logged_with_house", false);
 
-            if (isLoggedWithHouse) {
+            if (isLoggedWithHouse)
+            {
                 startActivity(new Intent(SplashActivity.this, DashboardActivity.class));
             } else if (isLoggedIn) {
                 startActivity(new Intent(SplashActivity.this, CoinquyHouseSelectionActivity.class));
