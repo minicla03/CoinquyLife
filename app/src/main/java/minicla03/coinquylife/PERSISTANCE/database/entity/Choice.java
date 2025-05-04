@@ -37,27 +37,23 @@ public class Choice {
         this.choice_description = choice_description;
     }
 
-    public UUID getId_choice() {
-        return id_choice;
+    public UUID getIdChoice() {
+        return this.id_choice;
     }
 
-    public void setId_choice(UUID id_choice) {
-        this.id_choice = id_choice;
+    public String getIdSurvey() {
+        return this.id_survey;
     }
 
-    public String getChoice_description() {
-        return choice_description;
-    }
-
-    public void setChoice_description(String choice_description) {
-        this.choice_description = choice_description;
-    }
-
-    public String getId_survey() {
-        return id_survey;
-    }
-
-    public void setId_survey(String id_survey) {
+    public void setIdSurvey(String id_survey) {
         this.id_survey = id_survey;
+    }
+
+    public String getChoiceDescription() {
+        return this.choice_description;
+    }
+
+    public void setChoiceDescription(String choice_description) {
+        this.choice_description = choice_description;
     }
 }

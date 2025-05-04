@@ -31,5 +31,22 @@
             android:exported="true">
         </activity>
 
+        <activity
+            android:name=".dashboard.UI.DashboardActivity"
+            android:exported="true" >
+        </activity>
+
+        <activity
+            android:name=".setting.SettingActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".setting.ProfileActivity" />
+        </activity>
+
+        <activity
+            android:name=".setting.ProfileActivity"
+            android:exported="true" />
     </application>
+
 </manifest>

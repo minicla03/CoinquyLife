@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_shifts"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_shifts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestione Turni"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_shifts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_shifts_title"
+        app:layout_constraintBottom_toTopOf="@id/btn_generate_shifts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_generate_shifts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Genera Turni"
+        app:layout_constraintTop_toBottomOf="@id/rv_shifts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_exchange_shift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/btn_exchange_shift"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Scambia Turno"
+        app:layout_constraintStart_toEndOf="@id/btn_generate_shifts"
+        app:layout_constraintEnd_toStartOf="@id/switch_notifications"
+        app:layout_constraintTop_toTopOf="@id/btn_generate_shifts"
+        app:layout_constraintBottom_toBottomOf="@id/btn_generate_shifts"
+        android:layout_marginEnd="8dp" />
+
+    <Switch
+        android:id="@+id/switch_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifiche"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_generate_shifts"
+        app:layout_constraintBottom_toBottomOf="@id/btn_generate_shifts" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
