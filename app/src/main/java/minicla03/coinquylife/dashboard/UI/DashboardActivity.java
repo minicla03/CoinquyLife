@@ -21,8 +21,8 @@ import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.setting.ProfileActivity;
 
-public class DashboardActivity extends AppCompatActivity {
-
+public class DashboardActivity extends AppCompatActivity
+{
     private MaterialToolbar topAppBar;
     private BottomNavigationView bottomNavigationView;
     private RecyclerView rvBacheca;
@@ -51,8 +51,10 @@ public class DashboardActivity extends AppCompatActivity {
         }
         else
         {
-            topAppBar.setNavigationIcon(R.drawable.ic_profile);
         }
+
+        topAppBar.setNavigationIcon(R.drawable.ic_profile);
+
 
         topAppBar.findViewById(R.id.imgProfile).setOnClickListener(view -> {
             Intent intent = new Intent(this, ProfileActivity.class);

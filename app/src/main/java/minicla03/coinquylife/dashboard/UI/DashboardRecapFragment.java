@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import minicla03.coinquylife.R;
 
-public class DashboardRecapFragment extends Fragment {
-
+public class DashboardRecapFragment extends Fragment
+{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

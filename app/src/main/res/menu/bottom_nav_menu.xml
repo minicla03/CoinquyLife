@@ -8,7 +8,7 @@
         android:title="@string/Exspese" />
 
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_home"
         android:title="@string/home" />
 
     <item

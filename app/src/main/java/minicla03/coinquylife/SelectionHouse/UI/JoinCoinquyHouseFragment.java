@@ -24,22 +24,35 @@ public class JoinCoinquyHouseFragment extends Fragment
 {
     private EditText etHouseID;
     private Button btnConfirm;
+    private User user;
 
     public JoinCoinquyHouseFragment() {  }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_existing_house, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        View view =inflater.inflate(R.layout.fragment_existing_house, container, false);
+        etHouseID = view.findViewById(R.id.etHouseID);
+        btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
+
+        if (getArguments() != null)
+        {
+            user = getArguments().getParcelable("user");
+            Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+        }
+        if (user == null)
+        {
+            Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
-        etHouseID = view.findViewById(R.id.etHouseID);
-        btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
-        User user= requireActivity().getIntent().getParcelableExtra("user");
         SelectHouseViewModel selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
 
         btnConfirm.setOnClickListener(v -> {

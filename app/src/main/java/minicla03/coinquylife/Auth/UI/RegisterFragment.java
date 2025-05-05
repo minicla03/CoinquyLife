@@ -35,10 +35,16 @@ public class RegisterFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         initializeUI(view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
         setupObservers();
         setupListeners();
-        return view;
     }
 
     private void initializeUI(View view)
@@ -90,11 +96,7 @@ public class RegisterFragment extends Fragment
         authViewModel.register(user);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-    }
+
 
     @Override
     public void onDestroyView()

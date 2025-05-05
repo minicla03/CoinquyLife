@@ -25,12 +25,22 @@ public class NewCoinquyHouseIDFragment extends Fragment {
 
     private EditText houseName;
     private SelectHouseViewModel selectHouseViewModel;
+    private User user;
 
     public NewCoinquyHouseIDFragment() { }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        if (getArguments() != null)
+        {
+            user = getArguments().getParcelable("user");
+
+        }
+        if (user == null)
+        {
+            return null;
+        }
         return inflater.inflate(R.layout.fragment_new_coinquy_house, container, false);
     }
 
@@ -42,11 +52,9 @@ public class NewCoinquyHouseIDFragment extends Fragment {
         TextView textViewID = view.findViewById(R.id.textViewID);
         Button btnProceed = view.findViewById(R.id.btnProceed);
         houseName= view.findViewById(R.id.etHouseName);
-
         selectHouseViewModel= new ViewModelProvider(this).get(SelectHouseViewModel.class);
 
         textViewID.setText(selectHouseViewModel.generateHouseCode());
-        User user = requireActivity().getIntent().getParcelableExtra("user");
 
         btnProceed.setOnClickListener(v ->
         {

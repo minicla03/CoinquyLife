@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        authViewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
+        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText().toString().trim();

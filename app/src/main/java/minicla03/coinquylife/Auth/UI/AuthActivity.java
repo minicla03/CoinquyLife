@@ -17,8 +17,6 @@ import minicla03.coinquylife.R;
 
 public class AuthActivity extends AppCompatActivity
 {
-    AuthViewModel authViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,48 +27,29 @@ public class AuthActivity extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide(); // Nasconde l'ActionBar
 
-        authViewModel= new ViewModelProvider(this).get(AuthViewModel.class);
-
-        if (savedInstanceState == null) {navigateToFragment(new LoginFragment());}
-        else
-        {
-            authViewModel.setCurrentFragment(savedInstanceState.getString("current_fragment");
-            if ("RegisterFragment".equals(currentFragment))
-            {
-                navigateToFragment(new RegisterFragment());
-            }
-            else
-            {
-                navigateToFragment(new LoginFragment());
-            }
-        }
-
         View btnLogin = findViewById(R.id.btnLogin);
         View btnRegister = findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(v -> navigateToFragment(new LoginFragment()));
         btnRegister.setOnClickListener(v -> navigateToFragment(new RegisterFragment()));
+
+        if(savedInstanceState==null)
+        {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.auth_fragment_container, new LoginFragment())
+                    .commit();
+        }
     }
 
     private void navigateToFragment(Fragment fragment)
     {
+        String tag = fragment.getClass().getSimpleName();
+        Fragment existingFragment = getSupportFragmentManager().findFragmentByTag(tag);
+
         getSupportFragmentManager()
                 .beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.auth_fragment_container, fragment)
+                .replace(R.id.auth_fragment_container, Objects.requireNonNullElse(existingFragment, fragment), tag)
                 .commit();
     }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState)
-    {
-        super.onSaveInstanceState(outState);
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.auth_fragment_container);
-        if (currentFragment != null)
-        {
-            authViewModel.setCurrentFragment(currentFragment.getClass().getSimpleName());
-            outState.putString("current_fragment", currentFragment.getClass().getSimpleName());
-        }
-    }
-
 }
