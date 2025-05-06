@@ -17,18 +17,19 @@
 - **Framework**: Android SDK
 - **Database**: Room (persistenza locale)
 - **Stile Architettura**: Clean Acrchietecture combinata con MVVM (Model-View-ViewModel)
-- 
-  UI (Fragment / Activity)\n
-       ↓\n
-   ViewModel (Presentation Layer)
-       ↓
-   Use Cases (Domain Layer)
-       ↓
-   Repository Interface
-       ↓
-   Repository Implementation (Data Layer)
-       ↓
-   Local Data Sources (Room) / [Future: Remote Sources]
+
+
+ UI (Fragment / Activity)
+     ↓
+ ViewModel (Presentation Layer)
+     ↓
+ Use Cases (Domain Layer)
+     ↓
+ Repository Interface
+     ↓
+ Repository Implementation (Data Layer)
+     ↓
+ Local Data Sources (Room) / [Future: Remote Sources]
 
   
 #### 📂 Livelli principali
