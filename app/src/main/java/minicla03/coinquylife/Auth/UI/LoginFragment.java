@@ -64,6 +64,9 @@ public class LoginFragment extends Fragment
                 Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();
             } else if (result.user != null && result.status == AuthStatus.USER_NOT_FOUND) {
                 Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
+            }
+            else if(result.user != null && result.status == AuthStatus.INVALID_EMAIL) {
+                Toast.makeText(getContext(), "Email non valida!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Login fallito!", Toast.LENGTH_SHORT).show();
             }

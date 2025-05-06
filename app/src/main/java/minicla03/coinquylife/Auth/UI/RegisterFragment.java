@@ -72,6 +72,10 @@ public class RegisterFragment extends Fragment
             {
                 Toast.makeText(getContext(), "User already exist", Toast.LENGTH_SHORT).show();
             }
+            else if(result.status == AuthStatus.INVALID_EMAIL)
+            {
+                Toast.makeText(getContext(), "Invalid email", Toast.LENGTH_SHORT).show();
+            }
             else if(result.status == AuthStatus.ERROR)
             {
                 Toast.makeText(getContext(), "Registration failed", Toast.LENGTH_SHORT).show();
@@ -95,8 +99,6 @@ public class RegisterFragment extends Fragment
         User user = new User(username, name, password, surname, email);
         authViewModel.register(user);
     }
-
-
 
     @Override
     public void onDestroyView()

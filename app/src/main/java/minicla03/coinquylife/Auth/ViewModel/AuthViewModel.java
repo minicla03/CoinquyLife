@@ -11,7 +11,11 @@ import minicla03.coinquylife.Auth.Utility.AuthResult;
 import minicla03.coinquylife.Auth.Repository.LoginUserUseCase;
 import minicla03.coinquylife.Auth.Repository.RegisterUserUseCase;
 import minicla03.coinquylife.Auth.Repository.AuthRepository;
+import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class AuthViewModel extends AndroidViewModel
 {
@@ -39,10 +43,34 @@ public class AuthViewModel extends AndroidViewModel
         return registerResult;
     }
 
-    public void login(String email, String password) {loginUseCase.execute(email, password, loginResult::postValue);}
+    public void login(String email, String password)
+    {
+        if(isValidEmail(email))
+        {
+            loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
+            return;
+        }
+        loginUseCase.execute(email, password, loginResult::postValue);
+    }
 
     public void register(User user)
     {
+        if(isValidEmail(user.getEmail()))
+        {
+            loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
+            return;
+        }
         registerUseCase.execute(user, registerResult::postValue);
+    }
+
+    public boolean isValidEmail(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return true;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return !matcher.matches();
     }
 }
