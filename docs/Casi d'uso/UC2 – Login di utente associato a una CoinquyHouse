@@ -1,0 +1,26 @@
+## UC2 – Login di utente associato a una CoinquyHouse
+
+**Attori principali**:  
+-  Utente: L'utente che ha già un account e appartiene a una CoinquyHouse.
+
+**Descrizione**:  
+L'utente inserisce le proprie credenziali (email e password) per accedere all'applicazione e viene reindirizzato alla propria CoinquyHouse.
+
+### Pre-condizioni
+- L'utente è già registrato e ha un account valido.
+- L'utente è associato a una CoinquyHouse esistente.
+
+### Flusso principale
+1. L'utente inserisce email e password nella schermata di login.
+2. Il sistema verifica la validità delle credenziali.
+3. Se le credenziali sono corrette, il sistema genera un token di accesso.
+4. Il sistema verifica l'associazione dell'utente a una CoinquyHouse.
+5. L'utente viene reindirizzato alla CoinquyHouse di appartenenza.
+6. L'utente può accedere alle funzionalità della CoinquyHouse (visualizzazione turni, punteggi, ecc.).
+
+### Flussi alternativi
+- [A1] **Credenziali errate** → Il sistema mostra un errore di login e chiede di riprovare.
+- [A2] **Utente non associato a nessuna CoinquyHouse** → Il sistema mostra un messaggio di errore, indicando che l'utente deve essere associato a una CoinquyHouse.
+
+### Post-condizioni
+- L'utente è autenticato e ha accesso alla CoinquyHouse di appartenenza.
