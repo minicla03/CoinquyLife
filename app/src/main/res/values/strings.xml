@@ -1,7 +1,35 @@
 <resources>
-    <string name="app_name">CoinquyLife</string>
-    <string name="loginButton">Login</string>
-    <string name="signinButton">Sign in</string>
-    <string name="insert">username</string>
+    <string name="app_name" translatable="false">CoinquyLife</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="register">Registration</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+
+    <string name="new_coinquy_house">New Coinquy House</string>
+    <string name="join_to_coinquy_house">Join to Coinquy House</string>
+    <string name="coinquyhouse_id">CoinquyHouse id</string>
+    <string name="id">ID</string>
+    <string name="inserisci_id_della_casa">Insert iD CoinquyHouse</string>
+    <string name="id_house">House Id</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Next">Next</string>
+    <string name="house_name">House name</string>
+
+    <string name="turni">🗓️ Turni</string>
+    <string name="Exspese">💸 Spese</string>
+    <string name="home">🏠 Home</string>
+    <string name="rank">🏆 Classifica</string>
+    <string name="board">📋 Bacheca</string>
+
+    <string name="setting">setting\n</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="expenseRV">espenseRV</string>
+    <string name="profile_picture">profile imagine</string>
+    <string name="option_on">option on</string>
+    <string name="option_off">option off</string>
+    <string name="summary_default">summary</string>
 </resources>
