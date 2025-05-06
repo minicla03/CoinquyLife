@@ -20,15 +20,25 @@
 
 
  UI (Fragment / Activity)
+ 
      ↓
+     
  ViewModel (Presentation Layer)
+ 
      ↓
+     
  Use Cases (Domain Layer)
+ 
      ↓
+     
  Repository Interface
+ 
      ↓
+     
  Repository Implementation (Data Layer)
+ 
      ↓
+     
  Local Data Sources (Room) / [Future: Remote Sources]
 
   
