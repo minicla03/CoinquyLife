@@ -18,8 +18,8 @@
 - **Database**: Room (persistenza locale)
 - **Stile Architettura**: Clean Acrchietecture combinata con MVVM (Model-View-ViewModel)
 - 
-  UI (Fragment / Activity)
-       ↓
+  UI (Fragment / Activity)\n
+       ↓\n
    ViewModel (Presentation Layer)
        ↓
    Use Cases (Domain Layer)
