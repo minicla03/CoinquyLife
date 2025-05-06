@@ -17,6 +17,7 @@
 - **Framework**: Android SDK
 - **Database**: Room (persistenza locale)
 - **Stile Architettura**: Clean Acrchietecture combinata con MVVM (Model-View-ViewModel)
+- 
   UI (Fragment / Activity)
        ↓
    ViewModel (Presentation Layer)
@@ -46,11 +47,13 @@
   - **Room DAO**: Per la persistenza locale
   - **Convertes**: Per convertire i dati tra strati
 
-#### ✅ Vantaggi
+ ### Architettura tecnica
 
-- 🔁 **Indipendenza tra livelli**: ogni livello può evolversi separatamente  
-- 🔍 **Testabilità elevata**: Use Case e Repository possono essere facilmente testati  
-- 🧩 **Flessibilità**: è possibile sostituire Room o aggiungere un'API REST senza modificare la logica core
+- **MVVM**: Separation of concerns tra logica, UI e dati.
+- **Room**: Database SQLite con DAO e repository.
+- **LiveData**: Osservazione dati in tempo reale.
+- **ViewModel**: Gestione dello stato delle UI in modo lifecycle-aware.
+- **Navigation Component**: Gestione sicura delle transizioni tra fragment.
 
 ### Cartelle principali
 
@@ -59,23 +62,16 @@
 - `app/src/main/java/minicla03/coinquylife/PERSISTANCE`: Gestione del database e delle entità.
 - `app/src/main/java/minicla03/coinquylife/SelectionHouse`: Funzionalità per la selezione e creazione della casa.
 
-## Requisiti
-
-- **Android Studio**: Versione 2024.3.1 Patch 2 o superiore
-- **Gradle**: Versione minima supportata dal progetto
-- **SDK Android**: Min SDK 21, Target SDK 33
-
 ## Design & UX
 
 - **Librerie UI**: Material Design 3, Jetpack Components
 - **Temi**: Modalità chiara/scura
 - **Accessibilità**: Testo scalabile, contrasto elevato
 
-## Architettura tecnica
+## Requisiti
 
-- **Clean Architecture**: 
-- **MVVM**: Separation of concerns tra logica, UI e dati.
-- **Room**: Database SQLite con DAO e repository.
-- **LiveData / StateFlow**: Osservazione dati in tempo reale.
-- **ViewModel**: Gestione dello stato delle UI in modo lifecycle-aware.
-- **Navigation Component**: Gestione sicura delle transizioni tra fragment.
+- **Android Studio**: Versione 2024.3.1 Patch 2 o superiore
+- **Gradle**: Versione minima supportata dal progetto
+- **SDK Android**: Min SDK 21, Target SDK 33
+
+
