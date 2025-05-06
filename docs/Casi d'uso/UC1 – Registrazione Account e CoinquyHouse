@@ -1,0 +1,25 @@
+## UC1 – Registrazione Account e CoinquyHouse
+
+**Attori principali**: Utente
+
+**Descrizione**:  
+L’utente crea un account personale e viene associato a una CoinquyHouse (gruppo casa), esistente o nuova.
+
+### Pre-condizioni
+- L’utente non ha ancora un account registrato.
+
+### Flusso principale
+1. L’utente accede alla schermata di registrazione.
+2. Inserisce nome, email e password.
+3. Il sistema verifica che l’email non sia già registrata.
+4. Se valida, il sistema crea l’account utente.
+5. L’utente riceve una conferma della registrazione.
+6. Se l’utente non è ancora associato a una CoinquyHouse, viene mostrata una schermata in cui può:
+   - Creare una nuova CoinquyHouse (con generazione di un nuovo codice), oppure  
+   - Inserire un codice di una CoinquyHouse esistente per unirsi al gruppo.
+
+### Flussi alternativi
+- [A1] **Email già registrata** → Il sistema mostra un messaggio di errore.
+
+### Post-condizioni
+- L’utente ha un account valido **ed è associato a una CoinquyHouse**, nuova o esistente.
