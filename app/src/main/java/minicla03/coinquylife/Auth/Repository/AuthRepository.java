@@ -9,13 +9,12 @@ import java.util.function.Consumer;
 
 import minicla03.coinquylife.Auth.Utility.AuthResult;
 import minicla03.coinquylife.Auth.Utility.AuthStatus;
-import minicla03.coinquylife.PERSISTANCE.database.DAO.CoinquyHouseDao;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.CoiquyHouseWithUserRelationshipDao;
 import minicla03.coinquylife.PERSISTANCE.database.DAO.UserDao;
 import minicla03.coinquylife.PERSISTANCE.database.DatabaseManager;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
-public class AuthRepository
+public class AuthRepository implements IAuthRepository
 {
     private final UserDao userDao;
     private final Executor executor = Executors.newSingleThreadExecutor();

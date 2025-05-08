@@ -32,14 +32,16 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         Intent intent = getIntent();
         if (intent != null && intent.getExtras() != null)
         {
-            User user = intent.getParcelableExtra("user");
-            if (user == null)
+            String user_id = intent.getStringExtra("user");
+            if (user_id == null)
             {
                 Toast.makeText(this, "User data is missing ACTIVITY", Toast.LENGTH_SHORT).show();
             }
             Bundle extrasFromPreviousActivity = new Bundle();
-            extrasFromPreviousActivity.putParcelable("user", user);
-        } else {
+            extrasFromPreviousActivity.putString("user", user_id);
+        }
+        else
+        {
             extrasFromPreviousActivity = new Bundle();
         }
 

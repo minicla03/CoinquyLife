@@ -7,9 +7,9 @@ import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseResult;
 
 public class NewHouseUseCase
 {
-    private final SelectHouseRepository repository;
+    private final ISelectHouseRepository repository;
 
-    public NewHouseUseCase(SelectHouseRepository repository)
+    public NewHouseUseCase(ISelectHouseRepository repository)
     {
         this.repository = repository;
     }

@@ -14,13 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
+import minicla03.coinquylife.Auth.ViewModel.IAuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
 import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class LoginFragment extends Fragment
 {
-    private AuthViewModel authViewModel;
+    private IAuthViewModel authViewModel;
     private TextView etEmail;
     private TextView etPassword;
     private View btnLogin;
@@ -53,12 +54,12 @@ public class LoginFragment extends Fragment
             if (result.user != null && result.status == AuthStatus.NO_COINQUYHOUSE) {
                 Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.user);
+                intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
             } else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE) {
                 Intent intent = new Intent(getContext(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.user);
+                intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
             } else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD) {
                 Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();

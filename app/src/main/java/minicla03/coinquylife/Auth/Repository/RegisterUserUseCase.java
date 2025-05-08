@@ -7,9 +7,9 @@ import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 public class RegisterUserUseCase
 {
-    private final AuthRepository repository;
+    private final IAuthRepository repository;
 
-    public RegisterUserUseCase(AuthRepository repository) {
+    public RegisterUserUseCase(IAuthRepository repository) {
         this.repository = repository;
     }
 

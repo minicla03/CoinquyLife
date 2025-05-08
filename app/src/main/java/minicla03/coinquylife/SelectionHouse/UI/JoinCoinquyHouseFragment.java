@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
+import minicla03.coinquylife.SelectionHouse.ViewModel.ISelectHouseViewModel;
 import minicla03.coinquylife.SelectionHouse.ViewModel.SelectHouseViewModel;
 import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
@@ -25,35 +26,34 @@ public class JoinCoinquyHouseFragment extends Fragment
     private EditText etHouseID;
     private Button btnConfirm;
     private User user;
+    private ISelectHouseViewModel selectHouseViewModel;
 
     public JoinCoinquyHouseFragment() {  }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view =inflater.inflate(R.layout.fragment_existing_house, container, false);
-        etHouseID = view.findViewById(R.id.etHouseID);
-        btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
-
-        if (getArguments() != null)
-        {
-            user = getArguments().getParcelable("user");
-            Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
-        }
-        if (user == null)
-        {
-            Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-
-        return view;
+        return inflater.inflate(R.layout.fragment_existing_house, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        SelectHouseViewModel selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
+
+        etHouseID = view.findViewById(R.id.etHouseID);
+        btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
+
+        if (getArguments() != null)
+        {
+            String id_user = getArguments().getString("user");
+            if (id_user == null)
+            {
+                Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+            }
+            selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
+            user = selectHouseViewModel.retriveUser(id_user);
+        }
 
         btnConfirm.setOnClickListener(v -> {
             String houseId = etHouseID.getText().toString().trim();
@@ -74,8 +74,8 @@ public class JoinCoinquyHouseFragment extends Fragment
             {
                 Intent intent = new Intent(getActivity(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.getUser());
-                intent.putExtra("coinquyhouse", result.getCoinquyHouse());
+                intent.putExtra("user", result.getUser().getId_user());
+                intent.putExtra("coinquyhouse", result.getCoinquyHouse().getId_house());
                 startActivity(intent);
             }
 

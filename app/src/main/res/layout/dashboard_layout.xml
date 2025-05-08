@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -44,26 +45,138 @@
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <!-- Main Content -->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmetDashboard"
-        android:name="minicla03.coinquylife.dashboard.UI.DashboardRecapFragment"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/topAppBar"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <ImageButton
+                    android:id="@+id/btnExpenses"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/Exspese"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_expenses" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/Exspese"
+                    android:textSize="16sp"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <ImageButton
+                    android:id="@+id/btnRank"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/rank"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_rank"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/rank"
+                    android:textSize="16sp"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </TableRow>
+
+        <!-- Second Row -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"> <!-- Spazio tra le righe -->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="16dp"> <!-- Spazio tra il primo e secondo bottone -->
+
+                <ImageButton
+                    android:id="@+id/btnBoard"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_board"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/board"
+                    android:scaleType="centerInside"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/board"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="16dp">
+
+                <ImageButton
+                    android:id="@+id/btnShifts"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_shifts"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/turni"
+                    android:scaleType="centerInside"
+                    android:layout_marginBottom="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/turni"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,15 +10,18 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.UUID;
 
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
+import minicla03.coinquylife.SelectionHouse.Repository.ISelectHouseRepository;
 import minicla03.coinquylife.SelectionHouse.Repository.JoinHouseUseCase;
 import minicla03.coinquylife.SelectionHouse.Repository.NewHouseUseCase;
+import minicla03.coinquylife.SelectionHouse.Repository.RetriveUseCase;
 import minicla03.coinquylife.SelectionHouse.Repository.SelectHouseRepository;
 import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseResult;
 
-public class SelectHouseViewModel extends AndroidViewModel
+public class SelectHouseViewModel extends AndroidViewModel implements ISelectHouseViewModel
 {
     private final NewHouseUseCase newHouseUseCase;
     private final JoinHouseUseCase joinHouseUseCase;
+    private final RetriveUseCase retriveUseCase;
     private final UUID houseID;
 
     private final MutableLiveData<SelectHouseResult> houseCreationResult = new MutableLiveData<>();
@@ -28,7 +31,8 @@ public class SelectHouseViewModel extends AndroidViewModel
     {
         super(application);
         houseID = UUID.randomUUID();
-        SelectHouseRepository repo = new SelectHouseRepository(application);
+        ISelectHouseRepository repo = new SelectHouseRepository(application);
+        this.retriveUseCase = new RetriveUseCase(repo);
         this.newHouseUseCase = new NewHouseUseCase(repo);
         this.joinHouseUseCase = new JoinHouseUseCase(repo);
     }
@@ -56,5 +60,10 @@ public class SelectHouseViewModel extends AndroidViewModel
     public LiveData<SelectHouseResult> getJoinHouseResult()
     {
         return joinHouseResult;
+    }
+
+    public User retriveUser(String id_user)
+    {
+        return retriveUseCase.retriveUser(id_user);
     }
 }

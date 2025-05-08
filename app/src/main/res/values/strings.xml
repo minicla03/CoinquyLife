@@ -32,4 +32,5 @@
     <string name="option_on">option on</string>
     <string name="option_off">option off</string>
     <string name="summary_default">summary</string>
+    <string name="copy_id">string copy</string>
 </resources>

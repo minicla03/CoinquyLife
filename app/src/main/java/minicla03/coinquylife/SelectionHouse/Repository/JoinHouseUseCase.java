@@ -7,9 +7,9 @@ import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseResult;
 
 public class JoinHouseUseCase
 {
-    private final SelectHouseRepository repository;
+    private final ISelectHouseRepository repository;
 
-    public JoinHouseUseCase(SelectHouseRepository repo)
+    public JoinHouseUseCase(ISelectHouseRepository repo)
     {
         this.repository = repo;
     }
@@ -18,5 +18,4 @@ public class JoinHouseUseCase
     {
         repository.joinHouse(houseCode, user, callback);
     }
-
 }

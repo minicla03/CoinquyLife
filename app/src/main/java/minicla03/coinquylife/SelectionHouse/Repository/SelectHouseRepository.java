@@ -14,7 +14,7 @@ import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseResult;
 import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
 
-public class SelectHouseRepository
+public class SelectHouseRepository implements ISelectHouseRepository
 {
     private final UserDao userDao;
     private final CoinquyHouseDao coinquyHouseDao;
@@ -54,7 +54,7 @@ public class SelectHouseRepository
     {
         executor.execute(() ->
         {
-            CoinquyHouse existingHouse = coinquyHouseDao.getCoinquyHouseById(houseCode);
+            CoinquyHouse existingHouse = retriveHouse(houseCode);
             if (existingHouse != null)
             {
                 user.setHouseUser(houseCode);
@@ -66,5 +66,15 @@ public class SelectHouseRepository
                 callback.accept(new SelectHouseResult(SelectHouseStatus.FAILURE, null, null));
             }
         });
+    }
+
+    public User retriveUser(String id_user)
+    {
+        return userDao.getUserById(id_user);
+    }
+
+    public CoinquyHouse retriveHouse(String id_house)
+    {
+        return coinquyHouseDao.getCoinquyHouseById(id_house);
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,15 +33,6 @@ public class NewCoinquyHouseIDFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        if (getArguments() != null)
-        {
-            user = getArguments().getParcelable("user");
-
-        }
-        if (user == null)
-        {
-            return null;
-        }
         return inflater.inflate(R.layout.fragment_new_coinquy_house, container, false);
     }
 
@@ -48,16 +40,42 @@ public class NewCoinquyHouseIDFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        if (getArguments() != null)
+        {
+            String id_user = getArguments().getString("user");
+            if (id_user == null)
+            {
+                Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
+            user = selectHouseViewModel.retriveUser(id_user);
+        }
 
         TextView textViewID = view.findViewById(R.id.textViewID);
         Button btnProceed = view.findViewById(R.id.btnProceed);
+        ImageButton btnCopyID = view.findViewById(R.id.btnCopyID);
         houseName= view.findViewById(R.id.etHouseName);
-        selectHouseViewModel= new ViewModelProvider(this).get(SelectHouseViewModel.class);
 
         textViewID.setText(selectHouseViewModel.generateHouseCode());
 
         btnProceed.setOnClickListener(v ->
         {
+            String name_house = houseName.getText().toString().trim();
+            selectHouseViewModel.createHouse(name_house, user);
+        });
+
+        textViewID.setText(selectHouseViewModel.generateHouseCode());
+
+        btnCopyID.setOnClickListener(v -> {
+            String textToCopy = textViewID.getText().toString();
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("House ID", textToCopy);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(requireContext(), "ID copiato negli appunti", Toast.LENGTH_SHORT).show();
+        });
+
+        btnProceed.setOnClickListener(v -> {
             String name_house = houseName.getText().toString().trim();
             selectHouseViewModel.createHouse(name_house, user);
         });
@@ -68,8 +86,8 @@ public class NewCoinquyHouseIDFragment extends Fragment {
             {
                 Intent intent = new Intent(getActivity(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.getUser());
-                intent.putExtra("coinquyhouse", result.getCoinquyHouse());
+                intent.putExtra("user", result.getUser().getId_user());
+                intent.putExtra("coinquyhouse", result.getCoinquyHouse().getId_house());
                 startActivity(intent);
             }
             else

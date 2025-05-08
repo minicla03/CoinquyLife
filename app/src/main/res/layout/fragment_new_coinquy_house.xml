@@ -3,57 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".YourActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="247dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:text="@string/coinquyhouse_id"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewID"
-        android:layout_width="379dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="294dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/id"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintEnd_toStartOf="@id/btnCopyID"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <ImageButton
+        android:id="@+id/btnCopyID"
+        android:layout_width="79dp"
+        android:layout_height="52dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/copy_id"
+        android:src="@drawable/ic_copy"
+        app:layout_constraintBottom_toBottomOf="@id/textViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewID" />
+
+    <EditText
+        android:id="@+id/etHouseName"
+        android:layout_width="382dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="housename"
+        android:hint="@string/house_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewID" />
 
     <Button
         android:id="@+id/btnProceed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:text="@string/Next"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintTop_toBottomOf="@id/etHouseName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHouseName" />
-
-    <EditText
-        android:id="@+id/etHouseName"
-        android:layout_width="375dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:autofillHints="housename"
-        android:ems="10"
-        android:hint="@string/house_name"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewID" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

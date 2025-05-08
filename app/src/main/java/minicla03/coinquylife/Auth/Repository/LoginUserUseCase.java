@@ -6,9 +6,10 @@ import minicla03.coinquylife.Auth.Utility.AuthResult;
 
 public class LoginUserUseCase
 {
-    private final AuthRepository repository;
+    private final IAuthRepository repository;
 
-    public LoginUserUseCase(AuthRepository repository) {
+    public LoginUserUseCase(IAuthRepository repository)
+    {
         this.repository = repository;
     }
 

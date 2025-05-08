@@ -16,13 +16,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import minicla03.coinquylife.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
+import minicla03.coinquylife.Auth.ViewModel.IAuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import minicla03.coinquylife.SelectionHouse.UI.CoinquyHouseSelectionActivity;
 
 public class RegisterFragment extends Fragment
 {
-    private AuthViewModel authViewModel;
+    private IAuthViewModel authViewModel;
 
     private EditText emailEditText;
     private EditText passwordEditText;

@@ -17,7 +17,7 @@ import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class AuthViewModel extends AndroidViewModel
+public class AuthViewModel extends AndroidViewModel implements IAuthViewModel
 {
     private final LoginUserUseCase loginUseCase;
     private final RegisterUserUseCase registerUseCase;
