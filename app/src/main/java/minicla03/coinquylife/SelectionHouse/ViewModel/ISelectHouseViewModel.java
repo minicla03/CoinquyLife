@@ -13,9 +13,11 @@ public interface ISelectHouseViewModel
 
     void joinHouse(String houseCode, User user);
 
-    User retriveUser(String id_user);
+    void retriveUser(String id_user);
 
     LiveData<SelectHouseResult> getHouseCreationResult();
 
     LiveData<SelectHouseResult> getJoinHouseResult();
+
+    LiveData<User> getRetriveUserResult();
 }

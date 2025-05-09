@@ -26,6 +26,7 @@ public class SelectHouseViewModel extends AndroidViewModel implements ISelectHou
 
     private final MutableLiveData<SelectHouseResult> houseCreationResult = new MutableLiveData<>();
     private final MutableLiveData<SelectHouseResult> joinHouseResult = new MutableLiveData<>();
+    private final MutableLiveData<User> retriveUserResult = new MutableLiveData<>();
 
     public SelectHouseViewModel(@NonNull Application application)
     {
@@ -52,6 +53,11 @@ public class SelectHouseViewModel extends AndroidViewModel implements ISelectHou
         joinHouseUseCase.execute(houseCode, user, joinHouseResult::postValue);
     }
 
+    public void retriveUser(String id_user)
+    {
+        retriveUseCase.retriveUser(id_user, retriveUserResult::postValue);
+    }
+
     public LiveData<SelectHouseResult> getHouseCreationResult()
     {
         return houseCreationResult;
@@ -62,8 +68,8 @@ public class SelectHouseViewModel extends AndroidViewModel implements ISelectHou
         return joinHouseResult;
     }
 
-    public User retriveUser(String id_user)
+    public LiveData<User> getRetriveUserResult()
     {
-        return retriveUseCase.retriveUser(id_user);
+        return retriveUserResult;
     }
 }

@@ -52,7 +52,10 @@ public class JoinCoinquyHouseFragment extends Fragment
                 Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
             }
             selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
-            user = selectHouseViewModel.retriveUser(id_user);
+            selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> {
+                this.user = user;
+            });
+            selectHouseViewModel.retriveUser(id_user);
         }
 
         btnConfirm.setOnClickListener(v -> {
@@ -72,7 +75,7 @@ public class JoinCoinquyHouseFragment extends Fragment
         {
             if (result.getStatus() == SelectHouseStatus.SUCCESS)
             {
-                Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                Intent intent = new Intent(requireActivity(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.getUser().getId_user());
                 intent.putExtra("coinquyhouse", result.getCoinquyHouse().getId_house());

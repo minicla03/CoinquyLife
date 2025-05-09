@@ -24,14 +24,14 @@ public class SplashActivity extends AppCompatActivity
             boolean isLoggedIn = prefs.getBoolean("is_logged_in", false);
             boolean isLoggedWithHouse = prefs.getBoolean("is_logged_with_house", false);
 
-            if (isLoggedWithHouse)
+            /*if (isLoggedWithHouse)
             {
                 startActivity(new Intent(SplashActivity.this, DashboardActivity.class));
             } else if (isLoggedIn) {
                 startActivity(new Intent(SplashActivity.this, CoinquyHouseSelectionActivity.class));
-            } else {
-                startActivity(new Intent(SplashActivity.this, AuthActivity.class));
-            }
+            } else {*/
+            startActivity(new Intent(SplashActivity.this, AuthActivity.class));
+            // }
 
             finish();
         }).start();

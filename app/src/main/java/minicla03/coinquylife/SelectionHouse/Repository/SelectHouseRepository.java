@@ -43,8 +43,7 @@ public class SelectHouseRepository implements ISelectHouseRepository
         executor.execute(() ->
         {
             coinquyHouseDao.insertCoinquyHouse(newHouse);
-            user.setHouseUser(houseCode);
-            userDao.updateUser(user);
+            userDao.updateUserHouse(houseCode, user.getId_user());
             callback.accept(new SelectHouseResult(SelectHouseStatus.SUCCESS, newHouse, user));
         });
 
@@ -54,7 +53,7 @@ public class SelectHouseRepository implements ISelectHouseRepository
     {
         executor.execute(() ->
         {
-            CoinquyHouse existingHouse = retriveHouse(houseCode);
+            CoinquyHouse existingHouse = coinquyHouseDao.getCoinquyHouseById(houseCode);
             if (existingHouse != null)
             {
                 user.setHouseUser(houseCode);
@@ -68,13 +67,28 @@ public class SelectHouseRepository implements ISelectHouseRepository
         });
     }
 
-    public User retriveUser(String id_user)
+    public void retriveUser(String id_user, Consumer<User> callback)
     {
-        return userDao.getUserById(id_user);
+        executor.execute(() ->
+        {
+            User user = userDao.getUserById(id_user);
+            if (user == null)
+            {
+                callback.accept(null);
+            }
+            callback.accept(user);
+        });
     }
 
-    public CoinquyHouse retriveHouse(String id_house)
+    public void retriveHouse(String id_house, Consumer<CoinquyHouse> callback)
     {
-        return coinquyHouseDao.getCoinquyHouseById(id_house);
+        executor.execute(() ->
+        {
+            CoinquyHouse house = coinquyHouseDao.getCoinquyHouseById(id_house);
+            if (house == null) {
+                callback.accept(null);
+            }
+            callback.accept(house);
+        });
     }
 }

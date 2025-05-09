@@ -24,7 +24,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coinquy_house_selection);
+        setContentView(R.layout.actiivity_coinquyhouse_selection);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -48,15 +48,8 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         View btnCreateGroup = findViewById(R.id.btnCreateGroup);
         View btnJoinGroup = findViewById(R.id.btnJoinGroup);
 
-        btnCreateGroup.setOnClickListener(v -> {
-            NewCoinquyHouseIDFragment fragment = new NewCoinquyHouseIDFragment();
-            navigateToFragment(fragment);
-        });
-
-        btnJoinGroup.setOnClickListener(v -> {
-            JoinCoinquyHouseFragment fragment = new JoinCoinquyHouseFragment();
-            navigateToFragment(fragment);
-        });
+        btnCreateGroup.setOnClickListener(v -> {navigateToFragment(new NewCoinquyHouseIDFragment());});
+        btnJoinGroup.setOnClickListener(v -> {navigateToFragment(new JoinCoinquyHouseFragment());});
 
         if (savedInstanceState == null)
         {

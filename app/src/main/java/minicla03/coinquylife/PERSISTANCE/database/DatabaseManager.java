@@ -7,6 +7,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import minicla03.coinquylife.PERSISTANCE.database.DAO.ChoiceDao;
@@ -39,7 +40,7 @@ import minicla03.coinquylife.PERSISTANCE.database.entity.User;
 
 @Database(entities = {Choice.class, Purchase.class, Task.class, TaskExchange.class, User.class,
                         CoinquyHouse.class, HouseWork.class, MessageBoard.class, Note.class, Survey.class},
-        version = 1,
+        version = 2,
         exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class DatabaseManager extends RoomDatabase
@@ -70,7 +71,7 @@ public abstract class DatabaseManager extends RoomDatabase
         if (INSTANCE == null)
         {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DatabaseManager.class, "coinquylife_database")
-                    .addCallback(roomCallback)
+                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
         return INSTANCE;
@@ -100,4 +101,14 @@ public abstract class DatabaseManager extends RoomDatabase
             return null;
         }
     }**/
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2)
+    {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database)
+        {
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_User_houseUser ON User(houseUser)");
+        }
+    };
+
 }

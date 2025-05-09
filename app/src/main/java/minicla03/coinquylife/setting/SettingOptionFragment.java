@@ -6,39 +6,52 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import minicla03.coinquylife.R;
 
-public class SettingOptionFragment extends PreferenceFragmentCompat
-{
+public class SettingOptionFragment extends PreferenceFragmentCompat {
+
     private SharedPreferences sharedPreferences;
+    private static final String PREF_KEY = "notifications_enabled";
+    private static final String SUMMARY_KEY = "summary";
     private String sharedPrefFile = "minicla03.coinquylife.settings";
 
     @Override
-    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey)
-    {
+    public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
         sharedPreferences = getActivity().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        Preference preference=this.findPreference("");
-        preference.setSummary(sharedPreferences.getString("summary", getString(R.string.summary_default)));
+        CheckBoxPreference checkbox = findPreference(PREF_KEY);
 
-        preference.setOnPreferenceChangeListener((preference1, newValue) -> {
-            if ((Boolean) newValue == true)
-            {
-                preference.setSummary(R.string.option_on);
-                SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
-                preferencesEditor.putString("summary", getString(R.string.option_on)).apply();
-            }
-            else
-            {
-                preference.setSummary(R.string.option_off);
-                SharedPreferences.Editor preferencesEditor =sharedPreferences.edit();
-                preferencesEditor.putString("summary", getString(R.string.option_off)).apply();
-            }
-            return true;
-        });
+        if (checkbox != null) {
+            // Imposta il summary in base al valore salvato
+            boolean currentValue = sharedPreferences.getBoolean(PREF_KEY, true);
+            checkbox.setSummary(currentValue
+                    ? getString(R.string.option_on)
+                    : getString(R.string.option_off));
+
+            // Ascolta i cambiamenti
+            checkbox.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean enabled = (Boolean) newValue;
+
+                // Aggiorna summary
+                checkbox.setSummary(enabled
+                        ? getString(R.string.option_on)
+                        : getString(R.string.option_off));
+
+                // Salva anche un valore di supporto se vuoi
+                sharedPreferences.edit()
+                        .putBoolean(PREF_KEY, enabled)
+                        .putString(SUMMARY_KEY, enabled
+                                ? getString(R.string.option_on)
+                                : getString(R.string.option_off))
+                        .apply();
+
+                return true;
+            });
+        }
     }
 }

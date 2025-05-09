@@ -63,7 +63,7 @@ public class RegisterFragment extends Fragment
         authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), result -> {
             if (result.status== AuthStatus.SUCCESS)
             {
-                Intent intent = new Intent(getContext(), CoinquyHouseSelectionActivity.class);
+                Intent intent = new Intent(requireActivity(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user);
                 intent.putExtra("coinquyHouse", result.coinquyHouse);

@@ -19,6 +19,9 @@ public interface UserDao {
     @Update
     void updateUser(User user);
 
+    @Query("UPDATE User SET houseUser = :houseCode WHERE id_user = :userId")
+    void updateUserHouse(String houseCode, String userId);
+
     @Delete
     void deleteUser(User user);
 
