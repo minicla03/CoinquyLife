@@ -81,7 +81,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/Exspese"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_expenses" />
+                    android:src="@drawable/icons8_spese_96" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/rank"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_rank"
+                    android:src="@drawable/icons8_classifica_96"
                     android:layout_marginBottom="8dp" />
 
                 <TextView
@@ -137,7 +137,7 @@
                     android:id="@+id/btnBoard"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_board"
+                    android:src="@drawable/icons8_bacheca_96"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/board"
                     android:scaleType="centerInside"
@@ -163,7 +163,7 @@
                     android:id="@+id/btnShifts"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_shifts"
+                    android:src="@drawable/icons8_rotating_64"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/turni"
                     android:scaleType="centerInside"

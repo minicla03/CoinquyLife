@@ -4,15 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
 
-import minicla03.coinquylife.Auth.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 
 public class AuthActivity extends AppCompatActivity

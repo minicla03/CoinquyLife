@@ -9,6 +9,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +47,8 @@ import java.util.UUID;
                     childColumns ="houseUser",
                     onDelete= ForeignKey.CASCADE,
                     onUpdate= ForeignKey.CASCADE
-                )
+                ),
+        indices = {@Index(value = "houseUser")}
         )
 public class User implements Parcelable
 {
