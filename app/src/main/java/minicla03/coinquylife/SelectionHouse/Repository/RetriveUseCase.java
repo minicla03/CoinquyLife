@@ -1,6 +1,5 @@
 package minicla03.coinquylife.SelectionHouse.Repository;
 
-import java.sql.Connection;
 import java.util.function.Consumer;
 
 import minicla03.coinquylife.PERSISTANCE.database.entity.User;

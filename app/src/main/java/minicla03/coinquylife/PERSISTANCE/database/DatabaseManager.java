@@ -1,6 +1,7 @@
 package minicla03.coinquylife.PERSISTANCE.database;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -76,31 +77,6 @@ public abstract class DatabaseManager extends RoomDatabase
         }
         return INSTANCE;
     }
-
-    private static final RoomDatabase.Callback roomCallback = new RoomDatabase.Callback()
-    {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db)
-        {
-            super.onCreate(db);
-            //new PopulateDbAsyncTask(INSTANCE).execute();
-        }
-    };
-
-    /**private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>
-    {
-        private PopulateDbAsyncTask(DatabaseManager db) {
-            noteDao = db.noteDao();
-        }
-        @Override
-        protected Void doInBackground(Void... voids)
-        {
-            noteDao.insert(new Note("Note 1", "Description 1", 1,-1,-1));
-            noteDao.insert(new Note("Note 2", "Description 2", 2,-1,-1));
-            noteDao.insert(new Note("Note 3", "Description 3", 3,-1,-1));
-            return null;
-        }
-    }**/
 
     static final Migration MIGRATION_1_2 = new Migration(1, 2)
     {

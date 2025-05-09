@@ -4,6 +4,7 @@ import static androidx.core.content.ContentProviderCompat.requireContext;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -33,10 +34,8 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         if (intent != null && intent.getExtras() != null)
         {
             String user_id = intent.getStringExtra("user");
-            if (user_id == null)
-            {
-                Toast.makeText(this, "User data is missing ACTIVITY", Toast.LENGTH_SHORT).show();
-            }
+            assert user_id != null;
+            Log.d("ActivityB", user_id);
             Bundle extrasFromPreviousActivity = new Bundle();
             extrasFromPreviousActivity.putString("user", user_id);
         }

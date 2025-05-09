@@ -51,12 +51,15 @@ public class LoginFragment extends Fragment
 
         authViewModel.getLoginResult().observe(getViewLifecycleOwner(), result ->
         {
-            if (result.user != null && result.status == AuthStatus.NO_COINQUYHOUSE) {
+            if (result.user != null && result.status == AuthStatus.NO_COINQUYHOUSE)
+            {
                 Intent intent = new Intent(requireActivity(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
-            } else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE) {
+            }
+            else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE)
+            {
                 Intent intent = new Intent(requireActivity(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user.getId_user());

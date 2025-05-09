@@ -43,6 +43,7 @@ public class JoinCoinquyHouseFragment extends Fragment
 
         etHouseID = view.findViewById(R.id.etHouseID);
         btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
+        selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
 
         if (getArguments() != null)
         {
@@ -51,7 +52,6 @@ public class JoinCoinquyHouseFragment extends Fragment
             {
                 Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
             }
-            selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
             selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> {
                 this.user = user;
             });
