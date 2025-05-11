@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+
     <application
         android:name=".CoinquyLife"
         android:allowBackup="true"
@@ -15,7 +23,7 @@
         tools:targetApi="31" >
 
         <activity
-            android:name=".Auth.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -25,31 +33,31 @@
         </activity>
 
         <activity
-            android:name=".Auth.UI.AuthActivity"
+            android:name=".FEATURE.Auth.PRESENTATION.UI.AuthActivity"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".SelectionHouse.UI.CoinquyHouseSelectionActivity"
+            android:name=".FEATURE.SelectionHouse.UI.CoinquyHouseSelectionActivity"
             android:exported="true">
         </activity>
 
         <activity
-            android:name=".dashboard.UI.DashboardActivity"
+            android:name=".FEATURE.dashboard.UI.DashboardActivity"
             android:exported="true" >
         </activity>
 
         <activity
-            android:name=".setting.SettingActivity"
+            android:name=".FEATURE.ProfileSetting.UI.SettingActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".setting.ProfileActivity" />
+                android:value=".FEATURE.ProfileSetting.UI.ProfileActivity" />
         </activity>
 
         <activity
-            android:name=".setting.ProfileActivity"
+            android:name=".FEATURE.ProfileSetting.UI.ProfileActivity"
             android:exported="true" />
     </application>
 

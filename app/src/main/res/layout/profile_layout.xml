@@ -13,7 +13,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSettings"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="54dp"
+            android:layout_width="47dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:contentDescription="@string/setting"
@@ -26,24 +26,17 @@
             android:layout_height="100dp"
             android:src="@drawable/ic_profile"
             android:scaleType="centerCrop"
+            android:clickable="true"
             android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mario Rossi"
+            android:text="@string/defaltu"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tvRole"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Coinquilino - Appartamento A"
-            android:textSize="14sp"
-            android:layout_marginBottom="12dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,20 +86,14 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvBio"
+        <EditText
+            android:id="@+id/etBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Studente fuori sede. Amante della cucina e sempre puntuale nei turni! 🚀"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"/>
+            android:text="Studente fuori sede..."
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"/>
 
-        <Button
-            android:id="@+id/btnCalendarioTurni"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📅 Vedi calendario turni"
-            android:layout_marginTop="16dp"/>
 
         <Button
             android:id="@+id/btnClassifica"

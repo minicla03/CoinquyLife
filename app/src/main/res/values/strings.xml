@@ -33,4 +33,6 @@
     <string name="option_off">option off</string>
     <string name="summary_default">summary</string>
     <string name="copy_id">string copy</string>
+    <string name="defaltu">user\n</string>
+    <string name="note">note\n</string>
 </resources>

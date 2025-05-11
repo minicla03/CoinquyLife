@@ -34,12 +34,6 @@
     <!-- Categoria: Generale -->
     <PreferenceCategory android:title="Generale">
 
-        <EditTextPreference
-            android:key="username"
-            android:title="Nome utente"
-            android:summary="Imposta il nome visualizzato"
-            android:dialogTitle="Inserisci il tuo nome" />
-
         <SwitchPreference
             android:key="auto_sync"
             android:title="Sincronizzazione automatica"

@@ -61,7 +61,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/auth_fragment_container"
-        android:name="minicla03.coinquylife.Auth.UI.RegisterFragment"
+        android:name="minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI.RegisterFragment"
         android:layout_width="340dp"
         android:layout_height="325dp"
         app:layout_constraintStart_toStartOf="parent"

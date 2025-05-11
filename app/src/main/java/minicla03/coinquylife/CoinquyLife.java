@@ -3,7 +3,7 @@ package minicla03.coinquylife;
 import android.app.Application;
 
 
-import minicla03.coinquylife.PERSISTANCE.database.DatabaseManager;
+import minicla03.coinquylife.DATALAYER.database.DatabaseManager;
 
 public class CoinquyLife extends Application
 {
