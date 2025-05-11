@@ -39,20 +39,19 @@ public class NewCoinquyHouseIDFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        String id_user=null;
-        super.onViewCreated(view, savedInstanceState);
-        if (getArguments() != null)
-        {
-            id_user=getArguments().getString("user");
-            if (id_user == null)
-            {
-                Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
-                return;
+        selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null) {
+                String idUser = (String) data.get("USER");
+                if (idUser == null) {
+                    Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+                } else {
+                    selectHouseViewModel.retriveUser(idUser);
+                }
             }
-        }
-        selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
+        });
+
+        selectHouseViewModel = new ViewModelProvider(requireActivity()).get(SelectHouseViewModel.class);
         selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> this.user = user);
-        selectHouseViewModel.retriveUser(id_user);
 
         TextView textViewID = view.findViewById(R.id.textViewID);
         Button btnProceed = view.findViewById(R.id.btnProceed);

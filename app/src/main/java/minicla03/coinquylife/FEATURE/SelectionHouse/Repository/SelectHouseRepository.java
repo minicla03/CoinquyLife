@@ -14,6 +14,7 @@ import minicla03.coinquylife.DATALAYER.database.DatabaseManager;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseResult;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseStatus;
+import minicla03.coinquylife.FEATURE.SelectionHouse.ViewModel.SelectHouseViewModel;
 
 public class SelectHouseRepository implements ISelectHouseRepository
 {

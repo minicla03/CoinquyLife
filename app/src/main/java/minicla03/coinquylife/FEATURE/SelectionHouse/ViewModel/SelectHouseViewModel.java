@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
@@ -23,7 +24,9 @@ public class SelectHouseViewModel extends AndroidViewModel
     private final JoinHouseUseCase joinHouseUseCase;
     private final RetriveUseCase retriveUseCase;
     private final UUID houseID;
+    private HashMap<String, String> data = new HashMap<>();
 
+    private final MutableLiveData<HashMap<?,?>> intentData = new MutableLiveData<>();
     private final MutableLiveData<SelectHouseResult> houseCreationResult = new MutableLiveData<>();
     private final MutableLiveData<SelectHouseResult> joinHouseResult = new MutableLiveData<>();
     private final MutableLiveData<User> retriveUserResult = new MutableLiveData<>();
@@ -63,6 +66,12 @@ public class SelectHouseViewModel extends AndroidViewModel
         return houseCreationResult;
     }
 
+    public void putIntentData(String k, String value)
+    {
+        data.put(k, value);
+        intentData.postValue(data);
+    }
+
     public LiveData<SelectHouseResult> getJoinHouseResult()
     {
         return joinHouseResult;
@@ -72,4 +81,6 @@ public class SelectHouseViewModel extends AndroidViewModel
     {
         return retriveUserResult;
     }
+
+    public LiveData<HashMap<?,?>> getIntentData(){ return intentData;}
 }

@@ -12,7 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+
+import java.util.HashMap;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.R;
@@ -42,20 +45,22 @@ public class JoinCoinquyHouseFragment extends Fragment
 
         etHouseID = view.findViewById(R.id.etHouseID);
         btnConfirm = view.findViewById(R.id.btnConfirmHouseID);
-        selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
+        selectHouseViewModel = new ViewModelProvider(requireActivity()).get(SelectHouseViewModel.class);
 
-        if (getArguments() != null)
-        {
-            String id_user = getArguments().getString("user");
-            if (id_user == null)
-            {
-                Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+        selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null) {
+                String idUser = (String) data.get("USER");
+                if (idUser == null) {
+                    Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+                } else {
+                    selectHouseViewModel.retriveUser(idUser);
+                }
             }
-            selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> {
-                this.user = user;
-            });
-            selectHouseViewModel.retriveUser(id_user);
-        }
+        });
+
+        selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> {
+            this.user = user;
+        });
 
         btnConfirm.setOnClickListener(v -> {
             String houseId = etHouseID.getText().toString().trim();

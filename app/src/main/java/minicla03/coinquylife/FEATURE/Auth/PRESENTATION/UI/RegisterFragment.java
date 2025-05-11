@@ -1,5 +1,7 @@
 package minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -62,8 +64,7 @@ public class RegisterFragment extends Fragment
         authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), result -> {
             if (result.status== AuthStatus.SUCCESS)
             {
-                Intent intent = new Intent(requireActivity(), CoinquyHouseSelectionActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(getApplicationContext(), CoinquyHouseSelectionActivity.class);
                 intent.putExtra("user", result.user);
                 intent.putExtra("coinquyHouse", result.coinquyHouse);
                 startActivity(intent);

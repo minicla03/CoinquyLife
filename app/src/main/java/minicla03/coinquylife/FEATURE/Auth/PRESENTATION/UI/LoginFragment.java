@@ -1,4 +1,6 @@
 package minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI;
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -59,8 +61,7 @@ public class LoginFragment extends Fragment
             }
             else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE)
             {
-                Intent intent = new Intent(requireActivity(), DashboardActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                 intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
             } else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD) {
