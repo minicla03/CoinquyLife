@@ -33,6 +33,7 @@ public class AuthActivity extends AppCompatActivity
         {
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setReorderingAllowed(true)
                     .replace(R.id.auth_fragment_container, new LoginFragment())
                     .commit();
         }
@@ -45,6 +46,7 @@ public class AuthActivity extends AppCompatActivity
 
         getSupportFragmentManager()
                 .beginTransaction()
+                .setReorderingAllowed(true)
                 .replace(R.id.auth_fragment_container, Objects.requireNonNullElse(existingFragment, fragment), tag)
                 .commit();
     }

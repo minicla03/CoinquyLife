@@ -44,6 +44,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
         {
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setReorderingAllowed(true)
                     .replace(R.id.new_coinquy_house_fragment_container, new NewCoinquyHouseIDFragment())
                     .commit();
         }
@@ -56,6 +57,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
 
         getSupportFragmentManager()
                 .beginTransaction()
+                .setReorderingAllowed(true)
                 .replace(R.id.new_coinquy_house_fragment_container, Objects.requireNonNullElse(existingFragment, fragment), tag)
                 .commit();
     }

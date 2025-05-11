@@ -39,6 +39,16 @@ public class NewCoinquyHouseIDFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView textViewID = view.findViewById(R.id.textViewID);
+        Button btnProceed = view.findViewById(R.id.btnProceed);
+        ImageButton
+                btnCopyID = view.findViewById(R.id.btnCopyID);
+        houseName= view.findViewById(R.id.etHouseName);
+        selectHouseViewModel = new ViewModelProvider(requireActivity()).get(SelectHouseViewModel.class);
+        textViewID.setText(selectHouseViewModel.generateHouseCode());
+
         selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
             if (data != null) {
                 String idUser = (String) data.get("USER");
@@ -50,15 +60,7 @@ public class NewCoinquyHouseIDFragment extends Fragment {
             }
         });
 
-        selectHouseViewModel = new ViewModelProvider(requireActivity()).get(SelectHouseViewModel.class);
         selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> this.user = user);
-
-        TextView textViewID = view.findViewById(R.id.textViewID);
-        Button btnProceed = view.findViewById(R.id.btnProceed);
-        ImageButton btnCopyID = view.findViewById(R.id.btnCopyID);
-        houseName= view.findViewById(R.id.etHouseName);
-
-        textViewID.setText(selectHouseViewModel.generateHouseCode());
 
         btnProceed.setOnClickListener(v ->
         {

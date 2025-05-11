@@ -61,7 +61,7 @@ public class LoginFragment extends Fragment
             }
             else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE)
             {
-                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                Intent intent = new Intent(this.getContext(), DashboardActivity.class);
                 intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
             } else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD) {
