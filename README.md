@@ -16,31 +16,21 @@
 - **Linguaggi**: Java
 - **Framework**: Android SDK
 - **Database**: Room (persistenza locale)
-- **Stile Architettura**: Clean Acrchietecture combinata con MVVM (Model-View-ViewModel)
+- **Stile Architettura**: Clean Archietecture combinata con MVVM (Model-View-ViewModel)
 
+![image](https://github.com/user-attachments/assets/cb57acec-829c-4451-9a74-a20344f902aa)
 
- UI (Fragment / Activity)
-     ↓   
- ViewModel (Presentation Layer)
-     ↓
- Use Cases (Domain Layer)
-     ↓
- Repository Interface
-     ↓
- Repository Implementation (Data Layer)
-     ↓
- Local Data Sources (Room) / [Future: Remote Sources]
-
-  
 #### 📂 Livelli principali
 
 - **Presentation Layer**  
-  Contiene la UI e la logica di presentazione. Utilizza il pattern **MVVM** con `ViewModel`, `LiveData`, e `Navigation Component`.
+  Contiene la UI e la logica di presentazione. Utilizza il pattern **MVVM** con `ViewModel`, `LiveData`.
 
 - **Domain Layer**  
   Cuore dell'applicazione, indipendente da Android. Contiene:
+  - **Use Case Interface**: Interfacce per DIP
   - **Use Case**: Logica di business dell'app
   - **Entity**: Modelli del dominio condivisi
+  - **Repository Interface**: Interfacce per DIP
 
 - **Data Layer**  
   Gestisce l’accesso ai dati. Comprende:
@@ -55,13 +45,6 @@
 - **LiveData**: Osservazione dati in tempo reale.
 - **ViewModel**: Gestione dello stato delle UI in modo lifecycle-aware.
 - **Navigation Component**: Gestione sicura delle transizioni tra fragment.
-
-### Cartelle principali
-
-- `app/src/main/java/minicla03/coinquylife/Auth`: Gestione dell'autenticazione e dello splash screen.
-- `app/src/main/java/minicla03/coinquylife/Dashboard`: Dashboard principale dell'app.
-- `app/src/main/java/minicla03/coinquylife/PERSISTANCE`: Gestione del database e delle entità.
-- `app/src/main/java/minicla03/coinquylife/SelectionHouse`: Funzionalità per la selezione e creazione della casa.
 
 ## Design & UX
 
