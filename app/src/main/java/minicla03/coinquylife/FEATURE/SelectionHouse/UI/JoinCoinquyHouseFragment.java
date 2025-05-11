@@ -76,7 +76,7 @@ public class JoinCoinquyHouseFragment extends Fragment
             {
                 Intent intent = new Intent(requireActivity(), DashboardActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.getUser().getId_user());
+                intent.putExtra("user", user.getId_user());
                 intent.putExtra("coinquyhouse", result.getCoinquyHouse().getId_house());
                 startActivity(intent);
             }

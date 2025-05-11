@@ -40,7 +40,7 @@ import minicla03.coinquylife.DATALAYER.database.entity.User;
 
 @Database(entities = {Choice.class, Purchase.class, Task.class, TaskExchange.class, User.class,
                         CoinquyHouse.class, HouseWork.class, MessageBoard.class, Note.class, Survey.class},
-        version = 2,
+        version = 3,
         exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class DatabaseManager extends RoomDatabase
@@ -71,7 +71,7 @@ public abstract class DatabaseManager extends RoomDatabase
         if (INSTANCE == null)
         {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DatabaseManager.class, "coinquylife_database")
-                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                     .build();
         }
         return INSTANCE;
@@ -83,6 +83,15 @@ public abstract class DatabaseManager extends RoomDatabase
         public void migrate(@NonNull SupportSQLiteDatabase database)
         {
             database.execSQL("CREATE INDEX IF NOT EXISTS index_User_houseUser ON User(houseUser)");
+        }
+    };
+
+    static final Migration MIGRATION_2_3 = new Migration(2, 3)
+    {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database)
+        {
+            database.execSQL("ALTER TABLE Purchase ADD COLUMN amount DOUBLE");
         }
     };
 

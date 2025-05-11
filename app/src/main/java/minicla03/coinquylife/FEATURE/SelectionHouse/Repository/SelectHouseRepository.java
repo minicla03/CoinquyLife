@@ -40,6 +40,16 @@ public class SelectHouseRepository implements ISelectHouseRepository
 
     public void createHouse(String houseCode, String houseName, User user, Consumer<SelectHouseResult> callback)
     {
+        if(user.getHouseUser()!=null)
+        {
+            callback.accept(new SelectHouseResult(SelectHouseStatus.ALREADY_IN_HOUSE, null, user));
+            return;
+        }
+        if (houseName == null)
+        {
+            callback.accept(new SelectHouseResult(SelectHouseStatus.HOUSE_NAME_EMPTY, null, user));
+            return;
+        }
         CoinquyHouse newHouse = new CoinquyHouse(houseCode, houseName);
         executor.execute(() ->
         {
@@ -57,8 +67,6 @@ public class SelectHouseRepository implements ISelectHouseRepository
             CoinquyHouse existingHouse = coinquyHouseDao.getCoinquyHouseById(houseCode);
             if (existingHouse != null)
             {
-                user.setHouseUser(houseCode);
-                userDao.updateUser(user);
                 callback.accept(new SelectHouseResult(SelectHouseStatus.SUCCESS, existingHouse, user));
             }
             else

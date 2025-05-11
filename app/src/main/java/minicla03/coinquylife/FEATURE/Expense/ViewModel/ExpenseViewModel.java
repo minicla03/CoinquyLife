@@ -37,14 +37,14 @@ public class ExpenseViewModel extends AndroidViewModel
 
     public void fetchExpenses()
     {
-        getExpensesUseCase.execute().observeForever(expenses -> {
-            expensesLiveData.setValue(expenses);
-            updateBalance(expenses);
-        });
+        /*getExpensesUseCase.execute().observeForever(expenses -> {
+            expensesLiveData.setValue(null);
+            updateBalance(null);
+        });*/
     }
 
     public void addExpense() {
-        addExpenseUseCase.execute(purchase);
+        addExpenseUseCase.execute(null);
         fetchExpenses();
     }
 
@@ -52,7 +52,7 @@ public class ExpenseViewModel extends AndroidViewModel
     {
         double total = 0;
         for (Purchase expense : expenses) {
-            total += Double.parseDouble(expense.getAmount());
+            total += Double.parseDouble(expense.getAmount().toString());
         }
         balanceLiveData.setValue(total);
     }

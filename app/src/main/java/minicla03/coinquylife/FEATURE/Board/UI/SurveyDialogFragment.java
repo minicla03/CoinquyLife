@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.fragment.app.DialogFragment;
 import minicla03.coinquylife.R;
-import minicla03.coinquylife.Board.Model.Poll;
+import minicla03.coinquylife.DATALAYER.database.entity.Survey;
 
 public class SurveyDialogFragment extends DialogFragment {
 
@@ -22,7 +22,7 @@ public class SurveyDialogFragment extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout._new_survey, null);
 
-        etPollQuestion = view.findViewById(R.id.et_poll_question);
+        etPollQuestion = view.findViewById(R.id.et_poll_domanda);
         btnSavePoll = view.findViewById(R.id.btn_save_poll);
 
         btnSavePoll.setOnClickListener(v -> {
@@ -30,7 +30,7 @@ public class SurveyDialogFragment extends DialogFragment {
 
             // Crea un nuovo sondaggio e invialo al listener
             if (listener != null) {
-                Poll poll = new Poll(question);
+                Survey poll = new Survey();
                 listener.onPollCreated(poll);
             }
 
@@ -47,6 +47,6 @@ public class SurveyDialogFragment extends DialogFragment {
     }
 
     public interface OnPollCreatedListener {
-        void onPollCreated(Poll poll);
+        void onPollCreated(Survey poll);
     }
 }

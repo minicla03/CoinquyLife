@@ -46,7 +46,7 @@ public class AddExpenseBottomSheetFragment extends BottomSheetDialogFragment {
 
 
                 if (listener != null) {
-                    listener.onExpenseAdded(amount, description, daFare, saldata);
+                    //listener.onExpenseAdded(amount, description, daFare, saldata);
                 }
                 dismiss();
             }

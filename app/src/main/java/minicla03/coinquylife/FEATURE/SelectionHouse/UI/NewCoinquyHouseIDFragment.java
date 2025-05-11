@@ -92,7 +92,15 @@ public class NewCoinquyHouseIDFragment extends Fragment {
                 intent.putExtra("coinquyhouse", result.getCoinquyHouse().getId_house());
                 startActivity(intent);
             }
-            else
+            else if(result.getStatus()==SelectHouseStatus.HOUSE_NAME_EMPTY)
+            {
+                Toast.makeText(requireContext(), "Insert a valid name", Toast.LENGTH_SHORT).show();
+            }
+            else if(result.getStatus()==SelectHouseStatus.HOUSE_NOT_FOUND)
+            {
+                Toast.makeText(requireContext(), "House not found", Toast.LENGTH_SHORT).show();
+            }
+            else if(result.getStatus()==SelectHouseStatus.FAILURE)
             {
                 Toast.makeText(requireContext(), "Error during the creation of the house", Toast.LENGTH_SHORT).show();
             }

@@ -141,7 +141,7 @@ public class ProfileActivity extends AppCompatActivity
 
                 // salva l'immagine nell'oggetto utente, se necessario
                 if (user != null) {
-                    user.setProfilePictureUri(selectedImage.toString());
+                    //user.setProfileImage(selectedImage.toString());
                 }
             }
         }
@@ -155,8 +155,8 @@ public class ProfileActivity extends AppCompatActivity
                 // salva immagine se necessario
                 if (user != null) {
                     // devi prima salvare l'immagine su file e poi ottenere l'URI
-                    Uri photoUri = saveBitmapToFile(photo);
-                    user.setProfilePictureUri(photoUri.toString());
+                    //Uri photoUri = saveBitmapToFile(photo);
+                    //user.setProfilePictureUri(photoUri.toString());
                 }
             }
         }

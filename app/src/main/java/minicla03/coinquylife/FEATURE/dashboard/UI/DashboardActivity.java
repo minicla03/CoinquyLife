@@ -68,8 +68,8 @@ public class DashboardActivity extends AppCompatActivity
 
         btnExpenses.setOnClickListener(v -> {
             Intent intent1 = new Intent(DashboardActivity.this, ExpenseActivity.class);
-            intent.putExtra("user", user_id);
-            intent.putExtra("coinquy", coinquy_id);
+            //intent.putExtra("user", user_id);
+            //intent.putExtra("coinquy", coinquy_id);
             startActivity(intent1);
         });
 
@@ -98,9 +98,9 @@ public class DashboardActivity extends AppCompatActivity
 
         imgProfile.setOnClickListener(v -> {
             Intent intent5 = new Intent(DashboardActivity.this, ProfileActivity.class);
-            intent5.putExtra("user", user_id);
-            intent5.putExtra("coinquy", coinquy_id);
-            startActivity(intent4);
+            //intent5.putExtra("user", user_id);
+            //intent5.putExtra("coinquy", coinquy_id);
+            startActivity(intent5);
         });
     }
 }

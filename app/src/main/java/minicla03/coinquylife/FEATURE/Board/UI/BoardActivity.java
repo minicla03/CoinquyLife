@@ -23,7 +23,7 @@ public class BoardActivity extends AppCompatActivity {
         btnNewPost = findViewById(R.id.btn_new_post);
         btnPoll = findViewById(R.id.btn_poll);
 
-        boardAdapter = new BoardAdapter(null);
+        boardAdapter = new BoardAdapter();
         rvBoard.setLayoutManager(new LinearLayoutManager(this));
         rvBoard.setAdapter(boardAdapter);
 

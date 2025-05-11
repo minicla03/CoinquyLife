@@ -48,9 +48,9 @@ public class ExpenseActivity extends AppCompatActivity implements OnExpenseAdded
     @Override
     public void onExpenseAdded(String amount, String description, boolean daFare, boolean saldata, Date data)
     {
-        expenseAdapter.addExpense(id_user, id_house, amount, description, daFare, saldata, data);
-        expenseViewModel.
-        tvBalanceSummary.setText("Saldo: " +expenseViewModel.getBalance().toString() + "€");
+        //expenseAdapter.addExpense(id_user, id_house, amount, description, daFare, saldata, data);
+        //expenseViewModel.
+        //tvBalanceSummary.setText("Saldo: " +expenseViewModel.getBalance().toString() + "€");
     }
 }
 

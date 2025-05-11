@@ -8,12 +8,14 @@ import android.widget.EditText;
 import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 
+import minicla03.coinquylife.DATALAYER.database.entity.Note;
 import minicla03.coinquylife.R;
 
 public class PostDialogFragment extends DialogFragment {
 
     private EditText etPostTitle, etPostContent;
     private Button btnSavePost;
+    private OnPostCreatedListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -25,17 +27,14 @@ public class PostDialogFragment extends DialogFragment {
         etPostContent = view.findViewById(R.id.et_post_content);
         btnSavePost = view.findViewById(R.id.btn_save_post);
 
-        btnSavePost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Logica per salvare il post
-                String title = etPostTitle.getText().toString();
-                String content = etPostContent.getText().toString();
+        btnSavePost.setOnClickListener(v -> {
+            // Logica per salvare il post
+            String title = etPostTitle.getText().toString();
+            String content = etPostContent.getText().toString();
 
-                // TODO: Aggiungi logica per salvare il post nei dati o nel database
+            // TODO: Aggiungi logica per salvare il post nei dati o nel database
 
-                dismiss();
-            }
+            dismiss();
         });
 
         return new android.app.AlertDialog.Builder(getActivity())
@@ -48,6 +47,6 @@ public class PostDialogFragment extends DialogFragment {
     }
 
     public interface OnPostCreatedListener {
-        void onPostCreated(Post post);
+        void onPostCreated(Note post);
     }
 }

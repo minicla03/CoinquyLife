@@ -5,5 +5,5 @@ public enum SelectHouseStatus
     SUCCESS,
     FAILURE,
     HOUSE_NOT_FOUND,
-    ALREADY_IN_HOUSE
+    HOUSE_NAME_EMPTY, ALREADY_IN_HOUSE
 }
