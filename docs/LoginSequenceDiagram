@@ -1,0 +1,27 @@
+@startuml
+actor User
+participant View as LoginFragment
+participant ViewModel as AuthViewModel
+participant UseCase as LoginUseCase
+participant Repository as UserRepository
+database DB as RoomDB
+participant Activity as CoinquyHouseSelectionActivity
+participant Toast as ToastMessage
+
+User -> View : Inserisce username/password\n e preme Login
+View -> ViewModel : login(username, password)
+ViewModel -> UseCase : execute(username, password)
+UseCase -> Repository : loginUser(username, password)
+Repository -> DB : getUserByUsernameAndPassword(...)
+DB --> Repository : User?
+alt Login fallito
+    Repository --> UseCase : null (login non riuscito)
+    UseCase --> ViewModel : Errore (login fallito)
+    ViewModel -> View : Toast "Login Fallito"
+else Login riuscito
+    Repository --> UseCase : User
+    UseCase --> ViewModel : Result<User>
+    ViewModel -> View : LiveData<User> aggiornato
+    View -> Activity : startActivity(CoinquyHouseSelectionActivity)
+end
+@enduml
