@@ -1,4 +1,4 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.UI;
+package minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.util.HashMap;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseStatus;
-import minicla03.coinquylife.FEATURE.SelectionHouse.ViewModel.SelectHouseViewModel;
+import minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.ViewModel.SelectHouseViewModel;
 import minicla03.coinquylife.FEATURE.dashboard.UI.DashboardActivity;
 
 public class JoinCoinquyHouseFragment extends Fragment

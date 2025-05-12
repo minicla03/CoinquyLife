@@ -1,8 +1,9 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.Repository;
+package minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase;
 
 import java.util.function.Consumer;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
+import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseResult;
 
 public class JoinHouseUseCase

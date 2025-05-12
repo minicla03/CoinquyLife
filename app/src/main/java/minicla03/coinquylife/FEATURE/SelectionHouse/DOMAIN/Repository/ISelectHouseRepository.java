@@ -1,4 +1,4 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.Repository;
+package minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.Repository;
 
 import java.util.function.Consumer;
 

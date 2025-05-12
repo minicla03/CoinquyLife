@@ -1,11 +1,9 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.UI;
+package minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -13,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
 
-import minicla03.coinquylife.FEATURE.SelectionHouse.ViewModel.SelectHouseViewModel;
+import minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.ViewModel.SelectHouseViewModel;
 import minicla03.coinquylife.R;
 
 public class CoinquyHouseSelectionActivity extends AppCompatActivity

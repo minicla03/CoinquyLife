@@ -1,4 +1,4 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.ViewModel;
+package minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.ViewModel;
 
 import android.app.Application;
 
@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
-import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.ISelectHouseRepository;
-import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.JoinHouseUseCase;
-import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.NewHouseUseCase;
-import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.RetriveUseCase;
+import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
+import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.JoinHouseUseCase;
+import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.NewHouseUseCase;
+import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.RetriveUseCase;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.SelectHouseRepository;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseResult;
 

@@ -1,7 +1,5 @@
 package minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI;
 
-import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +18,7 @@ import minicla03.coinquylife.FEATURE.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.FEATURE.Auth.PRESENTATION.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
-import minicla03.coinquylife.FEATURE.SelectionHouse.UI.CoinquyHouseSelectionActivity;
+import minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity;
 
 public class RegisterFragment extends Fragment
 {

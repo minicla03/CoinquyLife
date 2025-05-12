@@ -7,5 +7,5 @@ import minicla03.coinquylife.FEATURE.Auth.Utility.AuthResult;
 
 public interface ILoginUserUseCase
 {
-    User execute(String email, String password, Consumer<AuthResult> callback);
+    void login(String email, String password, Consumer<AuthResult> callback);
 }

@@ -1,5 +1,4 @@
 package minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI;
-import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import minicla03.coinquylife.FEATURE.Auth.Utility.AuthStatus;
 import minicla03.coinquylife.FEATURE.Auth.PRESENTATION.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
-import minicla03.coinquylife.FEATURE.SelectionHouse.UI.CoinquyHouseSelectionActivity;
+import minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity;
 import minicla03.coinquylife.FEATURE.dashboard.UI.DashboardActivity;
 
 public class LoginFragment extends Fragment

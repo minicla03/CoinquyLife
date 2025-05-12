@@ -7,7 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import minicla03.coinquylife.FEATURE.Auth.DOMAIN.Repository.AuthRepository;
+import minicla03.coinquylife.DATALAYER.database.RepositoryEntity.UserRepository;
+import minicla03.coinquylife.FEATURE.Auth.DOMAIN.Repository.IAuthRepository;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.UseCase.LoginUserUseCase;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.UseCase.RegisterUserUseCase;
 import minicla03.coinquylife.FEATURE.Auth.Utility.AuthResult;
@@ -29,7 +30,7 @@ public class AuthViewModel extends AndroidViewModel
     public AuthViewModel(@NonNull Application application)
     {
         super(application);
-        AuthRepository repo = new AuthRepository(application);
+        IAuthRepository repo = new UserRepository(application);
         loginUseCase = new LoginUserUseCase(repo);
         registerUseCase = new RegisterUserUseCase(repo);
     }
@@ -51,7 +52,7 @@ public class AuthViewModel extends AndroidViewModel
             loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
             return;
         }
-        loginUseCase.execute(email, password, loginResult::postValue);
+        loginUseCase.login(email, password, loginResult::postValue);
     }
 
     public void register(User user)
@@ -61,7 +62,7 @@ public class AuthViewModel extends AndroidViewModel
             loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
             return;
         }
-        registerUseCase.execute(user, registerResult::postValue);
+        registerUseCase.register(user, registerResult::postValue);
     }
 
     private boolean isValidEmail(String email)

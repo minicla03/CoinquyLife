@@ -5,7 +5,7 @@ import minicla03.coinquylife.DATALAYER.database.entity.User;
 
 public class AuthResult
 {
-    public AuthStatus status;
+    public static AuthStatus status;
     public User user;
     public CoinquyHouse coinquyHouse;
 

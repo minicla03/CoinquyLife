@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FEATURE.SelectionHouse.UI.CoinquyHouseSelectionActivity">
+    tools:context=".FEATURE.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity">
 
     <TextView
         android:id="@+id/textView"

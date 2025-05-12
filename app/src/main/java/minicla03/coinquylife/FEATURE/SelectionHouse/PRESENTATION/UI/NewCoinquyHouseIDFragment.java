@@ -1,4 +1,4 @@
-package minicla03.coinquylife.FEATURE.SelectionHouse.UI;
+package minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseStatus;
-import minicla03.coinquylife.FEATURE.SelectionHouse.ViewModel.SelectHouseViewModel;
+import minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.ViewModel.SelectHouseViewModel;
 import minicla03.coinquylife.FEATURE.dashboard.UI.DashboardActivity;
 
 public class NewCoinquyHouseIDFragment extends Fragment {
