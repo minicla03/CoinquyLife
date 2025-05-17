@@ -35,4 +35,8 @@
     <string name="copy_id">string copy</string>
     <string name="defaltu">user\n</string>
     <string name="note">note\n</string>
+    <string name="username_or_email">Username or password\n</string>
+    <string name="login_icon_description">login icon app</string>
+    <string name="non_hai_un_account_registrati">Non hai un account? Registrati\n\n</string>
+    <string name="coinquylife">CoinquyLife</string>
 </resources>

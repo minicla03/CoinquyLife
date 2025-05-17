@@ -1,8 +1,8 @@
 package minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -23,12 +23,7 @@ public class AuthActivity extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide(); // Nasconde l'ActionBar
 
-        View btnLogin = findViewById(R.id.btnLogin);
-        View btnRegister = findViewById(R.id.btnRegister);
-
-        btnLogin.setOnClickListener(v -> navigateToFragment(new LoginFragment()));
-        btnRegister.setOnClickListener(v -> navigateToFragment(new RegisterFragment()));
-
+        TextView registerText = findViewById(R.id.textViewRegister);
         if(savedInstanceState==null)
         {
             getSupportFragmentManager()
@@ -37,6 +32,8 @@ public class AuthActivity extends AppCompatActivity
                     .replace(R.id.auth_fragment_container, new LoginFragment())
                     .commit();
         }
+
+        registerText.setOnClickListener(v -> {navigateToFragment(new RegisterFragment());});
     }
 
     private void navigateToFragment(Fragment fragment)

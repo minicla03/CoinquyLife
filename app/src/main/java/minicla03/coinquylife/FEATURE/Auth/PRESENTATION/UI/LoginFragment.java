@@ -30,9 +30,9 @@ public class LoginFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        etEmail= view.findViewById(R.id.etEmail);
-        etPassword=view.findViewById(R.id.etPassword);
-        btnLogin= view.findViewById(R.id.btnLogin);
+        etEmail= view.findViewById(R.id.editTextUsernameEmail);
+        etPassword=view.findViewById(R.id.editTextPassword);
+        btnLogin= view.findViewById(R.id.buttonLogin);
         return view;
     }
 
