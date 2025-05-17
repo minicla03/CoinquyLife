@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4d4eafbf-9908-4a72-a9aa-9e93a7e5eb09" alt="Logo CoinquyLife" width="200" />
+</p>
+
 # CoinquyLife
 
 **CoinquyLife** è un'applicazione progettata per semplificare la gestione della vita in una casa condivisa. L'app offre funzionalità per organizzare turni, gestire spese, creare sondaggi e molto altro.
