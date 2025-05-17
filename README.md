@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/4d4eafbf-9908-4a72-a9aa-9e93a7e5eb09" alt="Logo CoinquyLife" width="200" />
 </p>
 
-# 🏠 CoinquyLife – AndoridApp
+# 🏠 CoinquyLife – AndroidApp
 
 **CoinquyLife** è una piattaforma web pensata per semplificare la vita in una casa condivisa. Ogni funzionalità è implementata come **microservizio indipendente**, seguendo l'architettura **Spring Boot + MVC**, e comunicano tra loro tramite API REST.
 
