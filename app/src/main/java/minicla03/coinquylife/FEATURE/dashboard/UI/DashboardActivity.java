@@ -82,13 +82,11 @@ public class DashboardActivity extends AppCompatActivity
 
         dashboardViewModel.getRetriveHouseResult().observe(this, house -> {
             this.house = house;
+            if(house != null)
+            {
+                tvHouseName.setText(house.getHouse_name()+house.getId_house());
+            }
         });
-
-        String houseName = intent.getStringExtra("house_name");
-        if (houseName != null)
-        {
-            tvHouseName.setText(houseName+house.getId_house());
-        }
 
         tvHouseName.setOnClickListener(v-> {
             Toast.makeText(DashboardActivity.this, "HouseActivity name not implemented yet", Toast.LENGTH_SHORT).show();

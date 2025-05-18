@@ -57,13 +57,16 @@ public class LoginFragment extends Fragment
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user.getId_user());
                 startActivity(intent);
+                requireActivity().finish();
             }
             else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE)
             {
                 Intent intent = new Intent(this.getContext(), DashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user.getId_user());
                 intent.putExtra("coinquyHouse", result.coinquyHouse.getId_house());
                 startActivity(intent);
+                requireActivity().finish();
             }
             else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD)
             {

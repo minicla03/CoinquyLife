@@ -36,20 +36,25 @@ android {
 
 dependencies {
 
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.lifecycle.viewmodel.android)
-    implementation(libs.ext.junit)
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
-    implementation(libs.espresso.intents)
-    implementation(libs.fragment.testing)
-    implementation(libs.room.common.jvm)
-    implementation(libs.room.runtime.android)
-    implementation(libs.preference)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.appcompat.v161)
+    implementation(libs.material.v1110)
+
+    // ROOM
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
+
+    // ViewModel & LiveData
+    implementation(libs.lifecycle.viewmodel)
+
+    // Navigation
+    implementation(libs.navigation.fragment.v277)
+    implementation(libs.navigation.ui.v277)
+
+    // Preferences
+    implementation(libs.preference)
+
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.v115)
+    androidTestImplementation(libs.espresso.core.v351)
 }

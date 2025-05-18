@@ -41,4 +41,10 @@
     <string name="coinquylife">CoinquyLife</string>
     <string name="hai_un_account_loggati">Hai gia un account? Loggati</string>
     <string name="back">back button</string>
+    <string name="classifica">Classifica</string>
+    <string name="position">n position</string>
+    <string name="punti">n_punti</string>
+    <string name="points">Punti</string>
+    <string name="description">Studente fuori sede...</string>
+    <string name="people">people</string>
 </resources>

@@ -32,14 +32,14 @@ public class LoginUserUseCase implements ILoginUserUseCase
                 {
                     if (user.getPassword().equals(password))
                     {
-                        CoinquyHouse coinquyHouse=repository.getHouseWithUsers(user.getId_user());
-                        if (coinquyHouse==null)
+                        CoinquyHouse coinquyHouse=repository.getHouseUser(user.getHouseUser());
+                        if (coinquyHouse!=null)
                         {
-                            callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user, null));
+                            callback.accept(new AuthResult(AuthStatus.HAS_COINQUYHOUSE, user, coinquyHouse));
                         }
                         else
                         {
-                            callback.accept(new AuthResult(AuthStatus.SUCCESS, user, coinquyHouse));
+                            callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user, null));
                         }
                     }
                     else
@@ -54,6 +54,7 @@ public class LoginUserUseCase implements ILoginUserUseCase
             }
             catch (Exception e)
             {
+                e.printStackTrace();
                 callback.accept(new AuthResult(AuthStatus.ERROR, null, null));
             }
         });

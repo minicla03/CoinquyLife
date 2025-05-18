@@ -5,12 +5,11 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#8A2BE2">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="378dp"
+        android:layout_width="0dp"
         android:layout_height="70dp"
         android:background="@drawable/rounded_topbar"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
@@ -92,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/Exspese"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -119,6 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/rank"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -132,8 +133,8 @@
             android:gravity="center">
 
             <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="148dp"
+                android:layout_height="211dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/rounded_container"
                 android:gravity="center_horizontal"
@@ -155,12 +156,13 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/board"
                     android:textAlignment="center"
+                    android:textColor="#8A2BE2"
                     android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="152dp"
+                android:layout_height="207dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/rounded_container"
                 android:gravity="center_horizontal"
@@ -182,6 +184,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/turni"
                     android:textAlignment="center"
+                    android:textColor="#8A2BE2"
                     android:textSize="16sp" />
             </LinearLayout>
         </TableRow>

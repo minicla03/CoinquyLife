@@ -13,4 +13,6 @@ public interface ISelectHouseRepository
     CoinquyHouse joinHouse(String houseCode, User user);
 
     User retriveUser(String idUser);
+
+    CoinquyHouse retriveHouse(String idHouse);
 }

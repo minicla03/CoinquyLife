@@ -19,21 +19,38 @@ public class UserRepository implements IAuthRepository
     @Override
     public User getUserByEmail(String email)
     {
-       return db.userDao().getUserByEmail(email);
+        try
+        {
+            return db.userDao().getUserByEmail(email);
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public CoinquyHouse getHouseWithUsers(String id_user) {
-        return db.coiquyHouseWithUserRelationshipDao().getCoinquyHouseById(id_user);
+    public CoinquyHouse getHouseUser(String id_house)
+    {
+        try
+        {
+            return db.coinquyHouseDao().getCoinquyHouseById(id_house);
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void insertUser(User user) {
-        try {
+        try
+        {
             db.userDao().insertUser(user);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
         }
     }
 }

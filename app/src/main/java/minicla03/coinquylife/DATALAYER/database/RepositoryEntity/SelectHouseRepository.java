@@ -52,7 +52,20 @@ public class SelectHouseRepository implements ISelectHouseRepository
         try
         {
             return db.userDao().getUserById(id_user);
-        } catch (Exception e)
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+    public CoinquyHouse retriveHouse(String id_house)
+    {
+        try
+        {
+            return db.coinquyHouseDao().getCoinquyHouseById(id_house);
+        }
+        catch (Exception e)
         {
             return null;
         }

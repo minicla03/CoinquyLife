@@ -7,7 +7,8 @@ public interface IAuthRepository
 {
     User getUserByEmail(String email);
 
-    CoinquyHouse getHouseWithUsers(String id_user);
+    CoinquyHouse getHouseUser(String id_house);
 
     void insertUser(User user);
+
 }

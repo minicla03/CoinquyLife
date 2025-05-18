@@ -3,6 +3,7 @@ package minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
+import minicla03.coinquylife.DATALAYER.database.entity.CoinquyHouse;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
 
@@ -23,6 +24,15 @@ public class RetriveUseCase
         {
             User user = repository.retriveUser(id_user);
             callback.accept(user);
+        });
+    }
+
+    public void retriveHouse(String id_house, Consumer<CoinquyHouse> callback)
+    {
+        executor.execute(() ->
+        {
+            CoinquyHouse coinquyHouse = repository.retriveHouse(id_house);
+            callback.accept(coinquyHouse);
         });
     }
 }

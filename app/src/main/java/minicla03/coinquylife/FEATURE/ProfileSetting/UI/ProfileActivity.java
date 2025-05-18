@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.Objects;
 
 import minicla03.coinquylife.DATALAYER.database.entity.CoinquyHouse;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
+import minicla03.coinquylife.FEATURE.dashboard.UI.DashboardActivity;
 import minicla03.coinquylife.R;
 
 public class ProfileActivity extends AppCompatActivity
@@ -25,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity
     private ImageView imgProfile;
     private TextView tvName, tvRole;
     private EditText etBio;
-    private MaterialButton btnSettings;
+    private MaterialToolbar toolbar;
 
     private static final int REQUEST_GALLERY = 1;
     private static final int REQUEST_CAMERA = 2;
@@ -35,6 +40,9 @@ public class ProfileActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         if (getIntent().hasExtra("user"))
         {
@@ -55,28 +63,17 @@ public class ProfileActivity extends AppCompatActivity
         imgProfile = findViewById(R.id.imgProfile);
         tvName = findViewById(R.id.tvName);
         etBio = findViewById(R.id.etBio);
-        btnSettings = findViewById(R.id.btnSettings);
+        toolbar = findViewById(R.id.topAppBar);
 
-        // Popola l'interfaccia con i dati dell'utente
         if (user != null)
         {
             tvName.setText(user.getName());
             //tvBio.setText(user.getBio());
-
             if (user.getProfileImage() != null)
             {
                 //imgProfile.setImageDrawable(Converters.toDrawable(user.getProfileImage()));
             }
-
-            // Costruisci il testo del ruolo
-            /*String roleText = user.getRole();
-            if (coiquyHouse != null) {
-                roleText += " - " + coiquyHouse.getName();
-            }
-            tvRole.setText(roleText);*/
         }
-
-
     }
 
     private void showBioEditDialog() {
@@ -112,11 +109,6 @@ public class ProfileActivity extends AppCompatActivity
 
     private void setupListeners()
     {
-        btnSettings.setOnClickListener(v -> {
-                Intent intent = new Intent(this, SettingActivity.class);
-                startActivity(intent);
-        });
-
         imgProfile.setOnClickListener(v -> {
             showImagePickerDialog();
         });
@@ -124,36 +116,51 @@ public class ProfileActivity extends AppCompatActivity
         etBio.setOnClickListener(v->{
             showBioEditDialog();
         });
+
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(this, DashboardActivity.class);
+            intent.putExtra("user", user);
+            intent.putExtra("coiquyHouse", coiquyHouse);
+            startActivity(intent);
+        });
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.action_settings) {
+                Intent intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
+            }
+            return false;
+        });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode != RESULT_OK || data == null)
-            return;
+        if (resultCode != RESULT_OK || data == null) return;
 
-        // 2. Risultato da selezione galleria
-        if (requestCode == REQUEST_GALLERY) {
+        if (requestCode == REQUEST_GALLERY)
+        {
             Uri selectedImage = data.getData();
-            if (selectedImage != null) {
+            if (selectedImage != null)
+            {
                 imgProfile.setImageURI(selectedImage);
 
-                // salva l'immagine nell'oggetto utente, se necessario
-                if (user != null) {
+                if (user != null)
+                {
                     //user.setProfileImage(selectedImage.toString());
                 }
             }
         }
-
-        // 3. Risultato da fotocamera
-        else if (requestCode == REQUEST_CAMERA) {
+        else if (requestCode == REQUEST_CAMERA)
+        {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            if (photo != null) {
+            if (photo != null)
+            {
                 imgProfile.setImageBitmap(photo);
 
-                // salva immagine se necessario
-                if (user != null) {
+                if (user != null)
+                {
                     // devi prima salvare l'immagine su file e poi ottenere l'URI
                     //Uri photoUri = saveBitmapToFile(photo);
                     //user.setProfilePictureUri(photoUri.toString());
@@ -161,5 +168,4 @@ public class ProfileActivity extends AppCompatActivity
             }
         }
     }
-
 }

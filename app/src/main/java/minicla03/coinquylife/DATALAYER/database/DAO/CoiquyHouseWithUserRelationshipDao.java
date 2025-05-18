@@ -23,6 +23,6 @@ public interface CoiquyHouseWithUserRelationshipDao {
     List<CoinquyHouseWithUserRelationship> getAllHousesWithUsers();
 
     @Transaction
-    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :idUser")
-    CoinquyHouse getCoinquyHouseById(@NotNull String idUser);
+    @Query("SELECT * FROM CoinquyHouse WHERE id_house = :houseId")
+    CoinquyHouse getCoinquyHouseById(@NotNull String houseId);
 }

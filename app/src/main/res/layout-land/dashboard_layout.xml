@@ -4,12 +4,11 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8A2BE2"
-    android:padding="16dp">
+    android:background="#8A2BE2">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="1247dp"
+        android:layout_width="0dp"
         android:layout_height="105dp"
         android:background="@drawable/rounded_topbar"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
@@ -28,8 +27,8 @@
 
             <ImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="87dp"
+                android:layout_height="62dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/profile_picture"
                 android:padding="4dp"
@@ -38,8 +37,9 @@
 
             <TextView
                 android:id="@+id/tvHouseName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="247dp"
+                android:layout_height="38dp"
+                android:textColor="#8A2BE2"
                 android:text="@string/app_name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -48,8 +48,8 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="1246dp"
-        android:layout_height="269dp"
+        android:layout_width="1122dp"
+        android:layout_height="324dp"
         android:alignmentMode="alignMargins"
         android:background="@drawable/rounded_container"
         android:columnCount="2"
@@ -59,7 +59,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topAppBar">
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:layout_constraintVertical_bias="0.298">
 
         <TableRow
             android:layout_width="match_parent"
@@ -71,8 +72,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:background="@drawable/rounded_container"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -89,6 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/Exspese"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -98,8 +100,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:background="@drawable/rounded_container"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -116,6 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/rank"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -125,8 +128,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:background="@drawable/rounded_container"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -143,6 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/board"
                     android:textAlignment="center"
                     android:textSize="16sp" />
@@ -170,6 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="#8A2BE2"
                     android:text="@string/turni"
                     android:textAlignment="center"
                     android:textSize="16sp" />

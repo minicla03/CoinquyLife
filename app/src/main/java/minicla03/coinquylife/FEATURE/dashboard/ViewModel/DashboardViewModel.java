@@ -33,7 +33,7 @@ public class DashboardViewModel extends AndroidViewModel
         ISelectHouseRepository repo = new SelectHouseRepository(application);
         Executor executor = Executors.newSingleThreadExecutor();
         this.retriveUserCase = new RetriveUseCase(repo, executor);
-        this.retriveHouseCase = new RetriveHouseCase(repo, executor);
+        this.retriveHouseCase = new RetriveUseCase(repo, executor);
     }
 
     public void putIntentData(String key, String value)
