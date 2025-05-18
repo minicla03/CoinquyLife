@@ -1,24 +1,48 @@
-# CoinquyLife
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4d4eafbf-9908-4a72-a9aa-9e93a7e5eb09" alt="Logo CoinquyLife" width="200" />
+</p>
 
-**CoinquyLife** è un'applicazione progettata per semplificare la gestione della vita in una casa condivisa. L'app offre funzionalità per organizzare turni, gestire spese, creare sondaggi e molto altro.
+# 🏠 CoinquyLife – AndroidApp
 
-## Funzionalità principali
+**CoinquyLife** è una piattaforma web pensata per semplificare la vita in una casa condivisa. Ogni funzionalità è implementata come **microservizio indipendente**, seguendo l'architettura **Spring Boot + MVC**, e comunicano tra loro tramite API REST.
 
-- **Gestione dei turni**: Assegna e visualizza i turni di pulizia o altre attività.
-- **Gestione delle spese**: Tieni traccia delle spese condivise e calcola i bilanci.
-- **Bacheca messaggi**: Pubblica note e messaggi per i coinquilini.
-- **Sondaggi**: Crea e partecipa a sondaggi per decisioni condivise.
-- **Classifica**: Guadagna punti e livelli per completare attività.
-- **Selezione della casa**: Unisciti o crea una casa condivisa.
+## 🌐 Versione Webapp
 
-## Struttura del progetto
+La versione web della piattaforma **CoinquyLife** è disponibile nel repository separato dedicato al progetto web.
 
-- **Linguaggi**: Java
+**GitHub Repository Webapp:**  
+[https://github.com/tuo-username/coinquylife-webapp](https://github.com/minicla03/CoinquyLifeSE)
+
+---
+
+## ⚙️ Funzionalità principali
+
+- 🧹 **Gestione dei turni** – Crea e assegna turni di pulizia o attività.
+- 💸 **Gestione delle spese** – Registra spese condivise e calcola bilanci.
+- 📬 **Bacheca dei messaggi** – Invia e ricevi comunicazioni tra coinquilini.
+- 📊 **Sondaggi** – Partecipa a decisioni comuni tramite votazioni.
+- 🏆 **Classifica gamificata** – Guadagna punti per attività completate.
+- 🏠 **Selezione della casa** – Crea o entra in una casa condivisa.
+
+---
+
+## 🧱 Struttura del progetto
+
+- **Linguaggi**: Java/Kotlin
 - **Framework**: Android SDK
-- **Database**: Room (persistenza locale)
+- **Database**: Room (persistenza locale) e MongoDB (persistenza remota)
 - **Stile Architettura**: Clean Archietecture combinata con MVVM (Model-View-ViewModel)
 
 ![image](https://github.com/user-attachments/assets/cb57acec-829c-4451-9a74-a20344f902aa)
+
+ ### Architettura tecnica
+
+- **MVVM**: Separation of concerns tra logica, UI e dati.
+- **Room**: Database SQLite con DAO e repository.
+- **LiveData**: Osservazione dati in tempo reale.
+- **ViewModel**: Gestione dello stato delle UI in modo lifecycle-aware.
+- **Navigation Component**: Gestione sicura delle transizioni tra fragment.
+
 
 #### 📂 Livelli principali
 
@@ -38,19 +62,15 @@
   - **Room DAO**: Per la persistenza locale
   - **Convertes**: Per convertire i dati tra strati
 
- ### Architettura tecnica
-
-- **MVVM**: Separation of concerns tra logica, UI e dati.
-- **Room**: Database SQLite con DAO e repository.
-- **LiveData**: Osservazione dati in tempo reale.
-- **ViewModel**: Gestione dello stato delle UI in modo lifecycle-aware.
-- **Navigation Component**: Gestione sicura delle transizioni tra fragment.
+---
 
 ## Design & UX
 
 - **Librerie UI**: Material Design 3, Jetpack Components
 - **Temi**: Modalità chiara/scura
 - **Accessibilità**: Testo scalabile, contrasto elevato
+
+---
 
 ## Requisiti
 
