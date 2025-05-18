@@ -21,4 +21,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
+    <TextView
+        android:id="@+id/textViewRegister"
+        android:layout_width="202dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/non_hai_un_account_registrati"
+        android:textColor="#8A2BE2"
+        android:textSize="14sp"
+        android:background="@drawable/round_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_fragment_container" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

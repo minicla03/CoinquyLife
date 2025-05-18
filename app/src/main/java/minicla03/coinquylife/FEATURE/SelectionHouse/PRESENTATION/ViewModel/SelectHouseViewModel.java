@@ -9,20 +9,22 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
 import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.JoinHouseUseCase;
 import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.NewHouseUseCase;
 import minicla03.coinquylife.FEATURE.SelectionHouse.DOMAIN.UseCase.RetriveUseCase;
-import minicla03.coinquylife.FEATURE.SelectionHouse.Repository.SelectHouseRepository;
+import minicla03.coinquylife.DATALAYER.database.RepositoryEntity.SelectHouseRepository;
 import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseResult;
 
 public class SelectHouseViewModel extends AndroidViewModel
 {
     private final NewHouseUseCase newHouseUseCase;
     private final JoinHouseUseCase joinHouseUseCase;
-    private final RetriveUseCase retriveUseCase;
+    private final RetriveUseCase retriveUserCase;
     private final UUID houseID;
     private HashMap<String, String> data = new HashMap<>();
 
@@ -36,9 +38,10 @@ public class SelectHouseViewModel extends AndroidViewModel
         super(application);
         houseID = UUID.randomUUID();
         ISelectHouseRepository repo = new SelectHouseRepository(application);
-        this.retriveUseCase = new RetriveUseCase(repo);
-        this.newHouseUseCase = new NewHouseUseCase(repo);
-        this.joinHouseUseCase = new JoinHouseUseCase(repo);
+        Executor executor= Executors.newSingleThreadExecutor();
+        this.retriveUserCase = new RetriveUseCase(repo, executor);
+        this.newHouseUseCase = new NewHouseUseCase(repo,executor);
+        this.joinHouseUseCase = new JoinHouseUseCase(repo, executor);
     }
 
     public String generateHouseCode()
@@ -58,7 +61,7 @@ public class SelectHouseViewModel extends AndroidViewModel
 
     public void retriveUser(String id_user)
     {
-        retriveUseCase.retriveUser(id_user, retriveUserResult::postValue);
+        retriveUserCase.retriveUser(id_user, retriveUserResult::postValue);
     }
 
     public LiveData<SelectHouseResult> getHouseCreationResult()

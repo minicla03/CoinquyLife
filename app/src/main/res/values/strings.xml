@@ -39,4 +39,6 @@
     <string name="login_icon_description">login icon app</string>
     <string name="non_hai_un_account_registrati">Non hai un account? Registrati\n\n</string>
     <string name="coinquylife">CoinquyLife</string>
+    <string name="hai_un_account_loggati">Hai gia un account? Loggati</string>
+    <string name="back">back button</string>
 </resources>

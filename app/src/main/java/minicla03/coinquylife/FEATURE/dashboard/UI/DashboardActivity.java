@@ -8,11 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
 
+import minicla03.coinquylife.DATALAYER.database.entity.CoinquyHouse;
+import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.Board.UI.BoardActivity;
 import minicla03.coinquylife.FEATURE.Expense.UI.ExpenseActivity;
+import minicla03.coinquylife.FEATURE.dashboard.ViewModel.DashboardViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.FEATURE.ProfileSetting.UI.ProfileActivity;
 
@@ -21,6 +25,10 @@ public class DashboardActivity extends AppCompatActivity
     private ImageView imgProfile;
     private TextView tvHouseName;
     private ImageButton btnExpenses, btnRank, btnBoard, btnShifts;
+    private DashboardViewModel dashboardViewModel;
+
+    private User user;
+    private CoinquyHouse house;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,19 +40,9 @@ public class DashboardActivity extends AppCompatActivity
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         Intent intent = getIntent();
-        if (intent != null && intent.getExtras() != null)
-        {
-            String user_id = intent.getStringExtra("user");
-            if (user_id == null)
-            {
-                Toast.makeText(this, "User data is missing ACTIVITY", Toast.LENGTH_SHORT).show();
-            }
-            String coinquy_id = intent.getStringExtra("coinquy");
-            if (coinquy_id == null)
-            {
-                Toast.makeText(this, "Coinquy data is missing ACTIVITY", Toast.LENGTH_SHORT).show();
-            }
-        }
+        dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+        dashboardViewModel.putIntentData("USER", intent.getStringExtra("user"));
+        dashboardViewModel.putIntentData("COINQUYHOUSE", intent.getStringExtra("coinquyhouse"));
 
         imgProfile = findViewById(R.id.imgProfile);
         tvHouseName = findViewById(R.id.tvHouseName);
@@ -53,9 +51,43 @@ public class DashboardActivity extends AppCompatActivity
         btnBoard = findViewById(R.id.btnBoard);
         btnShifts = findViewById(R.id.btnShifts);
 
+        dashboardViewModel.getIntentData().observe(this, data -> {
+            if (data != null)
+            {
+                String idUser = (String) data.get("USER");
+                if (idUser == null)
+                {
+                    Toast.makeText(this, "User data is missing", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    dashboardViewModel.retriveUser(idUser);
+                }
+
+                String idHouse = (String) data.get("COINQUYHOUSE");
+                if (idHouse == null)
+                {
+                    Toast.makeText(this, "House data is missing", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    dashboardViewModel.retriveHouse(idHouse);
+                }
+            }
+        });
+
+        dashboardViewModel.getRetriveUserResult().observe(this, user -> {
+            this.user = user;
+        });
+
+        dashboardViewModel.getRetriveHouseResult().observe(this, house -> {
+            this.house = house;
+        });
+
         String houseName = intent.getStringExtra("house_name");
-        if (houseName != null) {
-            tvHouseName.setText(houseName);
+        if (houseName != null)
+        {
+            tvHouseName.setText(houseName+house.getId_house());
         }
 
         tvHouseName.setOnClickListener(v-> {
@@ -68,8 +100,8 @@ public class DashboardActivity extends AppCompatActivity
 
         btnExpenses.setOnClickListener(v -> {
             Intent intent1 = new Intent(DashboardActivity.this, ExpenseActivity.class);
-            //intent.putExtra("user", user_id);
-            //intent.putExtra("coinquy", coinquy_id);
+            intent1.putExtra("user", this.user);
+            intent1.putExtra("coinquyhouse", this.house);
             startActivity(intent1);
         });
 
@@ -83,8 +115,8 @@ public class DashboardActivity extends AppCompatActivity
 
         btnBoard.setOnClickListener(v -> {
             Intent intent3 = new Intent(DashboardActivity.this, BoardActivity.class);
-            //intent3.putExtra("user", user_id);
-            //intent3.putExtra("coinquy", coinquy_id);
+            intent3.putExtra("user", this.user);
+            intent3.putExtra("coinquyhouse", this.house);
             startActivity(intent3);
         });
 
@@ -98,8 +130,8 @@ public class DashboardActivity extends AppCompatActivity
 
         imgProfile.setOnClickListener(v -> {
             Intent intent5 = new Intent(DashboardActivity.this, ProfileActivity.class);
-            //intent5.putExtra("user", user_id);
-            //intent5.putExtra("coinquy", coinquy_id);
+            intent5.putExtra("user", this.user);
+            intent5.putExtra("coinquyhouse", this.house);
             startActivity(intent5);
         });
     }

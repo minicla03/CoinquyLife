@@ -16,7 +16,6 @@ import minicla03.coinquylife.R;
 
 public class CoinquyHouseSelectionActivity extends AppCompatActivity
 {
-    private Bundle extrasFromPreviousActivity;
     private SelectHouseViewModel selectHouseViewModel;
 
     @Override

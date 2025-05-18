@@ -1,7 +1,9 @@
 package minicla03.coinquylife.FEATURE.Auth.DOMAIN.UseCase;
 
+import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
+import minicla03.coinquylife.DATALAYER.database.entity.CoinquyHouse;
 import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.Repository.IAuthRepository;
 import minicla03.coinquylife.FEATURE.Auth.Utility.AuthResult;
@@ -10,43 +12,50 @@ import minicla03.coinquylife.FEATURE.Auth.Utility.AuthStatus;
 public class LoginUserUseCase implements ILoginUserUseCase
 {
     private final IAuthRepository repository;
+    private final Executor executor;
 
-    public LoginUserUseCase(IAuthRepository repository)
+    public LoginUserUseCase(IAuthRepository repository, Executor executor)
     {
         this.repository = repository;
+        this.executor = executor;
     }
 
+    @Override
     public void login(String email, String password, Consumer<AuthResult> callback)
     {
-        User user = repository.getUserByEmail(email);
-        if (user != null)
-        {
-            if (user.getPassword().equals(password))
+        executor.execute(() -> {
+
+            try
             {
-                if (repository.getHouseWithUsers(user.getId_user()) == null)
+                User user = repository.getUserByEmail(email);
+                if (user != null)
                 {
-                    callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user, null));
+                    if (user.getPassword().equals(password))
+                    {
+                        CoinquyHouse coinquyHouse=repository.getHouseWithUsers(user.getId_user());
+                        if (coinquyHouse==null)
+                        {
+                            callback.accept(new AuthResult(AuthStatus.NO_COINQUYHOUSE, user, null));
+                        }
+                        else
+                        {
+                            callback.accept(new AuthResult(AuthStatus.SUCCESS, user, coinquyHouse));
+                        }
+                    }
+                    else
+                    {
+                        callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, null, null));
+                    }
                 }
                 else
                 {
-                    callback.accept(new AuthResult(AuthStatus.SUCCESS, user, null));
+                    callback.accept(new AuthResult(AuthStatus.USER_NOT_FOUND, null, null));
                 }
             }
-            else
+            catch (Exception e)
             {
-                callback.accept(new AuthResult(AuthStatus.WRONG_PASSWORD, null, null));
+                callback.accept(new AuthResult(AuthStatus.ERROR, null, null));
             }
-        }
-        else
-        {
-            callback.accept(new AuthResult(AuthStatus.USER_NOT_FOUND, null, null));
-        }
+        });
     }
-
-    /*private void modifyPreference(String key, boolean value, User user)
-    {
-        editor.putBoolean(key, value);
-        editor.putString(user.getId_user(),user.getHouseUser());
-        editor.apply();
-    }*/
 }

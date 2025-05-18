@@ -62,15 +62,23 @@ public class LoginFragment extends Fragment
             {
                 Intent intent = new Intent(this.getContext(), DashboardActivity.class);
                 intent.putExtra("user", result.user.getId_user());
+                intent.putExtra("coinquyHouse", result.coinquyHouse.getId_house());
                 startActivity(intent);
-            } else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD) {
+            }
+            else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD)
+            {
                 Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();
-            } else if (result.user != null && result.status == AuthStatus.USER_NOT_FOUND) {
+            }
+            else if (result.user != null && result.status == AuthStatus.USER_NOT_FOUND)
+            {
                 Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
             }
-            else if(result.user != null && result.status == AuthStatus.INVALID_EMAIL) {
+            else if(result.user != null && result.status == AuthStatus.INVALID_EMAIL)
+            {
                 Toast.makeText(getContext(), "Email non valida!", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+            else
+            {
                 Toast.makeText(getContext(), "Login fallito!", Toast.LENGTH_SHORT).show();
             }
         });

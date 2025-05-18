@@ -13,6 +13,9 @@ import minicla03.coinquylife.R;
 
 public class AuthActivity extends AppCompatActivity
 {
+    private boolean showingLogin = true;
+    private TextView switchButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,28 +26,32 @@ public class AuthActivity extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide(); // Nasconde l'ActionBar
 
-        TextView registerText = findViewById(R.id.textViewRegister);
-        if(savedInstanceState==null)
-        {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.auth_fragment_container, new LoginFragment())
-                    .commit();
+        switchButton = findViewById(R.id.textViewRegister);
+        if (savedInstanceState == null) {
+            showFragmentWithText(new LoginFragment(), "Non hai un account? Registrati", true);
         }
 
-        registerText.setOnClickListener(v -> {navigateToFragment(new RegisterFragment());});
+        switchButton.setOnClickListener(v -> {
+            if (showingLogin)
+            {
+                showFragmentWithText(new RegisterFragment(), "Hai già un account? Loggati", false);
+            } else
+            {
+                showFragmentWithText(new LoginFragment(), "Non hai un account? Registrati", true);
+            }
+        });
     }
 
-    private void navigateToFragment(Fragment fragment)
+    private void showFragmentWithText(Fragment fragment, String buttonText, boolean isLogin)
     {
-        String tag = fragment.getClass().getSimpleName();
-        Fragment existingFragment = getSupportFragmentManager().findFragmentByTag(tag);
+        showingLogin = isLogin;
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .setReorderingAllowed(true)
-                .replace(R.id.auth_fragment_container, Objects.requireNonNullElse(existingFragment, fragment), tag)
+                .replace(R.id.auth_fragment_container, fragment, fragment.getClass().getSimpleName())
                 .commit();
+
+        switchButton.setText(buttonText);
     }
 }

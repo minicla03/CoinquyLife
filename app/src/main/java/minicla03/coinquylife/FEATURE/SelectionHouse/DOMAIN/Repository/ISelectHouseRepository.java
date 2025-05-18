@@ -8,11 +8,9 @@ import minicla03.coinquylife.FEATURE.SelectionHouse.Utility.SelectHouseResult;
 
 public interface ISelectHouseRepository
 {
-    void createHouse(String houseCode, String houseName, User user, Consumer<SelectHouseResult> callback);
+    CoinquyHouse createHouse(String houseCode, String houseName, User user);
 
-    void joinHouse(String houseCode, User user, Consumer<SelectHouseResult> callback);
+    CoinquyHouse joinHouse(String houseCode, User user);
 
-    void retriveUser(String idUser, Consumer<User> callback);
-
-    void retriveHouse(String idHouse, Consumer<CoinquyHouse> callback);
+    User retriveUser(String idUser);
 }

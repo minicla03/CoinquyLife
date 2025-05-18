@@ -63,6 +63,7 @@ public class RegisterFragment extends Fragment
             if (result.status== AuthStatus.SUCCESS)
             {
                 Intent intent = new Intent(this.getContext(), CoinquyHouseSelectionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("user", result.user);
                 intent.putExtra("coinquyHouse", result.coinquyHouse);
                 startActivity(intent);

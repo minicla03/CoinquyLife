@@ -7,17 +7,18 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 import minicla03.coinquylife.DATALAYER.database.RepositoryEntity.UserRepository;
+import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.Repository.IAuthRepository;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.UseCase.LoginUserUseCase;
 import minicla03.coinquylife.FEATURE.Auth.DOMAIN.UseCase.RegisterUserUseCase;
 import minicla03.coinquylife.FEATURE.Auth.Utility.AuthResult;
-
-import minicla03.coinquylife.DATALAYER.database.entity.User;
 import minicla03.coinquylife.FEATURE.Auth.Utility.AuthStatus;
-
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class AuthViewModel extends AndroidViewModel
 {
@@ -31,8 +32,9 @@ public class AuthViewModel extends AndroidViewModel
     {
         super(application);
         IAuthRepository repo = new UserRepository(application);
-        loginUseCase = new LoginUserUseCase(repo);
-        registerUseCase = new RegisterUserUseCase(repo);
+        Executor executor = Executors.newSingleThreadExecutor();
+        loginUseCase = new LoginUserUseCase(repo, executor);
+        registerUseCase = new RegisterUserUseCase(repo, executor);
     }
 
     public LiveData<AuthResult> getLoginResult()
@@ -47,8 +49,7 @@ public class AuthViewModel extends AndroidViewModel
 
     public void login(String email, String password)
     {
-        if(isValidEmail(email))
-        {
+        if (isValidEmail(email)) {
             loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
             return;
         }
@@ -57,9 +58,9 @@ public class AuthViewModel extends AndroidViewModel
 
     public void register(User user)
     {
-        if(isValidEmail(user.getEmail()))
+        if (isValidEmail(user.getEmail()))
         {
-            loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
+            registerResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
             return;
         }
         registerUseCase.register(user, registerResult::postValue);
@@ -67,11 +68,10 @@ public class AuthViewModel extends AndroidViewModel
 
     private boolean isValidEmail(String email)
     {
+        if (email == null) return true;
+
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(emailRegex);
-        if (email == null) {
-            return true;
-        }
         Matcher matcher = pattern.matcher(email);
         return !matcher.matches();
     }

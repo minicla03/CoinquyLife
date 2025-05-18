@@ -97,9 +97,9 @@ public class NewCoinquyHouseIDFragment extends Fragment {
             {
                 Toast.makeText(requireContext(), "Insert a valid name", Toast.LENGTH_SHORT).show();
             }
-            else if(result.getStatus()==SelectHouseStatus.HOUSE_NOT_FOUND)
+            else if(result.getStatus()==SelectHouseStatus.ALREADY_IN_HOUSE)
             {
-                Toast.makeText(requireContext(), "House not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "User already in a house", Toast.LENGTH_SHORT).show();
             }
             else if(result.getStatus()==SelectHouseStatus.FAILURE)
             {

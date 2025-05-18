@@ -3,8 +3,11 @@ package minicla03.coinquylife;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
 
 import minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI.AuthActivity;
 import minicla03.coinquylife.DATALAYER.database.DatabaseManager;
@@ -18,6 +21,9 @@ public class SplashActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         new android.os.Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE);

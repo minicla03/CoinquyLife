@@ -1,33 +1,71 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#8A2BE2"
     android:padding="16dp">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/back"
+        app:icon="@drawable/arrow_back"
+        app:iconGravity="textStart"
+        android:tint="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSettings"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/setting"
+        app:icon="@drawable/ic_setting"
+        app:iconGravity="textStart"
+        android:tint="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="162dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo_lucia_blu"
+        app:layout_constraintBottom_toTopOf="@+id/mainContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/mainContainer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSettings"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:contentDescription="@string/setting"
-            app:icon="@drawable/ic_setting"
-            app:iconGravity="textStart" />
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/rounded_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_profile"
-            android:scaleType="centerCrop"
+            android:layout_marginTop="16dp"
             android:clickable="true"
-            android:layout_marginTop="16dp" />
+            android:contentDescription="@string/app_name"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile" />
 
         <TextView
             android:id="@+id/tvName"
@@ -36,7 +74,8 @@
             android:text="@string/defaltu"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            android:textColor="#8A2BE2"
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,9 +86,10 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/rounded_container"
                 android:gravity="center">
 
                 <TextView
@@ -57,19 +97,22 @@
                     android:layout_height="wrap_content"
                     android:text="3"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="#8A2BE2" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Classifica"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textColor="#8A2BE2" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/rounded_container"
                 android:gravity="center">
 
                 <TextView
@@ -77,12 +120,14 @@
                     android:layout_height="wrap_content"
                     android:text="1200"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="#8A2BE2" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Punti"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textColor="#8A2BE2" />
             </LinearLayout>
         </LinearLayout>
 
@@ -90,23 +135,27 @@
             android:id="@+id/etBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_container"
             android:text="Studente fuori sede..."
             android:textSize="14sp"
-            android:layout_marginTop="12dp"/>
+            android:textColor="#8A2BE2"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5" />
 
-
-        <Button
-            android:id="@+id/btnClassifica"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🏆 Classifica Coinquilini"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:id="@+id/btnSpese"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="💰 Gestione spese condivise"
-            android:layout_marginTop="8dp"/>
     </LinearLayout>
-</ScrollView>
+
+    <ImageView
+        android:id="@+id/imgPeople"
+        android:layout_width="283dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="68dp"
+        android:contentDescription="people"
+        android:src="@drawable/peope"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

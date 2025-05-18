@@ -86,6 +86,10 @@ public class JoinCoinquyHouseFragment extends Fragment
             {
                 Toast.makeText(requireContext(), "House not found", Toast.LENGTH_SHORT).show();
             }
+            else if (result.getStatus() == SelectHouseStatus.NOT_IN_HOUSE)
+            {
+                Toast.makeText(requireContext(), "User is not in a house", Toast.LENGTH_SHORT).show();
+            }
             else
             {
                 Toast.makeText(requireContext(), "Error joining house", Toast.LENGTH_SHORT).show();
