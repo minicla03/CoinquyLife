@@ -1,48 +1,69 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/rounded_container"
         android:padding="24dp">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nuova Spesa"
-            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#8A2BE2"
             android:layout_marginBottom="16dp" />
 
-        <EditText
-            android:id="@+id/et_expense_amount"
-            android:layout_width="373dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:hint="Importo"
-            android:inputType="numberDecimal" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Importo">
 
-        <EditText
-            android:id="@+id/et_expense_description"
-            android:layout_width="370dp"
-            android:layout_height="63dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:hint="Descrizione"
-            android:inputType="textMultiLine" />
+            android:hint="Descrizione">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_date_label"
-            android:layout_width="368dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="12dp"
-            android:text="Data" />
+            android:layout_width="361dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Data"
+            android:textColor="#8A2BE2"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_pick_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seleziona Data" />
+            android:text="Seleziona Data"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#8A2BE2"
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +78,9 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textOff="Da fare"
-                android:textOn="Da fare" />
+                android:textOn="Da fare"
+                android:backgroundTint="#FFA500"
+                android:textColor="@android:color/white" />
 
             <ToggleButton
                 android:id="@+id/toggle_saldata"
@@ -66,7 +89,9 @@
                 android:layout_height="wrap_content"
                 android:textOff="Saldata"
                 android:textOn="Saldata"
-                android:layout_marginStart="16dp" />
+                android:layout_marginStart="16dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <Button
@@ -74,6 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Aggiungi"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#8A2BE2"
             android:layout_marginTop="24dp" />
 
     </LinearLayout>

@@ -33,31 +33,31 @@
         </activity>
 
         <activity
-            android:name=".FEATURE.Auth.PRESENTATION.UI.AuthActivity"
+            android:name=".Auth.PRESENTATION.UI.AuthActivity"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".FEATURE.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity"
+            android:name=".SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity"
             android:exported="true">
         </activity>
 
         <activity
-            android:name=".FEATURE.dashboard.UI.DashboardActivity"
+            android:name=".dashboard.UI.DashboardActivity"
             android:exported="true" >
         </activity>
 
         <activity
-            android:name=".FEATURE.ProfileSetting.UI.SettingActivity"
+            android:name=".ProfileSetting.UI.SettingActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FEATURE.ProfileSetting.UI.ProfileActivity" />
+                android:value=".ProfileSetting.UI.ProfileActivity" />
         </activity>
 
         <activity
-            android:name=".FEATURE.ProfileSetting.UI.ProfileActivity"
+            android:name=".ProfileSetting.UI.ProfileActivity"
             android:exported="true" />
     </application>
 

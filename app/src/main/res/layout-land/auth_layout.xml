@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8A2BE2"
-    tools:context=".FEATURE.Auth.PRESENTATION.UI.AuthActivity">
+    tools:context=".Auth.PRESENTATION.UI.AuthActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/auth_fragment_container"
-        android:name="minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI.LoginFragment"
+        android:name="minicla03.coinquylife.Auth.PRESENTATION.UI.LoginFragment"
         tools:layout="@layout/fragment_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

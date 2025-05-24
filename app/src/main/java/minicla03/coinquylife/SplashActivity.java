@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-import minicla03.coinquylife.FEATURE.Auth.PRESENTATION.UI.AuthActivity;
-import minicla03.coinquylife.DATALAYER.database.DatabaseManager;
+import minicla03.coinquylife.Auth.PRESENTATION.UI.AuthActivity;
+import minicla03.coinquylife.DATALAYER.local.DatabaseManager;
 
 public class SplashActivity extends AppCompatActivity
 {

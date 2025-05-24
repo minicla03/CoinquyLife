@@ -41,6 +41,8 @@ dependencies {
 
     // ROOM
     implementation(libs.room.runtime)
+    implementation(libs.play.services.basement)
+    implementation(libs.security.crypto)
     annotationProcessor(libs.room.compiler)
 
     // ViewModel & LiveData
@@ -52,6 +54,10 @@ dependencies {
 
     // Preferences
     implementation(libs.preference)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     // Testing
     testImplementation(libs.junit)

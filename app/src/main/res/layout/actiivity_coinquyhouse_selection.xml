@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#8A2BE2"
     android:padding="24dp"
-    tools:context=".FEATURE.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity">
+    tools:context=".SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity">
 
     <LinearLayout
         android:id="@+id/groupButtonsContainer"
@@ -45,7 +45,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/new_coinquy_house_fragment_container"
-        android:name="minicla03.coinquylife.FEATURE.SelectionHouse.PRESENTATION.UI.NewCoinquyHouseIDFragment"
+        android:name="minicla03.coinquylife.SelectionHouse.PRESENTATION.UI.NewCoinquyHouseIDFragment"
         tools:layout="@layout/fragment_new_coinquy_house"
         android:layout_width="0dp"
         android:layout_height="0dp"
