@@ -5,12 +5,11 @@ import android.app.Application;
 
 import minicla03.coinquylife.DATALAYER.local.DatabaseManager;
 import minicla03.coinquylife.DATALAYER.remote.ApiClient;
-import minicla03.coinquylife.DATALAYER.remote.AuthAPI.IAuthApi;
 
 public class CoinquyLife extends Application
 {
     private static DatabaseManager db;
-    private static IAuthApi endpointsAuth;
+    private static ApiClient endpoints;
     private static TokenManager tokenManager;
 
     @Override
@@ -18,7 +17,7 @@ public class CoinquyLife extends Application
     {
         super.onCreate();
         db= DatabaseManager.getInstance(this);
-        endpointsAuth = ApiClient.getApiAuth();
+        endpoints = ApiClient.getInstance();
         tokenManager= TokenManager.getInstance(this);
     }
 
@@ -27,9 +26,9 @@ public class CoinquyLife extends Application
         return db;
     }
 
-    public static IAuthApi getEndpoints()
+    public static ApiClient getEndpoints()
     {
-        return endpointsAuth;
+        return endpoints;
     }
 
     public static TokenManager getTokenManager() {return tokenManager;}

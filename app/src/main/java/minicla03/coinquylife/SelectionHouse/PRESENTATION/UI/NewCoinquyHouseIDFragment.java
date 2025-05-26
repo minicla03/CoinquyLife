@@ -2,6 +2,7 @@ package minicla03.coinquylife.SelectionHouse.PRESENTATION.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +17,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.DATALAYER.local.entity.User;
+import minicla03.coinquylife.CoinquyLife;
 import minicla03.coinquylife.R;
-import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
+import minicla03.coinquylife.DATALAYER.remote.HouseSelectionAPI.SelectHouseStatus;
 import minicla03.coinquylife.SelectionHouse.PRESENTATION.ViewModel.SelectHouseViewModel;
+import minicla03.coinquylife.TokenManager;
 import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class NewCoinquyHouseIDFragment extends Fragment {
 
     private EditText houseName;
     private SelectHouseViewModel selectHouseViewModel;
-    private User user;
+    private String token;
 
     public NewCoinquyHouseIDFragment() { }
 
@@ -43,32 +45,34 @@ public class NewCoinquyHouseIDFragment extends Fragment {
 
         TextView textViewID = view.findViewById(R.id.textViewID);
         Button btnProceed = view.findViewById(R.id.btnProceed);
-        ImageButton
-                btnCopyID = view.findViewById(R.id.btnCopyID);
+        ImageButton btnCopyID = view.findViewById(R.id.btnCopyID);
         houseName= view.findViewById(R.id.etHouseName);
         selectHouseViewModel = new ViewModelProvider(requireActivity()).get(SelectHouseViewModel.class);
-        textViewID.setText(selectHouseViewModel.generateHouseCode());
 
-        selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
-            if (data != null) {
-                String idUser = (String) data.get("USER");
-                if (idUser == null) {
+        /**selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null)
+            {
+                token = (String) data.get("USER_TOKEN");
+                if (token == null)
+                {
                     Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
-                } else {
-                    selectHouseViewModel.retriveUser(idUser);
                 }
             }
-        });
+        });**/
 
-        selectHouseViewModel.getRetriveUserResult().observe(getViewLifecycleOwner(), user -> this.user = user);
+        token= CoinquyLife.getTokenManager().getToken();
+        if(token==null)
+        {
+            Log.d("NewCoinquyHouseIDFragment", "Token is null");
+            Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         btnProceed.setOnClickListener(v ->
         {
             String name_house = houseName.getText().toString().trim();
-            selectHouseViewModel.createHouse(name_house, user);
+            selectHouseViewModel.createHouse(name_house, null, token);
         });
-
-        textViewID.setText(selectHouseViewModel.generateHouseCode());
 
         btnCopyID.setOnClickListener(v -> {
             String textToCopy = textViewID.getText().toString();
@@ -78,9 +82,15 @@ public class NewCoinquyHouseIDFragment extends Fragment {
             Toast.makeText(requireContext(), "ID copiato negli appunti", Toast.LENGTH_SHORT).show();
         });
 
-        btnProceed.setOnClickListener(v -> {
-            String name_house = houseName.getText().toString().trim();
-            selectHouseViewModel.createHouse(name_house, user);
+        selectHouseViewModel.getHouseCode().observe(getViewLifecycleOwner(), houseCode -> {
+            if (houseCode == null || houseCode.isEmpty())
+            {
+                Toast.makeText(requireContext(), "Error generating house ID", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                textViewID.setText(houseCode);
+            }
         });
 
         selectHouseViewModel.getHouseCreationResult().observe(getViewLifecycleOwner(), result ->

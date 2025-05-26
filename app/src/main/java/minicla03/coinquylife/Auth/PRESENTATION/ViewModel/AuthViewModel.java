@@ -17,8 +17,8 @@ import minicla03.coinquylife.DATALAYER.local.entity.User;
 import minicla03.coinquylife.Auth.DOMAIN.Repository.IAuthRepository;
 import minicla03.coinquylife.Auth.DOMAIN.UseCase.LoginUserUseCase;
 import minicla03.coinquylife.Auth.DOMAIN.UseCase.RegisterUserUseCase;
-import minicla03.coinquylife.Auth.Utility.AuthResult;
-import minicla03.coinquylife.Auth.Utility.AuthStatus;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthResult;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthStatus;
 
 public class AuthViewModel extends AndroidViewModel
 {
@@ -50,12 +50,12 @@ public class AuthViewModel extends AndroidViewModel
     public void login(String email, String password)
     {
         if (isValidEmail(email)) {
-            loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
+            loginResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null));
             return;
         }
         if (password == null)
         {
-            loginResult.postValue(new AuthResult(AuthStatus.INVALID_PASSWORD, null, null));
+            loginResult.postValue(new AuthResult(AuthStatus.INVALID_PASSWORD, null));
             return;
         }
         loginUseCase.login(email, password, loginResult::postValue);
@@ -65,7 +65,7 @@ public class AuthViewModel extends AndroidViewModel
     {
         if (!isValidEmail(user.getEmail()))
         {
-            registerResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null, null));
+            registerResult.postValue(new AuthResult(AuthStatus.INVALID_EMAIL, null));
             return;
         }
         registerUseCase.register(user, registerResult::postValue);

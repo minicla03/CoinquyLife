@@ -17,6 +17,15 @@ public class TokenManager
     private final SharedPreferences sharedPreferences;
     private static TokenManager instance;
 
+    public static synchronized TokenManager getInstance(Context context)
+    {
+        if (instance == null)
+        {
+            instance = new TokenManager(context.getApplicationContext());
+        }
+        return instance;
+    }
+
     private TokenManager(Context context)
     {
         try
@@ -35,15 +44,6 @@ public class TokenManager
         {
             throw new RuntimeException("Errore nella creazione di EncryptedSharedPreferences", e);
         }
-    }
-
-    public static synchronized TokenManager getInstance(Context context)
-    {
-        if (instance == null)
-        {
-            instance = new TokenManager(context.getApplicationContext());
-        }
-        return instance;
     }
 
     public void saveToken(String token)

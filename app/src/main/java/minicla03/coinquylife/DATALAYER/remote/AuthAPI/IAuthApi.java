@@ -7,9 +7,9 @@ import retrofit2.http.POST;
 
 public interface IAuthApi
 {
-    @POST("rest/auth/login")
+    @POST("auth/login")
     Call<AuthResult> login(String email, String password);
 
-    @POST("rest/auth/register")
+    @POST("auth/register")
     Call<AuthResult> register(@Body User user);
 }

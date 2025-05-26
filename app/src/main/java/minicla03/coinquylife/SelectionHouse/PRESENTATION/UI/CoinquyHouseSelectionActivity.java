@@ -29,7 +29,7 @@ public class CoinquyHouseSelectionActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         selectHouseViewModel = new ViewModelProvider(this).get(SelectHouseViewModel.class);
-        selectHouseViewModel.putIntentData("USER", intent.getStringExtra("user"));
+        //selectHouseViewModel.putIntentData("USER_TOKEN", intent.getStringExtra("user_token"));
 
         View btnCreateGroup = findViewById(R.id.btnCreateGroup);
         View btnJoinGroup = findViewById(R.id.btnJoinGroup);

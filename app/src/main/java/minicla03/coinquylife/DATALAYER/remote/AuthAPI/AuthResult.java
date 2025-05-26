@@ -1,7 +1,5 @@
 package minicla03.coinquylife.DATALAYER.remote.AuthAPI;
 
-import minicla03.coinquylife.Auth.Utility.AuthStatus;
-
 public class AuthResult
 {
     private AuthStatus statusAuth;

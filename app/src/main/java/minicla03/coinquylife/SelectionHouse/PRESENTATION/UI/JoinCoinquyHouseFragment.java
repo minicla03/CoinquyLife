@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import minicla03.coinquylife.DATALAYER.local.entity.User;
 import minicla03.coinquylife.R;
-import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
+import minicla03.coinquylife.DATALAYER.remote.HouseSelectionAPI.SelectHouseStatus;
 import minicla03.coinquylife.SelectionHouse.PRESENTATION.ViewModel.SelectHouseViewModel;
 import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
@@ -46,11 +46,11 @@ public class JoinCoinquyHouseFragment extends Fragment
 
         selectHouseViewModel.getIntentData().observe(getViewLifecycleOwner(), data -> {
             if (data != null) {
-                String idUser = (String) data.get("USER");
-                if (idUser == null) {
+                String token = (String) data.get("USER_TOKEN");
+                if (token == null) {
                     Toast.makeText(requireContext(), "User data is missing", Toast.LENGTH_SHORT).show();
                 } else {
-                    selectHouseViewModel.retriveUser(idUser);
+                    selectHouseViewModel.retriveUser(token);
                 }
             }
         });

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.Utility.AuthStatus;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthStatus;
 import minicla03.coinquylife.Auth.PRESENTATION.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.DATALAYER.local.entity.User;
@@ -60,22 +60,22 @@ public class RegisterFragment extends Fragment
     private void setupObservers()
     {
         authViewModel.getRegisterResult().observe(getViewLifecycleOwner(), result -> {
-            if (result.status== AuthStatus.SUCCESS)
+            if (result.getStatusAuth()== AuthStatus.SUCCESS)
             {
                 Intent intent = new Intent(this.getContext(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.user);
+                //intent.putExtra("user_token", result.getToken());
                 startActivity(intent);
             }
-            else if(result.status == AuthStatus.AlREADY_REGISTERED)
+            else if(result.getStatusAuth() == AuthStatus.AlREADY_REGISTERED)
             {
                 Toast.makeText(getContext(), "User already exist", Toast.LENGTH_SHORT).show();
             }
-            else if(result.status == AuthStatus.INVALID_EMAIL)
+            else if(result.getStatusAuth() == AuthStatus.INVALID_EMAIL)
             {
                 Toast.makeText(getContext(), "Invalid email", Toast.LENGTH_SHORT).show();
             }
-            else if(result.status == AuthStatus.ERROR)
+            else if(result.getStatusAuth() == AuthStatus.ERROR)
             {
                 Toast.makeText(getContext(), "Registration failed", Toast.LENGTH_SHORT).show();
             }

@@ -1,7 +1,7 @@
 package minicla03.coinquylife.DATALAYER.RepositoryEntity;
 
 import android.content.Context;
-
+import android.database.sqlite.SQLiteConstraintException;
 import minicla03.coinquylife.CoinquyLife;
 import minicla03.coinquylife.DATALAYER.local.DatabaseManager;
 import minicla03.coinquylife.DATALAYER.local.entity.CoinquyHouse;
@@ -65,6 +65,10 @@ public class AuthRepository implements IAuthRepository
         try
         {
             db.userDao().insertUser(user);
+        }
+        catch (SQLiteConstraintException sqlce)
+        {
+            throw new RuntimeException("User already exists: " + sqlce.getMessage());
         }
         catch (Exception e)
         {

@@ -1,4 +1,4 @@
-package minicla03.coinquylife.Auth.Utility;
+package minicla03.coinquylife.DATALAYER.remote.AuthAPI;
 
 public enum AuthStatus
 {

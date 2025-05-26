@@ -2,7 +2,7 @@ package minicla03.coinquylife.Auth.DOMAIN.UseCase;
 
 import java.util.function.Consumer;
 
-import minicla03.coinquylife.Auth.Utility.AuthResult;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthResult;
 
 public interface ILoginUserUseCase
 {

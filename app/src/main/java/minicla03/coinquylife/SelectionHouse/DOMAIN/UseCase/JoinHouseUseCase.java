@@ -6,10 +6,10 @@ import java.util.function.Consumer;
 import minicla03.coinquylife.DATALAYER.local.entity.CoinquyHouse;
 import minicla03.coinquylife.DATALAYER.local.entity.User;
 import minicla03.coinquylife.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
-import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseResult;
-import minicla03.coinquylife.SelectionHouse.Utility.SelectHouseStatus;
+import minicla03.coinquylife.DATALAYER.remote.HouseSelectionAPI.SelectHouseResult;
+import minicla03.coinquylife.DATALAYER.remote.HouseSelectionAPI.SelectHouseStatus;
 
-public class JoinHouseUseCase
+public class JoinHouseUseCase implements IJoinHouseUseCase
 {
     private final ISelectHouseRepository repository;
     private final Executor executor;

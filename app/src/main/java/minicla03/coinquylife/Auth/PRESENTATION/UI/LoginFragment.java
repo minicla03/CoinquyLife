@@ -13,11 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import minicla03.coinquylife.Auth.Utility.AuthStatus;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthStatus;
+import minicla03.coinquylife.DATALAYER.remote.AuthAPI.AuthResult;
 import minicla03.coinquylife.Auth.PRESENTATION.ViewModel.AuthViewModel;
 import minicla03.coinquylife.R;
 import minicla03.coinquylife.SelectionHouse.PRESENTATION.UI.CoinquyHouseSelectionActivity;
-import minicla03.coinquylife.dashboard.UI.DashboardActivity;
 
 public class LoginFragment extends Fragment
 {
@@ -51,32 +51,23 @@ public class LoginFragment extends Fragment
 
         authViewModel.getLoginResult().observe(getViewLifecycleOwner(), result ->
         {
-            if (result.user != null && result.status == AuthStatus.NO_COINQUYHOUSE)
+            if (result.getToken() != null && result.getStatusAuth() == AuthStatus.NO_COINQUYHOUSE)
             {
                 Intent intent = new Intent(requireActivity(), CoinquyHouseSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.user.getId_user());
+                //intent.putExtra("user_token", result.getToken());
                 startActivity(intent);
                 requireActivity().finish();
             }
-            else if (result.user != null && result.status == AuthStatus.HAS_COINQUYHOUSE)
-            {
-                Intent intent = new Intent(this.getContext(), DashboardActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("user", result.user.getId_user());
-                intent.putExtra("coinquyHouse", result.coinquyHouse.getId_house());
-                startActivity(intent);
-                requireActivity().finish();
-            }
-            else if (result.user != null && result.status == AuthStatus.WRONG_PASSWORD)
+            else if (result.getToken() != null && result.getStatusAuth() == AuthStatus.WRONG_PASSWORD)
             {
                 Toast.makeText(getContext(), "Password errata!", Toast.LENGTH_SHORT).show();
             }
-            else if (result.user != null && result.status == AuthStatus.USER_NOT_FOUND)
+            else if (result.getToken() != null && result.getStatusAuth() == AuthStatus.USER_NOT_FOUND)
             {
                 Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
             }
-            else if(result.user != null && result.status == AuthStatus.INVALID_EMAIL)
+            else if(result.getToken() != null && result.getStatusAuth() == AuthStatus.INVALID_EMAIL)
             {
                 Toast.makeText(getContext(), "Email non valida!", Toast.LENGTH_SHORT).show();
             }

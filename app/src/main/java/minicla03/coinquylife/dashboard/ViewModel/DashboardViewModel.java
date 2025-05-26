@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import minicla03.coinquylife.DATALAYER.RepositoryEntity.CoinquyHouseRepository;
+import minicla03.coinquylife.DATALAYER.RepositoryEntity.HouseSelectionRepository;
 import minicla03.coinquylife.DATALAYER.local.entity.CoinquyHouse;
 import minicla03.coinquylife.DATALAYER.local.entity.User;
 import minicla03.coinquylife.SelectionHouse.DOMAIN.Repository.ISelectHouseRepository;
@@ -30,7 +30,7 @@ public class DashboardViewModel extends AndroidViewModel
     public DashboardViewModel(@NonNull Application application)
     {
         super(application);
-        ISelectHouseRepository repo = new CoinquyHouseRepository(application);
+        ISelectHouseRepository repo = new HouseSelectionRepository(application);
         Executor executor = Executors.newSingleThreadExecutor();
         this.retriveUserCase = new RetriveUseCase(repo, executor);
         this.retriveHouseCase = new RetriveUseCase(repo, executor);
